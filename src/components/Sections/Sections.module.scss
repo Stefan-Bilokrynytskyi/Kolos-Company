@@ -1,0 +1,72 @@
+// .sections_container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   padding: 0 30px 0 30px;
+// }
+
+// .section {
+//   flex-basis: 45%;
+//   position: relative; /* Make the section a positioning context for the overlay */
+// }
+
+// .img_section {
+//   height: 100%;
+//   width: 100%;
+//   object-fit: cover; /* Make the image cover the entire parent div without losing quality */
+// }
+
+@media only screen and (max-width: 1024px) {
+  .sections {
+    display: block;
+    padding: 25px 14px;
+    height: 495px;
+  }
+  .section {
+    position: relative;
+    width: 347px;
+    height: 234px;
+    overflow: hidden;
+    background-image: url("../../img/Casual.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 27px;
+  }
+  .section_1 {
+    position: relative;
+    width: 347px;
+    height: 234px;
+    overflow: hidden;
+    background-image: url("../../img/Classic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .section_conteiner {
+    display: flex;
+    justify-content: center;
+  }
+  .section_overlay {
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.5); /* Use rgba for transparency */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .section_name {
+    position: absolute;
+    bottom: 13px;
+    left: 10px;
+    color: #6f4d38;
+
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 226px;
+    height: 39px;
+  }
+}

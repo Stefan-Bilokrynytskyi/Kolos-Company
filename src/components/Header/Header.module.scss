@@ -1,0 +1,162 @@
+:root {
+  --mainColor: #ffffff;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #000000;
+  --textColor: #000000;
+}
+.header_conteiner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 55px;
+  padding: 0px 14px;
+  background-color: var(--mainColor);
+  color: var(--textColor);
+}
+
+// nav a {
+//   margin: 0 1rem;
+//   color: var(--textColor);
+//   text-decoration: none;
+// }
+
+// nav a:hover {
+//   color: var(--secondaryColor);
+// }
+.burger_menu {
+  display: none;
+}
+
+.nav_btn {
+  display: none;
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--textColor);
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
+}
+
+.menu_nav {
+  display: flex;
+  gap: 18px;
+  margin-right: 100px;
+  font-weight: 800;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 25px;
+  line-height: normal;
+}
+
+.search {
+  display: none;
+}
+@media only screen and (max-width: 1024px) {
+  .overlay {
+    z-index: 2;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    transition: visibility 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+  .cart_conteiner {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 28%;
+    .cart_quantity {
+      margin-left: 4px;
+    }
+  }
+  .name {
+    color: #000;
+
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .logo {
+    height: 34px;
+    width: 34px;
+  }
+
+  .cross {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header_conteiner {
+    justify-content: flex-start;
+    gap: 7px;
+  }
+  .nav_btn {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
+  .burger_menu {
+    display: flex;
+    justify-content: flex-start;
+    flex-basis: 34%;
+  }
+
+  .menu_nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 85px 0 0 90px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 80%;
+
+    z-index: 3;
+    background-color: var(--mainColor);
+    transition: left 0.3s ease 0s;
+  }
+
+  .responsive_nav {
+    left: 0;
+  }
+
+  .control_conteiner {
+    position: relative;
+    width: 100%;
+    height: 55px;
+  }
+  .nav_cross_btn {
+    position: absolute;
+    top: 8px;
+    right: 20px;
+  }
+  .nav_close_btn {
+    position: absolute;
+    top: 8px;
+    left: 14px;
+  }
+
+  .stripe {
+    position: absolute;
+    margin: 0 auto;
+    background-color: #d9d9d9;
+    width: 92.5%;
+
+    height: 1.75px;
+    bottom: 0;
+  }
+}
