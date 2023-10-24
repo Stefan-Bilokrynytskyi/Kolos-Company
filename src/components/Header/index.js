@@ -51,7 +51,7 @@ function Header() {
 
         <div className={classes.stripe}></div>
 
-        <nav className={isNavOpen ? classes.responsive_nav : ""}>
+        <nav className={isNavOpen ? classes.responsive_nav : undefined}>
           <div className={classes.control_conteiner}>
             <button
               className={`${classes.nav_btn} ${classes.nav_close_btn}`}
