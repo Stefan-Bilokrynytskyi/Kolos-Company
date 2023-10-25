@@ -10,7 +10,6 @@ export default function Accordion({ listMenu }) {
   const refHeight = useRef();
 
   useEffect(() => {
-    console.log(refHeight);
     setHeightEl(`${refHeight.current.scrollHeight}px`);
   }, []);
 
@@ -23,7 +22,7 @@ export default function Accordion({ listMenu }) {
       <button onClick={toggleState} className={classes.accordion_visible}>
         <span>Жінки</span>
         <img
-          className={toggle && classes.active}
+          className={toggle ? classes.active : ""}
           src={DropDown}
           alt="dropdown"
         />
@@ -40,7 +39,7 @@ export default function Accordion({ listMenu }) {
       >
         <ul className={classes.list_categories}>
           {listMenu.map((menuItem, index) => (
-            <li className={classes.menu_link} key={index}>
+            <li className={classes.menu_link} key={menuItem.props.to}>
               <Link to={menuItem.props.to}>{menuItem.props.children}</Link>
             </li>
           ))}

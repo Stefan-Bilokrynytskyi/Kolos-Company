@@ -1,0 +1,42 @@
+.card_conteiner {
+  height: 250px;
+
+  color: #000;
+
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  width: 163px;
+  margin-bottom: 29px;
+  .caption {
+    margin-top: 9px;
+    white-space: nowrap;
+  }
+  .price_colors_conteiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    .price_conteiner {
+      position: relative;
+      .price {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(0%, -50%);
+      }
+    }
+    .colours_conteiner {
+      display: flex;
+      gap: 4px;
+      .color_of_product {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

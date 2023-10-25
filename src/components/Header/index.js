@@ -29,7 +29,6 @@ function Header() {
 
   const showNavbar = () => {
     setIsNavOpen(!isNavOpen);
-    console.log(isNavOpen);
   };
 
   return (
@@ -51,7 +50,7 @@ function Header() {
 
         <div className={classes.stripe}></div>
 
-        <nav className={isNavOpen ? classes.responsive_nav : undefined}>
+        <nav className={isNavOpen ? classes.responsive_nav : ""}>
           <div className={classes.control_conteiner}>
             <button
               className={`${classes.nav_btn} ${classes.nav_close_btn}`}
