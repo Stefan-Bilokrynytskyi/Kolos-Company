@@ -3,6 +3,7 @@ import Classic from "../../img/Classic.jpg";
 import Casual from "../../img/Casual.jpg";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+
 function Sections() {
   const [isChosen, setIsChosen] = useState(false);
   return (

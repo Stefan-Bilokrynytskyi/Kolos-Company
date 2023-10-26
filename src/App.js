@@ -5,6 +5,7 @@ import MainPage from "./components/MainPage";
 import Products from "./components/Products";
 import axios from "axios";
 import $api from "./components/http";
+import ProductItem from "./components/ProductItem";
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/ProductItem" element={<ProductItem /> } />
       </Routes>
     </div>
   );
