@@ -1,6 +1,5 @@
 import classes from "./ProductCard.module.scss";
-import store from "../../../../store/Products";
-import { toJS } from "mobx";
+import { Link } from "react-router-dom";
 
 function ProductCard({
   category,
@@ -23,24 +22,26 @@ function ProductCard({
   const uniqueColours = [...new Set(colours)];
 
   return (
-    <div className={classes.card_conteiner}>
-      <img src={image} alt="product" />
-      <div className={classes.caption}>{name}</div>
-      <div className={classes.price_colors_conteiner}>
-        <div className={classes.price_conteiner}>
-          <div className={classes.price}>{price}</div>
-        </div>
-        <div className={classes.colours_conteiner}>
-          {uniqueColours.map((color, index) => (
-            <div
-              className={classes.color_of_product}
-              style={{ backgroundColor: color }}
-              key={index}
-            ></div>
-          ))}
+    <Link to="/productItem">
+      <div className={classes.card_conteiner}>
+        <img src={image} alt="product" />
+        <div className={classes.caption}>{name}</div>
+        <div className={classes.price_colors_conteiner}>
+          <div className={classes.price_conteiner}>
+            <div className={classes.price}>{price}</div>
+          </div>
+          <div className={classes.colours_conteiner}>
+            {uniqueColours.map((color, index) => (
+              <div
+                className={classes.color_of_product}
+                style={{ backgroundColor: color }}
+                key={index}
+              ></div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
