@@ -19,7 +19,9 @@ function ProductCard({
   if (name.length >= 27) {
     name = name.slice(0, 27) + "...";
   }
-  console.log(colours);
+
+  const uniqueColours = [...new Set(colours)];
+
   return (
     <div className={classes.card_conteiner}>
       <img src={image} alt="product" />
@@ -29,7 +31,7 @@ function ProductCard({
           <div className={classes.price}>{price}</div>
         </div>
         <div className={classes.colours_conteiner}>
-          {colours.map((color, index) => (
+          {uniqueColours.map((color, index) => (
             <div
               className={classes.color_of_product}
               style={{ backgroundColor: color }}
