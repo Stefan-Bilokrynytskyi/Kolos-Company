@@ -65,9 +65,11 @@ function Header() {
             >
               <AiOutlineClose className={classes.cross} />
             </button>
-            <div className={classes.stripe}></div>
+            <div className={`${classes.stripe} ${classes.stripe_burger}`}></div>
           </div>
-          <Accordion listMenu={arrFemSections} />
+          <div className={classes.accordion_container}>
+            <Accordion listMenu={arrFemSections} />
+          </div>
           <div className={classes.menu_nav}>
             <a href="/#">Home</a>
             <a href="/#">Shop</a>

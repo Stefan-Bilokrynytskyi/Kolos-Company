@@ -1,9 +1,9 @@
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
 import $api from "../components/http";
 
 class Products {
   productPerpage = [];
+  //url = "";
   constructor() {
     makeAutoObservable(this);
   }
@@ -12,6 +12,15 @@ class Products {
       const response = await $api.get(url);
 
       this.productPerpage = response.data.results;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  async fetchProduct(url) {
+    try {
+      const response = await $api.get(url);
+
+      return response.data;
     } catch (e) {
       console.log(e);
     }

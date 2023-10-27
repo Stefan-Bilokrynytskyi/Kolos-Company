@@ -4,14 +4,15 @@ import store from "../../../store/Products";
 import { toJS } from "mobx";
 import ListOfProducts from "./ListOfProducts";
 
-function ProductsStore() {
+function ProductsStore({ url }) {
   const [productsData, setProductsData] = useState(null);
   useEffect(() => {
     async function fetchData() {
       try {
-        await store.fetchProducts("api/items");
+        await store.fetchProducts(`/api/products/${url}`);
         const productsArr = toJS(store.productPerpage);
         setProductsData(productsArr);
+        store.url = url;
         console.log(productsArr);
       } catch (e) {
         console.log(e);
