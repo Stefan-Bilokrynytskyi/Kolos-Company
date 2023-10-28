@@ -17,11 +17,12 @@ function ProductCard({
   const [selectedColor, setSelectedColor] = useState(colours[0]);
   const [selectedImage, setSelectedImage] = useState(image);
   const selectColorHandler = (color) => {
-    const udatedImage = colours_sizes.find(
+    const updatedImage = colours_sizes.find(
       (item) => item.hex === color
     ).photo_url;
-    setSelectedImage(udatedImage);
+    setSelectedImage(updatedImage);
     setSelectedColor(color);
+    store.selectedColor = color;
   };
   name = name
     .split(" ")
@@ -36,7 +37,7 @@ function ProductCard({
 
   return (
     <div className={classes.card_conteiner}>
-      <Link to={`/${store.url}/${id}`}>
+      <Link to={`/products/${store.url}/${id}/${selectedColor.slice(1)}`}>
         <img src={selectedImage} alt="product" className={classes.image} />
         <div className={classes.caption}>{name}</div>
       </Link>

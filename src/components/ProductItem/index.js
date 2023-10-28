@@ -10,7 +10,7 @@ import Product from "./Product";
 function ProductItem() {
   const [product, setProduct] = useState(null);
 
-  const { category, id } = useParams();
+  const { category, id, color } = useParams();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -24,12 +24,18 @@ function ProductItem() {
       }
     }
     fetchData();
-  }, []);
-  //if (product) console.log(product.name);
+  }, [category, id, color]);
+
+  const key = `${category}_${id}_${color}`;
+
   return (
-    <div>
+    <div key={key}>
       <Header />
-      {product ? <Product product={product} /> : <p>Loading...</p>}
+      {product ? (
+        <Product product={product} color={"#" + color} />
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }

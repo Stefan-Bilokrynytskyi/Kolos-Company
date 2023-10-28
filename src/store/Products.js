@@ -4,6 +4,7 @@ import $api from "../components/http";
 class Products {
   productPerpage = [];
   //url = "";
+  selectedColor = "";
   constructor() {
     makeAutoObservable(this);
   }
