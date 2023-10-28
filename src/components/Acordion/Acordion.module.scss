@@ -1,7 +1,6 @@
 .accordion {
-  max-width: 400px;
-  margin: 13px 13px;
-  border-radius: 3px;
+  width: 100%;
+
   background: #ffffff;
 }
 
@@ -12,7 +11,7 @@ ul {
 }
 .accordion_visible {
   background: #ffffff;
-  width: 100%;
+  width: 93.5%;
   color: #fff;
   cursor: pointer;
   border: 0px none black;

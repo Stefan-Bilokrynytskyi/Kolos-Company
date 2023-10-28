@@ -1,89 +1,35 @@
 import React, { useState  } from "react";
 import Header from "../Header";
 import classes from "./ProductItem.module.scss";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import store from "../../store/Products";
+import { toJS } from "mobx";
+import { useEffect } from "react";
+import Product from "./Product";
 
-function ProductItem({}) {
-  const [selectedColor, setSelectedColor] = useState("Червоний"); // Обраний колір
-  const [selectedSize, setSelectedSize] = useState("S"); // Обраний розмір
+function ProductItem() {
+  const [product, setProduct] = useState(null);
 
-  const handleColorChange = (color) => {
-    setSelectedColor(color);
-  };
-
-  const handleSizeChange = (size) => {
-    setSelectedSize(size);
-  };
-
-  const handleCheckout = () => {};
-
+  const { category, id } = useParams();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const newProduct = await toJS(
+          store.fetchProduct(`/api/products/${category}/${id}`)
+        );
+        //console.log(newProduct);
+        setProduct(newProduct);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    fetchData();
+  }, []);
+  //if (product) console.log(product.name);
   return (
     <div>
       <Header />
-
-      <div className={classes.product_item}>
-        <div className={classes.container}>
-          <h1>Колос Худді</h1>
-
-          <div className={classes.image}>{/* image */}</div>
-
-          <p className={classes.price}>1111</p>
-
-          <div className={classes.choose_color}>
-            <div
-              className={`${classes.color} ${
-                selectedColor === "Червоний" ? classes.selected : ""
-              }`}
-              onClick={() => handleColorChange("Червоний")}
-            ></div>
-            <div
-              className={`${classes.color} ${
-                selectedColor === "Синій" ? classes.selected : ""
-              }`}
-              onClick={() => handleColorChange("Синій")}
-            ></div>
-            <div
-              className={`${classes.color} ${
-                selectedColor === "Зелений" ? classes.selected : ""
-              }`}
-              onClick={() => handleColorChange("Зелений")}
-            ></div>
-          </div>
-
-          <div className={classes.choose_size}>
-            <button
-              className={`${selectedSize === "S" ? classes.selected_size : ""}`}
-              onClick={() => handleSizeChange("S")}
-            >
-              S
-            </button>
-            <button
-              className={`${selectedSize === "M" ? classes.selected_size : ""}`}
-              onClick={() => handleSizeChange("M")}
-            >
-              M
-            </button>
-            <button
-              className={`${selectedSize === "L" ? classes.selected_size : ""}`}
-              onClick={() => handleSizeChange("L")}
-            >
-              L
-            </button>
-            <button
-              className={`${
-                selectedSize === "XL" ? classes.selected_size : ""
-              }`}
-              onClick={() => handleSizeChange("XL")}
-            >
-              XL
-            </button>
-          </div>
-
-          <div className={classes.button} onClick={handleCheckout}>
-            До каси
-          </div>
-        </div>
-      </div>
+      {product ? <Product product={product} /> : <p>Loading...</p>}
     </div>
   );
 }

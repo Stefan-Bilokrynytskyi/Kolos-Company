@@ -8,7 +8,7 @@ function Sections() {
   const [isChosen, setIsChosen] = useState(false);
   return (
     <div className={classes.sections}>
-      <Link to="/products">
+      <Link to="/products/casual">
         <div className={classes.section_conteiner}>
           <div className={classes.section}>
             {isChosen && <div className={classes.section_overlay}></div>}
@@ -16,7 +16,7 @@ function Sections() {
           </div>
         </div>
       </Link>
-      <Link to="/products">
+      <Link to="/products/classic">
         <div className={classes.section_conteiner}>
           <div className={classes.section_1}>
             {!isChosen && <div className={classes.section_overlay}></div>}

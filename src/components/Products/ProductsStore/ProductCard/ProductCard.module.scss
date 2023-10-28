@@ -11,6 +11,10 @@
 
   width: 163px;
   margin-bottom: 29px;
+  .image {
+    width: 163px;
+    height: 204px;
+  }
   .caption {
     margin-top: 9px;
     white-space: nowrap;
@@ -39,4 +43,9 @@
       }
     }
   }
+}
+
+.selected {
+  outline: 1px solid black;
+  outline-offset: 2px;
 }

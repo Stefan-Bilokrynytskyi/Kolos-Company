@@ -1,18 +1,20 @@
 import classes from "./ListOfProducts.module.scss";
-import ProductCard from "../ProductCard"; // added import statement for ProductCard
-import Rectangle from "../../../../img/Rectangle.jpg"; // added import statement for Rectangle
+import ProductCard from "../ProductCard";
+import Rectangle from "../../../../img/Rectangle.jpg";
 
 function ListOfProducts({ productsData }) {
-  const ProductsList = productsData.map((product, index) => (
+  const ProductsList = productsData.map((product) => (
     <ProductCard
+      id={product.id}
       category={product.category}
       gender={product.gender}
       global_category={product.global_category}
       name={product.name}
       price={product.price}
-      image={Rectangle}
+      image={product.sizes_color_quantity[0].photo_url}
       colours={product.sizes_color_quantity.map((item) => item.hex)}
-      key={product.name}
+      colours_sizes={product.sizes_color_quantity}
+      key={product.id}
     />
   ));
 
