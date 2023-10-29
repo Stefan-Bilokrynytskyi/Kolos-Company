@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Basket.module.scss";
+// import Cross from "../icons/cross.svg";
 
 function BasketProduct() {
   const [count, setCount] = React.useState(0);
@@ -18,23 +19,30 @@ function BasketProduct() {
         <div className={classes.basket_container}>
           <h1>Кошик</h1>
 
-          <button>До касси</button>
+          <button className={classes.btn}>До касси</button>
 
           <div className={classes.product_block}>
             {/* Product block */}
             <div className={classes.product}>
-              {/* <img /> */}
+              {/* test block (delete later)
+              <div className={classes.img}></div> */}
 
               <div className={classes.product_info}>
-                <h2>Боді "Каштан"</h2>
+                <div className={classes.img}></div>
+                
+                <div className={classes.info}>
+                  <h2>Боді "Каштан"</h2>
 
-                <div className={classes.product_description}>
-                  <p>Колір: Фісташка</p>
-                  <p>Розмір: 50</p>
+                  <div className={classes.product_description}>
+                    <p>Колір: Фісташка</p>
+                    <p>Розмір: 50</p>
+                  </div>
                 </div>
               </div>
 
-              <div className={classes.cross}></div>
+              <div className={classes.cross}>
+                X
+              </div>
             </div>
 
             {/* Increase, decrease */}
