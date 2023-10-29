@@ -19,7 +19,7 @@ function ProductsStore({ url }) {
       }
     }
     fetchData();
-  }, []);
+  }, [url]);
 
   return (
     <div className={classes.store_conteiner}>
