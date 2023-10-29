@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import MainPage from "./components/MainPage";
 import Products from "./components/Products";
 import ProductItem from "./components/ProductItem";
+import BasketPage from "./components/BasketPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           path="/products/:category/:id/:color"
           element={<ProductItem />}
         />
+        <Route path="/basket" element={<BasketPage />} />
       </Routes>
     </div>
   );

@@ -44,8 +44,10 @@ function Header() {
         <img src={Logo} className={classes.logo} alt="Logo"></img>
 
         <div className={classes.cart_conteiner}>
-          <img src={Cart} alt="cart"></img>
-          <div className={classes.cart_quantity}>{cartQuantity}</div>
+          <Link to="/basket">
+            <img src={Cart} alt="cart"></img>
+            <div className={classes.cart_quantity}>{cartQuantity}</div>
+          </Link>
         </div>
 
         <div className={classes.stripe}></div>
