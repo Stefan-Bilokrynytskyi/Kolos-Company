@@ -77,19 +77,25 @@
       display: flex;
     }
   }
-  .name {
-    color: #000;
+  .logo_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    .name {
+      color: #000;
 
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
+      font-family: Inter;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
 
-  .logo {
-    height: 34px;
-    width: 34px;
+    .logo {
+      height: 34px;
+      width: 34px;
+    }
   }
 
   .cross {

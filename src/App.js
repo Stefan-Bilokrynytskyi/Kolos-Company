@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
 import MainPage from "./components/MainPage";
 import Products from "./components/Products";
 import ProductItem from "./components/ProductItem";

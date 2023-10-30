@@ -1,12 +1,59 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, action } from "mobx";
 import $api from "../components/http";
 
 class Products {
   productPerpage = [];
-  //url = "";
-  selectedColor = "";
+
+  basket = [];
   constructor() {
-    makeAutoObservable(this);
+    // Укажите `actions` в параметре конфигурации для makeAutoObservable
+    makeAutoObservable(this, {
+      addToBasket: action, // Указываем, что addToBasket является действием
+    });
+  }
+
+  addToBasket(item) {
+    const index = this.basket.findIndex(
+      (basketItem) =>
+        basketItem.id === item.id &&
+        basketItem.selectedColor === item.selectedColor &&
+        basketItem.selectedSize === item.selectedSize
+    );
+
+    if (index !== -1) {
+      this.basket[index].quantity++;
+    } else {
+      this.basket.push(item);
+    }
+  }
+
+  deleteFromBasket(item) {
+    console.log("tut");
+    const index = this.basket.findIndex(
+      (basketItem) =>
+        basketItem.id === item.id &&
+        basketItem.colorName === item.colorName &&
+        basketItem.selectedSize === item.selectedSize
+    );
+    console.log(index);
+    if (index !== -1) {
+      this.basket.splice(index, 1); // Удаляем элемент из массива
+      localStorage.setItem("basket", JSON.stringify(store.basket));
+    }
+  }
+  setNewBasket(basket) {
+    this.basket = basket;
+  }
+
+  removeFromBasket(item) {
+    const index = this.basket.indexOf(item);
+    if (index !== -1) {
+      this.basket.splice(index, 1);
+    }
+  }
+
+  get cartQuantity() {
+    return this.basket.length;
   }
   async fetchProducts(url) {
     try {

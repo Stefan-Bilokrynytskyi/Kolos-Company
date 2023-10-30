@@ -68,28 +68,15 @@ button {
 
   .choose_size {
     cursor: pointer;
-    margin-bottom: 23px;
+
     display: flex;
     gap: 15px;
+  }
 
-    .size_button {
-      width: 25px;
-      padding: 1px 1px;
-      background-color: #f1f1f1;
-      border-radius: 50%;
-      color: #000;
-
-      font-family: Inter;
-      font-size: 21px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      text-align: center;
-    }
-    .disabled {
-      color: rgb(164, 159, 159);
-      text-decoration: line-through;
-    }
+  .warning {
+    margin-top: 8px;
+    color: red;
+    font-weight: bold;
   }
 
   .selected_size {
@@ -106,7 +93,7 @@ button {
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-
+    margin-top: 23px;
     margin-bottom: 40px;
   }
 }

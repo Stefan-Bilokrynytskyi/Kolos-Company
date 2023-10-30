@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import classes from "./Product.module.scss";
 import { Link } from "react-router-dom";
+import SizeButton from "./SizeButton/SizeButton";
+import store from "../../../store/Products";
+import { observer } from "mobx-react-lite";
+import { set } from "mobx";
 
-function Product({ product, color }) {
-  console.log(product);
+const Product = observer(({ product, color }) => {
+  let colorName = "";
   const uniqueColours = [
     ...new Set(product.sizes_color_quantity.map((item) => item.hex)),
   ];
@@ -12,14 +16,15 @@ function Product({ product, color }) {
     product.sizes_color_quantity.forEach((item) =>
       item.hex === color && item.quantity > 0 ? sizes.push(item.size) : null
     );
-    console.log(sizes);
+
     return sizes;
   };
   const findImage = (color) => {
-    let image = "";
-    product.sizes_color_quantity.find((item) =>
-      item.hex === color ? (image = item.photo_url) : null
+    const index = product.sizes_color_quantity.findIndex(
+      (item) => item.hex === color
     );
+    const image = product.sizes_color_quantity[index].photo_url;
+    colorName = product.sizes_color_quantity[index].color;
     return image;
   };
 
@@ -30,6 +35,7 @@ function Product({ product, color }) {
   const [availableSizes, setAvailableSizes] = useState(
     findAvailableSizes(selectedColor)
   );
+  const [warning, setWarning] = useState(false);
 
   const handleColorChange = (color) => {
     setSelectedColor(color);
@@ -40,9 +46,22 @@ function Product({ product, color }) {
 
   const handleSizeChange = (size) => {
     setSelectedSize(size);
+    setWarning(false);
   };
 
-  const handleCheckout = () => {};
+  const handleCheckout = () => {
+    if (selectedSize) {
+      store.addToBasket({
+        ...product,
+        selectedColor,
+        selectedSize,
+        selectedImage,
+        colorName,
+        quantity: 1,
+      });
+      localStorage.setItem("basket", JSON.stringify(store.basket));
+    } else setWarning(true);
+  };
 
   return (
     <div>
@@ -55,19 +74,18 @@ function Product({ product, color }) {
           <p className={classes.price}>{product.price}</p>
 
           <div className={classes.choose_color}>
-            {uniqueColours.map((color, index) => (
+            {uniqueColours.map((color) => (
               <Link
                 to={`/products/${product.global_category.toLowerCase()}/${
                   product.id
                 }/${color.slice(1)}`}
-                key={index}
+                key={color}
               >
                 <div
                   className={`${classes.color} ${
                     selectedColor === color ? classes.selected : ""
                   }`}
                   style={{ backgroundColor: color }}
-                  key={index}
                   onClick={() => handleColorChange(color)}
                 ></div>
               </Link>
@@ -75,51 +93,43 @@ function Product({ product, color }) {
           </div>
 
           <div className={classes.choose_size}>
-            <button
-              className={`${classes.size_button} ${
-                !availableSizes.includes("S") ? classes.disabled : ""
-              }${selectedSize === "S" ? classes.selected : ""}`}
-              onClick={() => handleSizeChange("S")}
-              disabled={!availableSizes.includes("S")}
+            <SizeButton
+              selectedSize={selectedSize}
+              handleSizeChange={handleSizeChange}
+              available={availableSizes.includes("S")}
             >
               S
-            </button>
-            <button
-              className={`${classes.size_button} ${
-                !availableSizes.includes("M") ? classes.disabled : ""
-              }${selectedSize === "M" ? classes.selected : ""}`}
-              onClick={() => handleSizeChange("M")}
-              disabled={!availableSizes.includes("M")}
+            </SizeButton>
+            <SizeButton
+              selectedSize={selectedSize}
+              handleSizeChange={handleSizeChange}
+              available={availableSizes.includes("M")}
             >
               M
-            </button>
-            <button
-              className={`${classes.size_button} ${
-                !availableSizes.includes("L") ? classes.disabled : ""
-              }${selectedSize === "L" ? classes.selected : ""}`}
-              onClick={() => handleSizeChange("L")}
-              disabled={!availableSizes.includes("L")}
+            </SizeButton>
+            <SizeButton
+              selectedSize={selectedSize}
+              handleSizeChange={handleSizeChange}
+              available={availableSizes.includes("L")}
             >
               L
-            </button>
-            <button
-              className={`${classes.size_button} ${
-                !availableSizes.includes("XL") ? classes.disabled : ""
-              }${selectedSize === "XL" ? classes.selected : ""}`}
-              onClick={() => handleSizeChange("XL")}
-              disabled={!availableSizes.includes("XL")}
+            </SizeButton>
+            <SizeButton
+              selectedSize={selectedSize}
+              handleSizeChange={handleSizeChange}
+              available={availableSizes.includes("XL")}
             >
               XL
-            </button>
+            </SizeButton>
           </div>
-
+          {warning && <div className={classes.warning}>Оберіть розмір</div>}
           <div className={classes.button_checkout} onClick={handleCheckout}>
-            До каси
+            Додати в кошик
           </div>
         </div>
       </div>
     </div>
   );
-}
+});
 
 export default Product;

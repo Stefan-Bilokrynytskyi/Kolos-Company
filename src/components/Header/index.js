@@ -1,19 +1,25 @@
 import classes from "./Header.module.scss";
-
 import { useRef, useState } from "react";
-
 import { AiOutlineClose } from "react-icons/ai";
-
 import Accordion from "../Acordion/Acordion";
-
 import Burger from "../../icons/burger.svg";
 import Logo from "../../icons/logo.svg";
 import Cart from "../../icons/cart.svg";
 import CloseBurger from "../../icons/CloseBurgerMenu.svg";
-import DropDown from "../../icons/dropdown.svg";
 import { Link } from "react-router-dom";
+import store from "../../store/Products";
+import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 
-function Header() {
+const Header = observer(() => {
+  useEffect(() => {
+    const storedBasket = localStorage.getItem("basket");
+
+    if (storedBasket) {
+      store.setNewBasket(JSON.parse(storedBasket));
+    }
+  }, []);
+
   const arrFemSections = [
     <Link to="/sweaters">Светри</Link>,
     <Link to="/bodies">Боді</Link>,
@@ -23,7 +29,7 @@ function Header() {
     <Link to="/hoodies">Худі</Link>,
     <Link to="/sweatshots">Світшоти</Link>,
   ];
-  const [cartQuantity, setCartQuantity] = useState(0);
+  // const [cartQuantity, setCartQuantity] = useState(store.basket.length);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState();
 
@@ -40,13 +46,14 @@ function Header() {
             <img src={Burger} alt="menu"></img>
           </button>
         </div>
-        <div className={classes.name}>КОЛОС</div>
-        <img src={Logo} className={classes.logo} alt="Logo"></img>
-
+        <Link to="/" className={classes.logo_container}>
+          <div className={classes.name}>КОЛОС</div>
+          <img src={Logo} className={classes.logo} alt="Logo"></img>
+        </Link>
         <div className={classes.cart_conteiner}>
           <Link to="/basket">
             <img src={Cart} alt="cart"></img>
-            <div className={classes.cart_quantity}>{cartQuantity}</div>
+            <div className={classes.cart_quantity}>{store.cartQuantity}</div>
           </Link>
         </div>
 
@@ -82,6 +89,6 @@ function Header() {
       </div>
     </header>
   );
-}
+});
 
 export default Header;

@@ -1,65 +1,72 @@
 import React from "react";
 import classes from "./Basket.module.scss";
-// import Cross from "../icons/cross.svg";
+import { AiOutlineClose } from "react-icons/ai";
+import store from "../../../../store/Products";
+import { observer } from "mobx-react-lite";
 
-function BasketProduct() {
-  const [count, setCount] = React.useState(0);
+const BasketProduct = observer(
+  ({ id, name, price, image, colorName, size, quantity }) => {
+    const [quantityItem, setCount] = React.useState(quantity);
+    const [productPrice, setPrice] = React.useState(price * quantity);
 
-  const increaseNumber = () => {
-    setCount(count + 1);
-  };
+    const increaseNumber = () => {
+      setCount((count) => ++count);
+      setPrice((priceForNow) => +priceForNow + +price);
+    };
 
-  const decreaseNumber = () => {
-    setCount(Math.max(count - 1, 0));
-  };
+    const decreaseNumber = () => {
+      setCount((count) => --count);
+      setPrice((priceForNow) => +priceForNow - +price);
+    };
 
-  return (
-    <div>
-      <div className={classes.basket}>
-        <div className={classes.basket_container}>
-          <h1>Кошик</h1>
+    const deleteBasketItemHandler = () => {
+      store.deleteFromBasket({ id, colorName, selectedSize: size });
+    };
 
-          <button className={classes.btn}>До касси</button>
+    return (
+      <div className={classes.product_container}>
+        <div className={classes.product_block}>
+          {/* Product block */}
+          <div className={classes.product}>
+            <div className={classes.product_info}>
+              <img src={image} alt="" className={classes.img_basket} />
 
-          <div className={classes.product_block}>
-            {/* Product block */}
-            <div className={classes.product}>
-              {/* test block (delete later)
-              <div className={classes.img}></div> */}
+              <div className={classes.info}>
+                <h2>{name}</h2>
 
-              <div className={classes.product_info}>
-                <div className={classes.img}></div>
-                
-                <div className={classes.info}>
-                  <h2>Боді "Каштан"</h2>
-
-                  <div className={classes.product_description}>
-                    <p>Колір: Фісташка</p>
-                    <p>Розмір: 50</p>
-                  </div>
+                <div className={classes.product_description}>
+                  <p>Колір: {colorName}</p>
+                  <p>Розмір: {size}</p>
                 </div>
               </div>
-
-              <div className={classes.cross}>
-                X
-              </div>
             </div>
 
-            {/* Increase, decrease */}
-            <div className={classes.counter}>
-              <div className={classes.operations}>
-                <button onClick={increaseNumber}>+</button>
-                <span>{count}</span>
-                {count > 0 && <button onClick={decreaseNumber}>-</button>}
-              </div>
-
-              <div className={classes.price}>1111</div>
+            <div className={classes.cross_container}>
+              <AiOutlineClose
+                className={classes.cross}
+                onClick={() => deleteBasketItemHandler()}
+              />
             </div>
+          </div>
+
+          {/* Increase, decrease */}
+          <div className={classes.counter}>
+            <div className={classes.operations}>
+              {quantityItem > 0 && (
+                <button onClick={decreaseNumber} disabled={quantityItem === 1}>
+                  -
+                </button>
+              )}
+              <span className={classes.quantity}>{quantityItem}</span>
+              <button onClick={increaseNumber}>+</button>
+            </div>
+
+            <div className={classes.price}>{productPrice.toFixed(2)}</div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+);
 
 export default BasketProduct;
