@@ -23,7 +23,7 @@ const Product = observer(({ product, color }) => {
     const index = product.sizes_color_quantity.findIndex(
       (item) => item.hex === color
     );
-    const image = product.sizes_color_quantity[index].photo_url;
+    const image = product.sizes_color_quantity[index].photo_urls[0];
     colorName = product.sizes_color_quantity[index].color;
     return image;
   };

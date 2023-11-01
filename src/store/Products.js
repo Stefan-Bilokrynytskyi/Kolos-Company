@@ -59,7 +59,7 @@ class Products {
     try {
       const response = await $api.get(url);
 
-      this.productPerpage = response.data.results;
+      this.productPerpage = response.data;
     } catch (e) {
       console.log(e);
     }

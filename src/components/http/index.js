@@ -7,7 +7,7 @@ const $api = axios.create({
   baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Token 8e315cacba2e94513f4f904b301c96ddb949c656`,
+    Authorization: `Token f699518f244c6ac48a95b7bf34a9aaad030d13fc`,
     Accept: "*/*",
   },
 });

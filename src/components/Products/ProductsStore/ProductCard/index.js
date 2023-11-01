@@ -17,9 +17,8 @@ function ProductCard({
   const [selectedColor, setSelectedColor] = useState(colours[0]);
   const [selectedImage, setSelectedImage] = useState(image);
   const selectColorHandler = (color) => {
-    const updatedImage = colours_sizes.find(
-      (item) => item.hex === color
-    ).photo_url;
+    const updatedImage = colours_sizes.find((item) => item.hex === color)
+      .photo_urls[0];
     setSelectedImage(updatedImage);
     setSelectedColor(color);
     store.selectedColor = color;
