@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SizeButton from "./SizeButton/SizeButton";
 import store from "../../../store/Products";
 import { observer } from "mobx-react-lite";
-import { set } from "mobx";
+import Swiper from "./Swiper";
 
 const Product = observer(({ product, color }) => {
   let colorName = "";
@@ -23,15 +23,15 @@ const Product = observer(({ product, color }) => {
     const index = product.sizes_color_quantity.findIndex(
       (item) => item.hex === color
     );
-    const image = product.sizes_color_quantity[index].photo_urls[0];
+    const slides = product.sizes_color_quantity[index].photo_urls;
     colorName = product.sizes_color_quantity[index].color;
-    return image;
+    return slides;
   };
 
   // Доступні розміри [S, M, L, XL
   const [selectedColor, setSelectedColor] = useState(color); // Обраний колір
   const [selectedSize, setSelectedSize] = useState(); // Обраний розмір
-  const [selectedImage, setSelectedImage] = useState(findImage(color)); // Обране зображення [photo_url
+  const [selectedSlides, setSelectedSlides] = useState(findImage(color)); // Обране зображення [photo_url
   const [availableSizes, setAvailableSizes] = useState(
     findAvailableSizes(selectedColor)
   );
@@ -40,7 +40,7 @@ const Product = observer(({ product, color }) => {
   const handleColorChange = (color) => {
     setSelectedColor(color);
     setAvailableSizes(findAvailableSizes(color));
-    setSelectedImage(findImage(color));
+    setSelectedSlides(findImage(color));
     setSelectedSize();
   };
 
@@ -50,6 +50,7 @@ const Product = observer(({ product, color }) => {
   };
 
   const handleCheckout = () => {
+    const selectedImage = selectedSlides[0];
     if (selectedSize) {
       store.addToBasket({
         ...product,
@@ -68,8 +69,7 @@ const Product = observer(({ product, color }) => {
       <div className={classes.product_item}>
         <div className={classes.container}>
           <h1>{product.name}</h1>
-
-          <img src={selectedImage} alt="" className={classes.image} />
+          <Swiper slides={selectedSlides} />
 
           <p className={classes.price}>{product.price}</p>
 

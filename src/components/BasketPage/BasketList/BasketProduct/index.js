@@ -3,6 +3,7 @@ import classes from "./Basket.module.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import store from "../../../../store/Products";
 import { observer } from "mobx-react-lite";
+import BasketOperations from "../BasketOperations";
 
 const BasketProduct = observer(
   ({ id, name, price, image, colorName, size, quantity }) => {
@@ -51,15 +52,11 @@ const BasketProduct = observer(
 
           {/* Increase, decrease */}
           <div className={classes.counter}>
-            <div className={classes.operations}>
-              {quantityItem > 0 && (
-                <button onClick={decreaseNumber} disabled={quantityItem === 1}>
-                  -
-                </button>
-              )}
-              <span className={classes.quantity}>{quantityItem}</span>
-              <button onClick={increaseNumber}>+</button>
-            </div>
+            <BasketOperations
+              increaseNumber={increaseNumber}
+              decreaseNumber={decreaseNumber}
+              quantityItem={quantityItem}
+            />
 
             <div className={classes.price}>{productPrice.toFixed(2)}</div>
           </div>
