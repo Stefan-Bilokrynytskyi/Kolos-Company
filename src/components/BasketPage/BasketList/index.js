@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import classes from "./BasketList.module.scss";
-import BasketProduct from "./BasketProduct";
+import BasketCard from "./BasketCard";
 import store from "../../../store/Products";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
@@ -18,7 +18,7 @@ const BasketList = observer(() => {
   const basketData = toJS(store.basket);
   console.log(basketData);
   const basketList = basketData.map((product) => (
-    <BasketProduct
+    <BasketCard
       id={product.id}
       name={product.name}
       price={product.price}

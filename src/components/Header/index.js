@@ -21,13 +21,23 @@ const Header = observer(() => {
   }, []);
 
   const arrFemSections = [
-    <Link to="/sweaters">Светри</Link>,
+    <Link to="/sweaters">Верхній одяг</Link>,
+    <Link to="/sd">Футболки</Link>,
+    <Link to="/shorts">Кофти</Link>,
+    <Link to="/tops">Головні убори</Link>,
+    <Link to="/complects">Сумки & Аксесуари</Link>,
+    <Link to="/hoodies">Штани</Link>,
+    <Link to="/sweatshots">Рубашки</Link>,
     <Link to="/bodies">Боді</Link>,
-    <Link to="/shorts">Футболки</Link>,
-    <Link to="/tops">Топи</Link>,
-    <Link to="/complects">Комплекти</Link>,
-    <Link to="/hoodies">Худі</Link>,
-    <Link to="/sweatshots">Світшоти</Link>,
+  ];
+  const arrMAlSections = [
+    <Link to="/sweaters">Верхній одяг</Link>,
+    <Link to="/bodies">Футболки</Link>,
+    <Link to="/shorts">Кофти</Link>,
+    <Link to="/tops">Головні убори</Link>,
+    <Link to="/complects">Сумки & Аксесуари</Link>,
+    <Link to="/hoodies">Штани</Link>,
+    <Link to="/sweatshots">Рубашки</Link>,
   ];
   // const [cartQuantity, setCartQuantity] = useState(store.basket.length);
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -40,7 +50,9 @@ const Header = observer(() => {
   return (
     <header>
       <div className={classes.header_conteiner}>
-        {isNavOpen && <div className={classes.overlay}></div>}
+        {isNavOpen && (
+          <div className={classes.overlay} onClick={showNavbar}></div>
+        )}
         <div className={classes.burger_menu}>
           <button className={classes.nav_btn} onClick={showNavbar}>
             <img src={Burger} alt="menu"></img>
@@ -77,7 +89,8 @@ const Header = observer(() => {
             <div className={`${classes.stripe} ${classes.stripe_burger}`}></div>
           </div>
           <div className={classes.accordion_container}>
-            <Accordion listMenu={arrFemSections} />
+            <Accordion listMenu={arrFemSections} name="Жінки" />
+            <Accordion listMenu={arrMAlSections} name="Чоловіки" />
           </div>
           <div className={classes.menu_nav}>
             <a href="/#">Home</a>

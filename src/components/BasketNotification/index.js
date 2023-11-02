@@ -6,7 +6,7 @@
 // import { toJS } from "mobx";
 // import { observer } from "mobx-react-lite";
 
-// const BasketNotification = observer(({product}) => {
+// const BasketNotification = ({product}) => {
 
 //   const basketList = basketData.map((product) => (
 //     <BasketProduct
@@ -32,6 +32,6 @@
 //       </div>
 //     </div>
 //   );
-// });
+// };
 
-// export default BasketList;
+// export default BasketNotification;

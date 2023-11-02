@@ -3,3 +3,24 @@
   height: 408px;
   background: #d9d9d9;
 }
+
+.slider_container {
+  position: relative;
+}
+.left_arrow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.right_arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.disabled {
+  opacity: 0.5;
+}
