@@ -1,0 +1,36 @@
+.header_container {
+  width: 100%;
+  height: 56px;
+  position: relative;
+  padding: 0 15px;
+}
+.stripe {
+  position: absolute;
+  margin: 0 auto;
+  background-color: #d9d9d9;
+  width: 92.5%;
+
+  height: 1.75px;
+  bottom: 0;
+}
+.cross {
+  width: 20px;
+  height: 20px;
+}
+.caption {
+  color: #000;
+
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 113px;
+}
+.flex_container {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 3px;
+}

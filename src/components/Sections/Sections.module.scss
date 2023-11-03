@@ -19,12 +19,13 @@
   .sections {
     display: block;
     padding: 25px 14px;
-    height: 495px;
+    height: 600px;
+    margin-bottom: 64px;
   }
   .section {
     position: relative;
     width: 347px;
-    height: 234px;
+    height: 291px;
     overflow: hidden;
     background-image: url("../../img/Casual.jpg");
     background-repeat: no-repeat;
@@ -35,7 +36,7 @@
   .section_1 {
     position: relative;
     width: 347px;
-    height: 234px;
+    height: 291px;
     overflow: hidden;
     background-image: url("../../img/Classic.jpg");
     background-repeat: no-repeat;

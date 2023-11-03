@@ -5,15 +5,14 @@ import { Link } from "react-router-dom";
 
 export default function Accordion({ listMenu, name }) {
   const [toggle, setToggle] = useState(false);
-  const [heightEl, setHeightEl] = useState("auto"); // Изначально устанавливаем auto или другое значение по умолчанию
-
+  const [heightEl, setHeightEl] = useState("0px");
   const refHeight = useRef();
 
   useEffect(() => {
     if (refHeight.current && toggle) {
       setHeightEl(`${refHeight.current.scrollHeight}px`);
     } else {
-      setHeightEl("auto");
+      setHeightEl("0px");
     }
   }, [toggle]);
 
@@ -38,7 +37,7 @@ export default function Accordion({ listMenu, name }) {
             ? `${classes.accordion_toggle} ${classes.animated}`
             : `${classes.accordion_toggle}`
         }
-        style={{ height: heightEl }} // Применяем высоту стиля
+        style={{ height: heightEl }}
         ref={refHeight}
       >
         {toggle && (

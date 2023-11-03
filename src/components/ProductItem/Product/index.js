@@ -5,7 +5,8 @@ import SizeButton from "./SizeButton/SizeButton";
 import store from "../../../store/Products";
 import { observer } from "mobx-react-lite";
 import Swiper from "./Swiper";
-
+import BasketNotification from "./BasketNotification";
+import { set } from "mobx";
 const Product = observer(({ product, color }) => {
   let colorName = "";
   const uniqueColours = [
@@ -36,6 +37,7 @@ const Product = observer(({ product, color }) => {
     findAvailableSizes(selectedColor)
   );
   const [warning, setWarning] = useState(false);
+  const [isProductSelected, setIsProductSelected] = useState(false); // Повідомлення про додавання в кошик
 
   const handleColorChange = (color) => {
     setSelectedColor(color);
@@ -61,11 +63,20 @@ const Product = observer(({ product, color }) => {
         quantity: 1,
       });
       localStorage.setItem("basket", JSON.stringify(store.basket));
+      setIsProductSelected(true);
     } else setWarning(true);
   };
 
   return (
     <div>
+      {isProductSelected && (
+        <BasketNotification
+          id={product.id}
+          colorName={colorName}
+          size={selectedSize}
+          setIsProductSelected={setIsProductSelected}
+        />
+      )}
       <div className={classes.product_item}>
         <div className={classes.container}>
           <h1>{product.name}</h1>

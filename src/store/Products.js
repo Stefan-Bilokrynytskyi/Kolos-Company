@@ -1,5 +1,6 @@
 import { makeAutoObservable, action } from "mobx";
 import $api from "../components/http";
+import { toJS } from "mobx";
 
 class Products {
   productPerpage = [];
@@ -25,6 +26,18 @@ class Products {
     } else {
       this.basket.push(item);
     }
+  }
+
+  findProductInBasket(item) {
+    console.log(item);
+    const index = this.basket.findIndex(
+      (basketItem) =>
+        basketItem.id === item.id &&
+        basketItem.colorName === item.colorName &&
+        basketItem.selectedSize === item.size
+    );
+    console.log(toJS(this.basket));
+    return this.basket[index];
   }
 
   deleteFromBasket(item) {
