@@ -14,7 +14,7 @@ const BasketProductCard = ({
       {/* Product block */}
       <div className={classes.product}>
         <div className={classes.product_info}>
-          <img src={image} alt="" className={classes.img_basket} />
+          <img src={image} alt="america" className={classes.img_basket} />
 
           <div className={classes.info}>
             <h2>{name}</h2>

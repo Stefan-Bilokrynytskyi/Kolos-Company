@@ -13,12 +13,16 @@ const BasketProduct = observer(
     const increaseNumber = () => {
       setCount((count) => ++count);
       setPrice((priceForNow) => +priceForNow + +price);
+      store.increaseProductQuantity(id, colorName, size);
     };
 
     const decreaseNumber = () => {
-      setCount((count) => --count);
-      setPrice((priceForNow) => +priceForNow - +price);
-    };
+      if (quantityItem > 0) {
+        setCount((count) => --count);
+        setPrice((priceForNow) => +priceForNow - +price);
+        store.decreaseProductQuantity(id, colorName, size);
+      }
+    }  
 
     const deleteBasketItemHandler = () => {
       store.deleteFromBasket({ id, colorName, selectedSize: size });
