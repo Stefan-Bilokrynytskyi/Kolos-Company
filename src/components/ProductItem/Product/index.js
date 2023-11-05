@@ -7,7 +7,10 @@ import { observer } from "mobx-react-lite";
 import Swiper from "./Swiper";
 import BasketNotification from "./BasketNotification";
 import { set } from "mobx";
+import ProductAccordion from "./ProductAccordion";
+import Stripe from "../../UI/Stripe";
 const Product = observer(({ product, color }) => {
+  console.log(product);
   let colorName = "";
   const uniqueColours = [
     ...new Set(product.sizes_color_quantity.map((item) => item.hex)),
@@ -137,6 +140,21 @@ const Product = observer(({ product, color }) => {
           <div className={classes.button_checkout} onClick={handleCheckout}>
             Додати в кошик
           </div>
+        </div>
+      </div>
+      <div className={classes.accordions_container}>
+        <div className={classes.stripe_container}>
+          <Stripe customStyles={{ width: "100%", bottom: "100%" }} />
+          <ProductAccordion name="Опис товару" text={product.description} />
+          <Stripe customStyles={{ width: "100%" }} />
+        </div>
+
+        <div className={classes.stripe_container}>
+          <ProductAccordion
+            name="Доставка і оплата"
+            text={product.description}
+          />
+          <Stripe customStyles={{ width: "100%" }} />
         </div>
       </div>
     </div>

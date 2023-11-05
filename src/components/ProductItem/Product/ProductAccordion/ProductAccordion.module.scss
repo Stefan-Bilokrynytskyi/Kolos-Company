@@ -1,0 +1,88 @@
+.accordion {
+  width: 327px;
+
+  background: #ffffff;
+  margin: 3px 0px;
+}
+
+ul {
+  list-style: none; /* Remove bullets or markers */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+.accordion_visible {
+  background: #ffffff;
+  width: 100%;
+  color: #fff;
+  cursor: pointer;
+  border: 0px none black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #000;
+
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 21px;
+}
+.accordion_visible span {
+  padding: 15px 0;
+  font-size: 20px;
+}
+.accordion_visible img {
+  width: 20px;
+  transform: rotate(-180deg);
+  transition: transform 0.2s ease-in-out;
+}
+.accordion_visible img.active {
+  transform: rotate(0deg);
+}
+
+.accordion_toggle {
+  color: #000;
+  overflow: hidden;
+
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  color: #333;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.animated {
+  opacity: 1;
+
+  transition: all 0.5s ease-in-out;
+}
+
+.menu_link a {
+  color: #000;
+  text-decoration: none;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
+  width: 100%;
+}
+.menu_link {
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+}
+
+.list_categories {
+  margin: 8px 25px;
+}

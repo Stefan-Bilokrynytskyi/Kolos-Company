@@ -25,7 +25,7 @@ const ProductsStore = observer(({ category }) => {
   };
 
   setCurrentPageHandler(currentPage);
-  console.log("tam");
+  console.log("tоmа");
 
   useEffect(() => {
     const dispose = autorun(() => {

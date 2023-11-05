@@ -1,10 +1,10 @@
-import React from 'react';
-import classes from './Stripe.module.scss';
+import React from "react";
+import classes from "./Stripe.module.scss";
 
-const Stripe = () => {
-  return (
-    <div className={classes.stripe}></div>
-  );
+const Stripe = ({ customStyles }) => {
+  const styles = customStyles || {};
+
+  return <div className={classes.stripe} style={styles}></div>;
 };
 
 export default Stripe;

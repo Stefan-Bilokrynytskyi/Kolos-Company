@@ -90,4 +90,14 @@ button {
     margin-top: 23px;
     margin-bottom: 40px;
   }
+  .accordions_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .stripe_container {
+    position: relative;
+  }
 }
