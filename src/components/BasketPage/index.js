@@ -2,14 +2,16 @@ import React from "react";
 import Header from "../Header";
 import classes from "./BasketPage.module.scss";
 import BasketList from "./BasketList";
-import Recomendations from "./Recomendations";
+import TotalPrice from "./TotalPrice";
+import RecomendationsList from "./RecomendationsList";
 
 function BasketPage() {
   return (
     <div>
       <Header />
       <BasketList />
-      <Recomendations />
+      <TotalPrice />
+      <RecomendationsList />
     </div>
   );
 }

@@ -1,0 +1,40 @@
+.total_price_block {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 20px;
+}
+
+.total_price_container {
+  width: 90%;
+}
+
+.price_info {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 16px;
+
+  h2 {
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  p {
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
+.recomendations_title {
+  text-align: center;
+  
+  margin-top: 40px;
+  margin-bottom: 14px;
+
+  color: #000;
+  font-size: 15px;
+  font-weight: 400;
+}

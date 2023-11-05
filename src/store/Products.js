@@ -29,6 +29,7 @@ class Products {
     if (index !== -1) {
       this.basket[index].quantity++;
     } else {
+      item.productPrice = item.price;
       this.basket.push(item);
     }
   }
@@ -71,6 +72,30 @@ class Products {
     if (index !== -1) {
       this.basket.splice(index, 1);
     }
+  }
+
+  increaseProductQuantity(id, colorName, size) {
+    const product = this.findProductInBasket({ id, colorName, size });
+    if (product) {
+      product.quantity++;
+      product.productPrice += product.price;
+    }
+  }
+
+  decreaseProductQuantity(id, colorName, size) {
+    const product = this.findProductInBasket({ id, colorName, size });
+    if (product && product.quantity > 0) {
+      product.quantity--;
+      product.productPrice -= product.price;
+    }
+  }
+
+  calculateTotalPrice() {
+    let totalPrice = 0;
+    for (const item of this.basket) {
+      totalPrice += item.price * item.quantity;
+    }
+    return totalPrice;
   }
 
   get cartQuantity() {
