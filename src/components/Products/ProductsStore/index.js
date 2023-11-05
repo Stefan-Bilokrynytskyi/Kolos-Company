@@ -11,30 +11,15 @@ const ProductsStore = observer(({ category }) => {
     console.log("tut");
     const dispose = autorun(() => {
       async function fetchData() {
-        if (store.url) {
-          try {
-            await store.fetchProducts(`${store.url}`);
-            const productsArr = toJS(store.productPerpage);
-            store.category = category;
-            setProductsData(productsArr);
-            //store.url = url;
-            console.log(productsArr);
-          } catch (e) {
-            console.log(e);
-          }
-        } else {
-          try {
-            await store.fetchProducts(
-              `/api/products/${category}/?amount_items=${store.limit}`
-            );
-            const productsArr = toJS(store.productPerpage);
-            store.category = category;
-            setProductsData(productsArr);
+        try {
+          await store.fetchProducts(`/api${store.url}`);
+          const productsArr = toJS(store.productPerpage);
+          store.category = category;
+          setProductsData(productsArr);
 
-            console.log(productsArr);
-          } catch (e) {
-            console.log(e);
-          }
+          console.log(productsArr);
+        } catch (e) {
+          console.log(e);
         }
       }
       fetchData();

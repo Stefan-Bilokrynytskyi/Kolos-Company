@@ -3,12 +3,25 @@ import Classic from "../../img/Classic.jpg";
 import Casual from "../../img/Casual.jpg";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import store from "../../store/Products";
+import { observer } from "mobx-react-lite";
 
-function Sections() {
+const Sections = observer(() => {
   const [isChosen, setIsChosen] = useState(false);
+
+  const changeUrlHandler = (url) => {
+    store.setUrl(url);
+  };
   return (
     <div className={classes.sections}>
-      <Link to="/products/casual">
+      <Link
+        to={`/products/casual/?amount_items=${store.limit}&page=${store.page}`}
+        onClick={() =>
+          changeUrlHandler(
+            `/products/casual/?amount_items=${store.limit}&page=${store.page}`
+          )
+        }
+      >
         <div className={classes.section_conteiner}>
           <div className={classes.section}>
             {/* {isChosen && <div className={classes.section_overlay}></div>} */}
@@ -16,7 +29,14 @@ function Sections() {
           </div>
         </div>
       </Link>
-      <Link to="/products/classic">
+      <Link
+        to={`/products/classic/?amount_items=${store.limit}&page=${store.page}`}
+        onClick={() =>
+          changeUrlHandler(
+            `/products/classic/?amount_items=${store.limit}&page=${store.page}`
+          )
+        }
+      >
         <div className={classes.section_conteiner}>
           <div className={classes.section_1}>
             {/* {!isChosen && <div className={classes.section_overlay}></div>} */}
@@ -26,6 +46,6 @@ function Sections() {
       </Link>
     </div>
   );
-}
+});
 
 export default Sections;

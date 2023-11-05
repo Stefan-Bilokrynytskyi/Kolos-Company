@@ -6,6 +6,10 @@ import ProductsStore from "./ProductsStore";
 import Filter from "../Filter";
 import { useParams } from "react-router-dom";
 import Pagination from "./Pagination";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+import store from "../../store/Products";
 
 function Products() {
   const { category } = useParams();
@@ -15,7 +19,6 @@ function Products() {
       <Header />
       <Filter />
       <ProductsStore category={category} />
-
       <Footer />
     </div>
   );

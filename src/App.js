@@ -4,13 +4,14 @@ import MainPage from "./components/MainPage";
 import Products from "./components/Products";
 import ProductItem from "./components/ProductItem";
 import BasketPage from "./components/BasketPage";
+import store from "./store/Products";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/products/:category" element={<Products />} />
+        <Route path={`/products/:category/`} element={<Products />} />
         <Route
           path="/products/:category/:id/:color"
           element={<ProductItem />}

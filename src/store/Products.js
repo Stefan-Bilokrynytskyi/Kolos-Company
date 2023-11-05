@@ -5,6 +5,7 @@ import { toJS } from "mobx";
 class Products {
   productPerpage = [];
   basket = [];
+  page = 1;
   url = "";
   prevUrl = "";
   nextUrl = "";
@@ -35,6 +36,9 @@ class Products {
   }
   setUrl(url) {
     this.url = url;
+  }
+  get Page() {
+    return this.page;
   }
 
   findProductInBasket(item) {
@@ -98,6 +102,17 @@ class Products {
     return totalPrice;
   }
 
+  setCount(count) {
+    this.count = count;
+  }
+
+  setNextUrl(url) {
+    this.nextUrl = url;
+  }
+  setPrevUrl(url) {
+    this.prevUrl = url;
+  }
+
   get cartQuantity() {
     return this.basket.length;
   }
@@ -110,16 +125,20 @@ class Products {
       console.log(response);
       this.productPerpage = response.data.results;
       if (response.data.previous)
-        this.prevUrl = response.data.previous.replace(
-          "https://kolos-api-prod.onrender.com/",
-          ""
+        this.setPrevUrl(
+          response.data.previous.replace(
+            "https://kolos-api-prod.onrender.com/api",
+            ""
+          )
         );
       if (response.data.next)
-        this.nextUrl = response.data.next.replace(
-          "https://kolos-api-prod.onrender.com/",
-          ""
+        this.setNextUrl(
+          response.data.next.replace(
+            "https://kolos-api-prod.onrender.com/api",
+            ""
+          )
         );
-      this.count = response.data.count;
+      this.setCount(response.data.count);
     } catch (e) {
       console.log(e);
     }
