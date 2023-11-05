@@ -6,6 +6,7 @@ class Products {
   productPerpage = [];
   basket = [];
   page = 1;
+  currentPage = 0;
   url = "";
   prevUrl = "";
   nextUrl = "";
@@ -17,6 +18,10 @@ class Products {
     makeAutoObservable(this, {
       addToBasket: action, // Указываем, что addToBasket является действием
     });
+  }
+
+  setCurrentPage(page) {
+    this.currentPage = page;
   }
 
   addToBasket(item) {
@@ -122,7 +127,7 @@ class Products {
   async fetchProducts(url) {
     try {
       const response = await $api.get(url);
-      console.log(response);
+
       this.productPerpage = response.data.results;
       if (response.data.previous)
         this.setPrevUrl(

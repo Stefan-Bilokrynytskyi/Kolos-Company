@@ -1,14 +1,16 @@
 import classes from "./Pagination.module.scss";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import leftArrow from "../../../icons/left-arrow.svg";
 import rightArrow from "../../../icons/right-arrow.svg";
 import store from "../../../store/Products";
 import { Link } from "react-router-dom";
-import { set } from "mobx";
+
 const Pagination = observer(() => {
-  const [page, setPage] = useState(1);
+  const test = +store.currentPage;
+  const [page, setPage] = useState(test);
+
+  // Объявляем обработчики кнопок
   const leftArrowHandler = () => {
     if (page === 1) {
       return; // Не выполняем обработчик, если страница уже на минимуме
@@ -17,6 +19,7 @@ const Pagination = observer(() => {
     store.setUrl(store.prevUrl);
     setPage((page) => page - 1);
   };
+
   const rightArrowHandler = () => {
     if (page === store.maxPages) {
       return; // Не выполняем обработчик, если страница уже на максимуме
@@ -25,6 +28,7 @@ const Pagination = observer(() => {
     store.setUrl(store.nextUrl);
     setPage((page) => page + 1);
   };
+
   return (
     <div className={classes.flex_container}>
       <div className={classes.pagination}>
