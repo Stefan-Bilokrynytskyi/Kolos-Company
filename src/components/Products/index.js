@@ -5,6 +5,7 @@ import classes from "./Products.module.scss";
 import ProductsStore from "./ProductsStore";
 import Filter from "../Filter";
 import { useParams } from "react-router-dom";
+import Pagination from "./Pagination";
 
 function Products() {
   const { category } = useParams();
@@ -13,7 +14,8 @@ function Products() {
     <div className={classes.products_page}>
       <Header />
       <Filter />
-      <ProductsStore url={category} />
+      <ProductsStore category={category} />
+
       <Footer />
     </div>
   );

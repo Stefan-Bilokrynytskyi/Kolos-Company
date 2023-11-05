@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import store from "../../store/Products";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import Face from "../../icons/face.svg";
+import Car from "../../icons/car.svg";
 
 const Header = observer(() => {
   useEffect(() => {
@@ -39,7 +41,12 @@ const Header = observer(() => {
     <Link to="/hoodies">Штани</Link>,
     <Link to="/sweatshots">Рубашки</Link>,
   ];
-  // const [cartQuantity, setCartQuantity] = useState(store.basket.length);
+
+  const arrCollections = [
+    <Link to="/collections/kolos">Колос</Link>,
+    <Link to="/collections/kashtan">Каштан</Link>,
+  ];
+
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState();
 
@@ -91,6 +98,31 @@ const Header = observer(() => {
           <div className={classes.accordion_container}>
             <Accordion listMenu={arrFemSections} name="Жінки" />
             <Accordion listMenu={arrMAlSections} name="Чоловіки" />
+            <Accordion listMenu={arrCollections} name="Колекції" />
+          </div>
+          <div className={classes.addition_block}>
+            <div className={classes.menu_container}>
+              <img src={Face} alt=""></img>
+              <Link to="/#">
+                <div className={`${classes.menu_link} ${classes.more_gap}`}>
+                  Підтримка
+                </div>
+              </Link>
+            </div>
+            <div className={classes.menu_container}>
+              <img src={Car} alt=""></img>
+              <Link to="/#">
+                <div className={classes.menu_link}>Доставка</div>
+              </Link>
+            </div>
+            <div className={classes.menu_container}>
+              <img src={Logo} alt="" className={classes.small_logo}></img>
+              <Link to="/#">
+                <div className={`${classes.menu_link} ${classes.more_gap}`}>
+                  Про нас
+                </div>
+              </Link>
+            </div>
           </div>
           <div className={classes.menu_nav}>
             <a href="/#">Home</a>

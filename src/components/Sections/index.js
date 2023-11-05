@@ -11,7 +11,7 @@ function Sections() {
       <Link to="/products/casual">
         <div className={classes.section_conteiner}>
           <div className={classes.section}>
-            {isChosen && <div className={classes.section_overlay}></div>}
+            {/* {isChosen && <div className={classes.section_overlay}></div>} */}
             <div className={classes.section_name}>Кежуал</div>
           </div>
         </div>
@@ -19,7 +19,7 @@ function Sections() {
       <Link to="/products/classic">
         <div className={classes.section_conteiner}>
           <div className={classes.section_1}>
-            {!isChosen && <div className={classes.section_overlay}></div>}
+            {/* {!isChosen && <div className={classes.section_overlay}></div>} */}
             <div className={classes.section_name}>Класика</div>
           </div>
         </div>

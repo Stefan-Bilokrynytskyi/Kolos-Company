@@ -23,7 +23,7 @@ export default function Accordion({ listMenu, name }) {
   return (
     <div className={classes.accordion}>
       <button onClick={toggleState} className={classes.accordion_visible}>
-        <span>{name}</span>
+        <span className={classes.name_category}>{name}</span>
         <img
           className={toggle ? classes.active : ""}
           src={DropDown}

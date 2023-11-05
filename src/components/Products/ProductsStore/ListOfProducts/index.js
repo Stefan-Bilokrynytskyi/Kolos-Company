@@ -1,6 +1,7 @@
 import classes from "./ListOfProducts.module.scss";
 import ProductCard from "../ProductCard";
 import Rectangle from "../../../../img/Rectangle.jpg";
+import Pagination from "../../Pagination";
 
 function ListOfProducts({ productsData }) {
   const ProductsList = productsData.map((product) => (
@@ -18,7 +19,12 @@ function ListOfProducts({ productsData }) {
     />
   ));
 
-  return <div className={classes.flex_conteiner}>{ProductsList}</div>; // added ProductsList to the return statement
+  return (
+    <div>
+      <div className={classes.flex_conteiner}>{ProductsList}</div>
+      <Pagination />
+    </div>
+  ); // added ProductsList to the return statement
 }
 
 export default ListOfProducts;

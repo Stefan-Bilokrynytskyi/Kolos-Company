@@ -4,8 +4,13 @@ import { toJS } from "mobx";
 
 class Products {
   productPerpage = [];
-
   basket = [];
+  url = "";
+  prevUrl = "";
+  nextUrl = "";
+  count = "";
+  category = "";
+  limit = 4;
   constructor() {
     // Укажите `actions` в параметре конфигурации для makeAutoObservable
     makeAutoObservable(this, {
@@ -26,6 +31,9 @@ class Products {
     } else {
       this.basket.push(item);
     }
+  }
+  setUrl(url) {
+    this.url = url;
   }
 
   findProductInBasket(item) {
@@ -68,11 +76,25 @@ class Products {
   get cartQuantity() {
     return this.basket.length;
   }
+  get maxPages() {
+    return Math.ceil(this.count / this.limit);
+  }
   async fetchProducts(url) {
     try {
       const response = await $api.get(url);
-
-      this.productPerpage = response.data;
+      console.log(response);
+      this.productPerpage = response.data.results;
+      if (response.data.previous)
+        this.prevUrl = response.data.previous.replace(
+          "https://kolos-api-prod.onrender.com/",
+          ""
+        );
+      if (response.data.next)
+        this.nextUrl = response.data.next.replace(
+          "https://kolos-api-prod.onrender.com/",
+          ""
+        );
+      this.count = response.data.count;
     } catch (e) {
       console.log(e);
     }

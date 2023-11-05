@@ -36,7 +36,7 @@ function ProductCard({
 
   return (
     <div className={classes.card_conteiner}>
-      <Link to={`/products/${store.url}/${id}/${selectedColor.slice(1)}`}>
+      <Link to={`/products/${store.category}/${id}/${selectedColor.slice(1)}`}>
         <img src={selectedImage} alt="product" className={classes.image} />
         <div className={classes.caption}>{name}</div>
       </Link>

@@ -18,7 +18,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 7px 15px;
+  padding: 7px 0px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   color: #000;
@@ -84,4 +84,7 @@ ul {
 
 .list_categories {
   margin: 8px 25px;
+}
+.name_category {
+  margin-left: 13px;
 }
