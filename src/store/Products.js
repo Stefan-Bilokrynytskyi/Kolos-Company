@@ -6,7 +6,7 @@ class Products {
   productPerpage = [];
   basket = [];
   page = 1;
-  currentPage = 0;
+  currentPage = 1;
   url = "";
   prevUrl = "";
   nextUrl = "";

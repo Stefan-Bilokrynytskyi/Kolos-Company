@@ -16,8 +16,8 @@ const ProductsStore = observer(({ category }) => {
     ""
   );
   const searchParams = new URLSearchParams(location.search);
-  const currentPage = searchParams.get("page");
-
+  let currentPage = searchParams.get("page");
+  if (!currentPage) currentPage = 1;
   const setCurrentPageHandler = (page) => {
     action(() => {
       store.setCurrentPage(page);
@@ -34,6 +34,7 @@ const ProductsStore = observer(({ category }) => {
           if (!store.url) {
             store.setUrl(currentUrl);
           }
+          setProductsData(null);
           await store.fetchProducts(`/api${store.url}`);
           const productsArr = toJS(store.productPerpage);
           store.category = category;
