@@ -104,7 +104,7 @@ class Products {
     for (const item of this.basket) {
       totalPrice += item.price * item.quantity;
     }
-    return totalPrice;
+    return totalPrice.toFixed(2);
   }
 
   setCount(count) {
