@@ -33,8 +33,6 @@ const BasketProductCard = ({
           />
         </div>
       </div>
-
-      {/* Increase, decrease */}
     </div>
   );
 };
