@@ -1,13 +1,11 @@
 .accordion {
   width: 100%;
-
-  background: #ffffff;
 }
 
 .accordion_visible {
   display: flex;
-  margin: 15px auto 0 auto;
-  width: 92.5%;
+
+  width: 100%;
   max-height: 41px;
   background-color: #d9d9d9;
   align-items: center;
@@ -37,12 +35,11 @@
 .flexend_container {
   display: flex;
   justify-content: flex-end;
-  flex-basis: 70%;
+  flex-basis: 90%;
 }
 .accordion_toggle {
   color: #000;
-  width: 92.5%;
-  margin: 0 auto;
+  overflow: hidden;
 
   font-family: Inter;
   font-size: 15px;
@@ -52,6 +49,9 @@
   opacity: 0;
   transition: all 0.5s ease-in-out;
   color: #333;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding-left: 4px;
 }
 
 .animated {
@@ -77,25 +77,9 @@
   width: 100%;
 }
 
+.list_categories {
+  margin: 8px 25px;
+}
 .name_category {
   margin-left: 4px;
-}
-
-.filters_container {
-  background-color: #d9d9d9;
-}
-.control_buttons {
-  display: flex;
-  padding: 0px 20px;
-  justify-content: center;
-  gap: 40px;
-  .control_button {
-    padding: 4px 12px;
-    width: 120px;
-
-    border-radius: 3px;
-    border: 1px solid #909090;
-    text-align: center;
-    margin: 20px 0px 31px 0px;
-  }
 }
