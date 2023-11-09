@@ -56,6 +56,7 @@ const Product = observer(({ product, color }) => {
 
   const handleCheckout = () => {
     const selectedImage = selectedSlides[0];
+
     if (selectedSize) {
       store.addToBasket({
         ...product,
@@ -65,7 +66,7 @@ const Product = observer(({ product, color }) => {
         colorName,
         quantity: 1,
       });
-      localStorage.setItem("basket", JSON.stringify(store.basket));
+
       setIsProductSelected(true);
     } else setWarning(true);
   };

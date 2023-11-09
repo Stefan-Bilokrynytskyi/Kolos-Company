@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import classes from "./FormFilter.module.scss";
 
-function FormFilter({ filters, getSizeFilters }) {
-  // Создайте объект состояния, где ключи - это фильтры, а значения - их состояния
+function FormFilter({ filters, getSizeFilters, currentSizes }) {
   const [checkboxStates, setCheckboxStates] = useState(
     filters.reduce((acc, filter) => {
-      acc[filter] = false; // Изначально все чекбоксы отключены
+      acc[filter] = currentSizes.includes(filter) ? true : false;
       return acc;
     }, {})
   );
 
-  // Функция для обновления состояния чекбокса
   const handleCheckboxChange = (filter) => {
     const newCheckboxStates = {
       ...checkboxStates,

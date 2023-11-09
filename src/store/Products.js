@@ -13,6 +13,8 @@ class Products {
   count = "";
   category = "";
   limit = 4;
+  minPrice = 10;
+  maxPrice = 100;
   constructor() {
     // Укажите `actions` в параметре конфигурации для makeAutoObservable
     makeAutoObservable(this, {
@@ -38,6 +40,7 @@ class Products {
       item.productPrice = item.price;
       this.basket.push(item);
     }
+    localStorage.setItem("basket", JSON.stringify(this.basket));
   }
   setUrl(url) {
     this.url = url;
@@ -58,6 +61,18 @@ class Products {
     return this.basket[index];
   }
 
+  findIndexOfProductInBasket(item) {
+    console.log(item);
+    const index = this.basket.findIndex(
+      (basketItem) =>
+        basketItem.id === item.id &&
+        basketItem.colorName === item.colorName &&
+        basketItem.selectedSize === item.size
+    );
+
+    return index;
+  }
+
   deleteFromBasket(item) {
     console.log("tut");
     const index = this.basket.findIndex(
@@ -69,7 +84,7 @@ class Products {
     console.log(index);
     if (index !== -1) {
       this.basket.splice(index, 1); // Удаляем элемент из массива
-      localStorage.setItem("basket", JSON.stringify(store.basket));
+      localStorage.setItem("basket", JSON.stringify(this.basket));
     }
   }
   setNewBasket(basket) {
@@ -84,19 +99,21 @@ class Products {
   }
 
   increaseProductQuantity(id, colorName, size) {
-    const product = this.findProductInBasket({ id, colorName, size });
-    if (product) {
-      product.quantity++;
-      product.productPrice += product.price;
+    const index = this.findIndexOfProductInBasket({ id, colorName, size });
+    if (index !== -1) {
+      this.basket[index].quantity++;
+      this.basket[index].productPrice += this.basket[index].price;
     }
+    localStorage.setItem("basket", JSON.stringify(this.basket));
   }
 
   decreaseProductQuantity(id, colorName, size) {
-    const product = this.findProductInBasket({ id, colorName, size });
-    if (product && product.quantity > 0) {
-      product.quantity--;
-      product.productPrice -= product.price;
+    const index = this.findIndexOfProductInBasket({ id, colorName, size });
+    if (index !== -1) {
+      this.basket[index].quantity--;
+      this.basket[index].productPrice -= this.basket[index].price;
     }
+    localStorage.setItem("basket", JSON.stringify(this.basket));
   }
 
   calculateTotalPrice() {

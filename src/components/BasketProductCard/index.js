@@ -8,6 +8,8 @@ const BasketProductCard = ({
   colorName,
   size,
   deleteBasketItemHandler,
+  isAvailable,
+  quantity,
 }) => {
   return (
     <div className={classes.product_block}>
@@ -33,6 +35,14 @@ const BasketProductCard = ({
           />
         </div>
       </div>
+      {!isAvailable && (
+        <div className={classes.not_available}>
+          <p>
+            Доступна кількість цього товару: {quantity}. Будь-ласка, зменшіть
+            кількість товару для оформлення замовлення.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

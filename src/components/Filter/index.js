@@ -7,18 +7,26 @@ import SizeAccordion from "./SizeAccordion";
 import { observer } from "mobx-react-lite";
 import store from "../../store/Products";
 import { useLocation } from "react-router-dom";
+import PriceAccordion from "./PriceAccordion";
+import { set } from "mobx";
 
 const Filter = observer(({ name }) => {
   const [toggle, setToggle] = useState(false);
   const [heightEl, setHeightEl] = useState("0px");
   const [isParentOpen, setParentOpen] = useState(false);
   const [action, setAction] = useState(null);
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  let currentPage = searchParams.get("size");
-  console.log(location.search);
-
   const [urlSizes, setUrlSizes] = useState([]);
+  const [priceFilters, setPriceFilters] = useState("");
+
+  const location = useLocation();
+
+  const regex = /size=([A-Za-z]+)/g;
+
+  const sizesArray = location.search.match(regex);
+
+  const currentSizes = sizesArray
+    ? sizesArray.map((size) => size.split("=")[1])
+    : [];
 
   // Функция для обновления высоты
   const updateHeight = (childHeight) => {
@@ -46,16 +54,20 @@ const Filter = observer(({ name }) => {
     setUrlSizes(newUrlSizes);
   };
 
+  const getPriceFilters = (min, max) => {
+    setPriceFilters(`&min_price=${min}&max_price=${max}`);
+  };
+
   const clearFiltersHandler = () => {};
 
   const submitHandler = (event) => {
     event.preventDefault();
     if (action === "apply") {
-      const regex = /(\?|&)(size|page)=[^&]*/g;
+      const regex = /(\?|&)(size|page|min_price|max_price)=[^&]*/g;
 
       const newUrl = store.url.replace(regex, "");
       const newUrlSizes = urlSizes.join("");
-      store.setUrl(newUrl + newUrlSizes);
+      store.setUrl(newUrl + newUrlSizes + priceFilters);
 
       console.log(store.url);
       window.location.href = store.url;
@@ -91,11 +103,18 @@ const Filter = observer(({ name }) => {
       >
         <div className={classes.filters_container}>
           <form onSubmit={submitHandler}>
+            <PriceAccordion
+              name={"Ціна"}
+              updateHeight={updateHeight}
+              isOpen={!isParentOpen}
+              getPriceFilters={getPriceFilters}
+            />
             <SizeAccordion
               name={"Розмір"}
               updateHeight={updateHeight}
               isOpen={!isParentOpen}
               getSizeFilters={getSizeFilters}
+              currentSizes={currentSizes}
             />
             <div className={classes.control_buttons}>
               <button

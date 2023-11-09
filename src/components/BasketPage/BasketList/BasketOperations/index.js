@@ -6,6 +6,7 @@ const BasketOperations = ({
   decreaseNumber,
   quantityItem,
   productPrice,
+  isIncreaseDisabled,
 }) => {
   return (
     <>
@@ -17,7 +18,9 @@ const BasketOperations = ({
             </button>
           )}
           <span className={classes.quantity}>{quantityItem}</span>
-          <button onClick={increaseNumber}>+</button>
+          <button onClick={increaseNumber} disabled={isIncreaseDisabled}>
+            +
+          </button>
         </div>
         <div className={classes.price}>{productPrice.toFixed(2)}</div>
       </div>

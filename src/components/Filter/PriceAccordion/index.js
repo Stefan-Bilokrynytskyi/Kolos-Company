@@ -1,21 +1,13 @@
-import classes from "./SizeAccordion.module.scss";
+import classes from "./PriceAccordion.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import DropDown from "../../../icons/dropdown.svg";
+import PriceSlider from "./PriceSlider";
 
-import FormFilter from "../FormFilter";
-
-const SizeAccordion = ({
-  name,
-  updateHeight,
-  isOpen,
-  getSizeFilters,
-  currentSizes,
-}) => {
+const PriceAccordion = ({ name, updateHeight, isOpen, getPriceFilters }) => {
   const [toggle, setToggle] = useState(false);
   const [heightEl, setHeightEl] = useState("0px");
 
   const refHeight = useRef();
-  const sizes = ["S", "M", "L", "XL"];
 
   useEffect(() => {
     if (refHeight.current && toggle) {
@@ -61,14 +53,10 @@ const SizeAccordion = ({
         style={{ height: heightEl }}
         ref={refHeight}
       >
-        <FormFilter
-          filters={sizes}
-          getSizeFilters={getSizeFilters}
-          currentSizes={currentSizes}
-        />
+        <PriceSlider getPriceFilters={getPriceFilters} />
       </div>
     </div>
   );
 };
 
-export default SizeAccordion;
+export default PriceAccordion;

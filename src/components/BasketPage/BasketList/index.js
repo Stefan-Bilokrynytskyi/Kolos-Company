@@ -14,10 +14,17 @@ const BasketList = observer(() => {
       store.setNewBasket(JSON.parse(storedBasket));
     }
   }, []);
-
   const basketData = toJS(store.basket);
-  console.log(basketData);
-  const basketList = basketData.map((product) => (
+
+  const findAvailableQuantity = (product, index) => {
+    const availableQuantity = basketData[index].sizes_color_quantity.find(
+      (item) =>
+        item.color === product.colorName && item.size === product.selectedSize
+    ).quantity;
+    return availableQuantity;
+  };
+
+  const basketList = basketData.map((product, index) => (
     <BasketCard
       id={product.id}
       name={product.name}
@@ -26,6 +33,7 @@ const BasketList = observer(() => {
       colorName={product.colorName}
       size={product.selectedSize}
       quantity={product.quantity}
+      availableQuantity={findAvailableQuantity(product, index)}
       key={product.colorName + product.selectedSize}
     />
   ));

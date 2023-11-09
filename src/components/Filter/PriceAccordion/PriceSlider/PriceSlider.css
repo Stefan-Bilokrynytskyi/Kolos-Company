@@ -1,0 +1,25 @@
+.slider_price {
+  margin: 14px auto;
+  width: 72.5%;
+  height: 1px;
+  background-color: #000000;
+}
+.slider_price .thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  cursor: grab;
+  border: 2px solid rgb(0, 0, 0);
+  transform: translate(0, -50%);
+}
+.slider_price_values {
+  margin: 15px auto 20px auto;
+  text-align: center;
+  width: 89px;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
