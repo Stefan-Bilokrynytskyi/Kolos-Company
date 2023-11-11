@@ -5,13 +5,12 @@ import Accordion from "../Acordion/Acordion";
 import Burger from "../../icons/burger.svg";
 import Logo from "../../icons/logo.svg";
 import Cart from "../../icons/cart.svg";
-import CloseBurger from "../../icons/CloseBurgerMenu.svg";
+
 import { Link } from "react-router-dom";
 import store from "../../store/Products";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import Face from "../../icons/face.svg";
-import Car from "../../icons/car.svg";
+import Contacts from "./Contacts";
 
 const Header = observer(() => {
   useEffect(() => {
@@ -48,7 +47,6 @@ const Header = observer(() => {
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState();
 
   const showNavbar = () => {
     setIsNavOpen(!isNavOpen);
@@ -79,14 +77,12 @@ const Header = observer(() => {
         <div className={classes.stripe}></div>
 
         <nav className={isNavOpen ? classes.responsive_nav : ""}>
-          <div className={classes.control_conteiner}>
-            <button
-              className={`${classes.nav_btn} ${classes.nav_close_btn}`}
-              onClick={showNavbar}
-            >
-              <img src={CloseBurger} alt="CloseBurgerMenu" />
-            </button>
-
+          <div
+            className={classes.control_conteiner}
+            style={{
+              backgroundColor: store.isGlobalCategory ? "#fff" : "#efe9e9",
+            }}
+          >
             <button
               className={`${classes.nav_btn} ${classes.nav_cross_btn}`}
               onClick={showNavbar}
@@ -95,35 +91,14 @@ const Header = observer(() => {
             </button>
             <div className={`${classes.stripe} ${classes.stripe_burger}`}></div>
           </div>
-          <div className={classes.accordion_container}>
-            <Accordion listMenu={arrFemSections} name="Жінки" />
-            <Accordion listMenu={arrMAlSections} name="Чоловіки" />
-            <Accordion listMenu={arrCollections} name="Колекції" />
-          </div>
-          <div className={classes.addition_block}>
-            <div className={classes.menu_container}>
-              <img src={Face} alt=""></img>
-              <Link to="/#">
-                <div className={`${classes.menu_link} ${classes.more_gap}`}>
-                  Підтримка
-                </div>
-              </Link>
+          {store.isGlobalCategory && (
+            <div className={classes.accordion_container}>
+              <Accordion listMenu={arrFemSections} name="Жінки" />
+              <Accordion listMenu={arrMAlSections} name="Чоловіки" />
+              <Accordion listMenu={arrCollections} name="Колекції" />
             </div>
-            <div className={classes.menu_container}>
-              <img src={Car} alt=""></img>
-              <Link to="/#">
-                <div className={classes.menu_link}>Доставка</div>
-              </Link>
-            </div>
-            <div className={classes.menu_container}>
-              <img src={Logo} alt="" className={classes.small_logo}></img>
-              <Link to="/#">
-                <div className={`${classes.menu_link} ${classes.more_gap}`}>
-                  Про нас
-                </div>
-              </Link>
-            </div>
-          </div>
+          )}
+          <Contacts />
           <div className={classes.menu_nav}>
             <a href="/#">Home</a>
             <a href="/#">Shop</a>

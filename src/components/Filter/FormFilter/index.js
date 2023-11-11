@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./FormFilter.module.scss";
+import store from "../../../store/Products";
 
 function FormFilter({ filters, getSizeFilters, currentSizes }) {
   const [checkboxStates, setCheckboxStates] = useState(
@@ -16,6 +17,7 @@ function FormFilter({ filters, getSizeFilters, currentSizes }) {
     };
     setCheckboxStates(newCheckboxStates);
     getSizeFilters(newCheckboxStates);
+    store.setIsFiltersChanged(true);
   };
 
   return (

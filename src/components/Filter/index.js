@@ -1,14 +1,13 @@
 import classes from "./Filter.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import DropDown from "../../icons/dropdown.svg";
-import { Link } from "react-router-dom";
+
 import FilterIcon from "../../icons/filter.svg";
 import SizeAccordion from "./SizeAccordion";
 import { observer } from "mobx-react-lite";
 import store from "../../store/Products";
 import { useLocation } from "react-router-dom";
 import PriceAccordion from "./PriceAccordion";
-import { set } from "mobx";
 
 const Filter = observer(({ name }) => {
   const [toggle, setToggle] = useState(false);
@@ -52,10 +51,13 @@ const Filter = observer(({ name }) => {
       .filter((size) => sizeFilters[size])
       .map((size) => "&size=" + size);
     setUrlSizes(newUrlSizes);
+    store.setSizeFilterChanged(true);
   };
 
   const getPriceFilters = (min, max) => {
     setPriceFilters(`&min_price=${min}&max_price=${max}`);
+    store.setPriceFilterChanged(true);
+    console.log("ye");
   };
 
   const clearFiltersHandler = () => {};
@@ -63,13 +65,23 @@ const Filter = observer(({ name }) => {
   const submitHandler = (event) => {
     event.preventDefault();
     if (action === "apply") {
-      const regex = /(\?|&)(size|page|min_price|max_price)=[^&]*/g;
+      let newUrl = store.url;
 
-      const newUrl = store.url.replace(regex, "");
-      const newUrlSizes = urlSizes.join("");
-      store.setUrl(newUrl + newUrlSizes + priceFilters);
+      if (store.isSizeFilterChanged) {
+        const regex = /(\?|&)(size|page)=[^&]*/g;
+        newUrl = newUrl.replace(regex, "");
+        const newUrlSizes = urlSizes.join("");
+        newUrl += newUrlSizes;
+      }
+      if (store.isPriceFilterChanged) {
+        const regex = /(\?|&)(page|min_price|max_price)=[^&]*/g;
+        newUrl = newUrl.replace(regex, "");
+        newUrl += priceFilters;
+        console.log("lol");
+      }
 
-      console.log(store.url);
+      store.setUrl(newUrl);
+
       window.location.href = store.url;
 
       setAction(null);
@@ -119,17 +131,18 @@ const Filter = observer(({ name }) => {
             <div className={classes.control_buttons}>
               <button
                 className={classes.control_button}
-                type="submit"
-                onClick={() => setAction("apply")}
-              >
-                Застосувати
-              </button>
-
-              <button
-                className={classes.control_button}
                 onClick={clearFiltersHandler}
               >
                 Очистити
+              </button>
+              <button
+                className={classes.control_button}
+                style={{ color: store.isFiltersChanged ? "#000" : "gray" }}
+                type="submit"
+                onClick={() => setAction("apply")}
+                disabled={!store.isFiltersChanged}
+              >
+                Застосувати
               </button>
             </div>
           </form>

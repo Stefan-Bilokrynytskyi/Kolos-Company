@@ -17,6 +17,7 @@ const ProductsStore = observer(({ category }) => {
   );
   const searchParams = new URLSearchParams(location.search);
   let currentPage = searchParams.get("page");
+
   if (!currentPage) currentPage = 1;
   const setCurrentPageHandler = (page) => {
     action(() => {
@@ -45,7 +46,6 @@ const ProductsStore = observer(({ category }) => {
       fetchData();
     });
     return () => {
-      // Уберите обработчик autorun при размонтировании компонента
       dispose();
     };
   }, [category, currentUrl]);

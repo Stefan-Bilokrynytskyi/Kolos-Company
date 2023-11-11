@@ -10,6 +10,7 @@ const Sections = observer(() => {
   const [isChosen, setIsChosen] = useState(false);
 
   const changeUrlHandler = (url) => {
+    store.setGlobalCategory(true);
     store.setUrl(url);
   };
   return (

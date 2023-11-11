@@ -1,9 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
 import classes from "./BasketNotification.module.scss";
 import BasketProduct from "./BasketProduct";
 import store from "../../../../store/Products";
-import { set, toJS } from "mobx";
+import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import NotificationHeader from "./NotificationHeader";
 import { Link } from "react-router-dom";

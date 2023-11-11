@@ -6,7 +6,7 @@ import store from "../../../store/Products";
 import { observer } from "mobx-react-lite";
 import Swiper from "./Swiper";
 import BasketNotification from "./BasketNotification";
-import { set } from "mobx";
+
 import ProductAccordion from "./ProductAccordion";
 import Stripe from "../../UI/Stripe";
 const Product = observer(({ product, color }) => {

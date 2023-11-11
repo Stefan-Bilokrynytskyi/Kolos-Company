@@ -1,14 +1,29 @@
 import "./PriceSlider.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import store from "../../../../store/Products";
 import Slider from "react-slider";
-import { set } from "mobx";
+import { observer } from "mobx-react-lite";
+import { toJS } from "mobx";
+import { useLocation } from "react-router-dom";
 
-const PriceSlider = ({ getPriceFilters }) => {
-  const [values, setValues] = useState([store.minPrice, store.maxPrice]);
+const PriceSlider = observer(({ getPriceFilters }) => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  let minPrice = Number(searchParams.get("min_price")) || store.minPrice;
+  let maxPrice = Number(searchParams.get("max_price")) || store.maxPrice;
+
+  const [values, setValues] = useState([minPrice, maxPrice]);
+
+  useEffect(() => {
+    console.log("l");
+    setValues([minPrice, maxPrice]);
+  }, [minPrice, maxPrice]);
+
   const onChangeHandler = (values) => {
     getPriceFilters(values[0], values[1]);
     setValues(values);
+    store.setIsFiltersChanged(true);
   };
 
   return (
@@ -27,6 +42,6 @@ const PriceSlider = ({ getPriceFilters }) => {
       </div>
     </div>
   );
-};
+});
 
 export default PriceSlider;

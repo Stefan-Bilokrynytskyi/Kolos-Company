@@ -141,6 +141,7 @@
 
   .responsive_nav {
     left: 0;
+    background-color: #efe9e9;
   }
 
   .control_conteiner {
@@ -151,7 +152,7 @@
   .nav_cross_btn {
     position: absolute;
     top: 8px;
-    right: 20px;
+    right: 15px;
   }
   .nav_close_btn {
     position: absolute;
@@ -173,32 +174,6 @@
     //padding: 13px 13px;
   }
   .stripe_burger {
-    width: 97.4%;
-  }
-  .menu_container {
-    margin-left: 18px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    .menu_link {
-      color: #000;
-
-      font-family: Inter;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
-    margin-bottom: 11px;
-    .small_logo {
-      height: 20px;
-      width: 20px;
-    }
-    .more_gap {
-      margin-left: 3px;
-    }
-  }
-  .addition_block {
-    margin-top: 82px;
+    width: 100%;
   }
 }

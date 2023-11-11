@@ -1,17 +1,18 @@
 import React from "react";
 
 import classes from "./NotificationHeader.module.scss";
-import { AiOutlineClose } from "react-icons/ai";
+import leftArrow from "../../../../../icons/left-arrow.svg";
 
 const NotificationHeader = ({ backToShopHandler }) => {
   return (
     <div className={classes.header_container}>
       <div className={classes.flex_container}>
-        <span className={classes.caption}>КОШИК</span>
-        <AiOutlineClose
-          className={classes.cross}
+        <img
+          src={leftArrow}
+          alt="left-arrow"
           onClick={() => backToShopHandler(false)}
         />
+        <div> Назад до покупок</div>
       </div>
 
       <div className={classes.stripe}></div>

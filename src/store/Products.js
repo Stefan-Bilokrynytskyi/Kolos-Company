@@ -15,6 +15,27 @@ class Products {
   limit = 4;
   minPrice = 10;
   maxPrice = 100;
+  isGlobalCategory = false;
+  isFiltersChanged = false;
+  isSizeFilterChanged = false;
+  isPriceFilterChanged = false;
+  setSizeFilterChanged(isFilterSizeChanged) {
+    this.isSizeFilterChanged = isFilterSizeChanged;
+  }
+  setPriceFilterChanged(isPriceFilterChanged) {
+    this.isPriceFilterChanged = isPriceFilterChanged;
+  }
+  setIsFiltersChanged(isFiltersChanged) {
+    this.isFiltersChanged = isFiltersChanged;
+  }
+
+  updatePriceRange(minPrice, maxPrice) {
+    this.minPrice = minPrice;
+    this.maxPrice = maxPrice;
+  }
+  setGlobalCategory(isGlobalCategory) {
+    this.isGlobalCategory = isGlobalCategory;
+  }
   constructor() {
     // Укажите `actions` в параметре конфигурации для makeAutoObservable
     makeAutoObservable(this, {
@@ -144,8 +165,14 @@ class Products {
   async fetchProducts(url) {
     try {
       const response = await $api.get(url);
+      console.log(response);
 
       this.productPerpage = response.data.results;
+      this.updatePriceRange(
+        response.data.results[0].min_price,
+        response.data.results[0].max_price
+      );
+
       if (response.data.previous)
         this.setPrevUrl(
           response.data.previous.replace(

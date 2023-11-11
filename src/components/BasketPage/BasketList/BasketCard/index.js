@@ -4,7 +4,6 @@ import store from "../../../../store/Products";
 import { observer } from "mobx-react-lite";
 import BasketOperations from "../BasketOperations";
 import BasketProductCard from "../../../BasketProductCard";
-import { set } from "mobx";
 
 const BasketProduct = observer(
   ({
