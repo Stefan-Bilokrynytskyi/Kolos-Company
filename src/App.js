@@ -4,6 +4,7 @@ import MainPage from "./components/MainPage";
 import Products from "./components/Products";
 import ProductItem from "./components/ProductItem";
 import BasketPage from "./components/BasketPage";
+import AboutPage from "./components/AboutPage";
 import store from "./store/Products";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           element={<ProductItem />}
         />
         <Route path="/basket" element={<BasketPage />} />
+        <Route path="/about" element={<AboutPage/>} />
       </Routes>
     </div>
   );
