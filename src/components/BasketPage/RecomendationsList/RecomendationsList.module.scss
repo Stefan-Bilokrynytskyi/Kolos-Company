@@ -1,12 +1,18 @@
 .RecomendationsList {
-  display: flex;
-  width: 90%;
-  justify-content: center;
-
-  margin-left: 14px;
+  // display: flex;
+  // justify-content: center;
+  
+  margin-left: 24px;
   margin-top: 33px;
 }
 
 @media only screen and (max-width: 1024px) {
   
+}
+
+@media screen and (max-width: 768px) {
+  .RecomendationsList {
+    margin-left: 0px;
+    margin-top: 33px;
+  }
 }

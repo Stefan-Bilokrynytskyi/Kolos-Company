@@ -5,7 +5,7 @@ const Recomendations = () => {
   return (
     <div className={classes.recomendation_item}>
       <div className={classes.recomendation_img}>
-
+        
       </div>
       <div className={classes.recomendation_title}>
         Боді “Каштан”
