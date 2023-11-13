@@ -17,6 +17,11 @@ function App() {
         await store.fetchCategoriesAndCollections("/api/category-collection");
       } finally {
         setIsLoading(false);
+        const storedBasket = localStorage.getItem("basket");
+
+        if (storedBasket) {
+          store.setNewBasket(JSON.parse(storedBasket));
+        }
       }
     };
 

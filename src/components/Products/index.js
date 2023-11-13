@@ -18,8 +18,11 @@ function Products() {
   return (
     <div className={classes.products_page}>
       <Header />
+
       <Filter name={"Фільтр"} />
+      {console.log("tut")}
       <ProductsStore category={category} />
+      {console.log("tam")}
       <Footer />
     </div>
   );

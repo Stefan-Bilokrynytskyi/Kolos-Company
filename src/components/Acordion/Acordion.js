@@ -43,8 +43,8 @@ export default function Accordion({ listMenu, name }) {
         {toggle && (
           <ul className={classes.list_categories}>
             {listMenu.map((menuItem, index) => (
-              <li className={classes.menu_link} key={menuItem.props.to}>
-                <Link to={menuItem.props.to}>{menuItem.props.children}</Link>
+              <li className={classes.menu_link} key={index}>
+                {menuItem}
               </li>
             ))}
           </ul>

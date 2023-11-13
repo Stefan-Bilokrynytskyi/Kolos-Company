@@ -5,56 +5,24 @@ import Accordion from "../Acordion/Acordion";
 import Burger from "../../icons/burger.svg";
 import Logo from "../../icons/logo.svg";
 import Cart from "../../icons/cart.svg";
-
 import { Link } from "react-router-dom";
 import store from "../../store/Products";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import Contacts from "./Contacts";
-
+import { toJS, runInAction } from "mobx";
 const Header = observer(() => {
-  useEffect(() => {
-    const storedBasket = localStorage.getItem("basket");
-
-    if (storedBasket) {
-      store.setNewBasket(JSON.parse(storedBasket));
-    }
-  }, []);
-
-  const arrFemSections = [
-    <Link to="/sweaters">Верхній одяг</Link>,
-    <Link to="/sd">Футболки</Link>,
-    <Link to="/shorts">Кофти</Link>,
-    <Link to="/tops">Головні убори</Link>,
-    <Link to="/complects">Сумки & Аксесуари</Link>,
-    <Link to="/hoodies">Штани</Link>,
-    <Link to="/sweatshots">Рубашки</Link>,
-    <Link to="/bodies">Боді</Link>,
-  ];
-  const arrMAlSections = [
-    <Link to="/sweaters">Верхній одяг</Link>,
-    <Link to="/bodies">Футболки</Link>,
-    <Link to="/shorts">Кофти</Link>,
-    <Link to="/tops">Головні убори</Link>,
-    <Link to="/complects">Сумки & Аксесуари</Link>,
-    <Link to="/hoodies">Штани</Link>,
-    <Link to="/sweatshots">Рубашки</Link>,
-  ];
-
-  const arrCollections = [
-    <Link to="/collections/kolos">Колос</Link>,
-    <Link to="/collections/kashtan">Каштан</Link>,
-  ];
-
   const [isNavOpen, setIsNavOpen] = useState(false);
-
+  let accordionSections = [];
+  runInAction(() => {
+    accordionSections = toJS(store.sections);
+  });
   const showNavbar = () => {
     setIsNavOpen(!isNavOpen);
   };
   useEffect(() => {
     const body = document.body;
 
-    // Добавляем класс для предотвращения скролла на body при открытом бургер-меню
     if (isNavOpen) {
       body.classList.add(classes.noScroll);
     } else {
@@ -62,10 +30,10 @@ const Header = observer(() => {
     }
 
     return () => {
-      // Убираем класс при размонтировании компонента (cleanup)
       body.classList.remove(classes.noScroll);
     };
   }, [isNavOpen]);
+
   return (
     <header>
       <div className={classes.header_conteiner}>
@@ -113,9 +81,13 @@ const Header = observer(() => {
           </div>
           {store.isGlobalCategory && (
             <div className={classes.accordion_container}>
-              <Accordion listMenu={arrFemSections} name="Жінки" />
-              <Accordion listMenu={arrMAlSections} name="Чоловіки" />
-              <Accordion listMenu={arrCollections} name="Колекції" />
+              {accordionSections.map((section) => (
+                <Accordion
+                  name={Object.keys(section)[0]}
+                  listMenu={section[Object.keys(section)[0]]}
+                  key={Object.keys(section)[0]}
+                />
+              ))}
             </div>
           )}
           <Contacts />

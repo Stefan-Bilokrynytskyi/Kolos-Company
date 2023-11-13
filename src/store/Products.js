@@ -1,6 +1,7 @@
 import { makeAutoObservable, action } from "mobx";
 import $api from "../components/http";
 import { toJS } from "mobx";
+import { Link } from "react-router-dom";
 
 class Products {
   productPerpage = [];
@@ -15,12 +16,13 @@ class Products {
   limit = 4;
   minPrice = 10;
   maxPrice = 100;
-  isGlobalCategory = false;
+  isGlobalCategory = true;
   isFiltersChanged = false;
   isSizeFilterChanged = false;
   isPriceFilterChanged = false;
   categories = [];
   collections = [];
+  sections = [];
 
   setSizeFilterChanged(isFilterSizeChanged) {
     this.isSizeFilterChanged = isFilterSizeChanged;
@@ -95,6 +97,30 @@ class Products {
     );
 
     return index;
+  }
+
+  getAccordion(genders, collections) {
+    const result = [{ Жінки: [] }, { Чоловіки: [] }, { Колекції: [] }];
+    genders.map((elem) =>
+      elem.gender.includes("Female")
+        ? result[0]["Жінки"].push(
+            <Link to={`${elem.link_name}`}>{elem.name}</Link>
+          )
+        : null
+    );
+    genders.map((elem) =>
+      elem.gender.includes("Male")
+        ? result[1]["Чоловіки"].push(
+            <Link to={`${elem.link_name}`}>{elem.name}</Link>
+          )
+        : null
+    );
+    collections.map((elem) =>
+      result[2]["Колекції"].push(
+        <Link to={`${elem.link_name}`}>{elem.name}</Link>
+      )
+    );
+    this.sections.push(...result);
   }
 
   deleteFromBasket(item) {
@@ -208,7 +234,7 @@ class Products {
     try {
       const response = await $api.get(url);
       this.collections = response.data.collections;
-      console.log("lol");
+      this.getAccordion(response.data.categories, response.data.collections);
     } catch (e) {
       console.log(e);
     }
