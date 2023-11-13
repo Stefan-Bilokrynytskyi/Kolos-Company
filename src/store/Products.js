@@ -208,7 +208,7 @@ class Products {
     try {
       const response = await $api.get(url);
       this.collections = response.data.collections;
-      console.log(this.collections);
+      console.log("lol");
     } catch (e) {
       console.log(e);
     }

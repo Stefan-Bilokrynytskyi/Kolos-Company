@@ -176,4 +176,11 @@
   .stripe_burger {
     width: 100%;
   }
+  .noScroll {
+    overflow: hidden;
+  }
+  .scrollable_nav {
+    overflow-y: auto;
+    height: 100vh; // Устанавливает высоту так, чтобы меню занимало весь экран
+  }
 }

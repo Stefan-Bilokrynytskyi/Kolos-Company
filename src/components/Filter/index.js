@@ -1,13 +1,13 @@
 import classes from "./Filter.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import DropDown from "../../icons/dropdown.svg";
-
 import FilterIcon from "../../icons/filter.svg";
 import SizeAccordion from "./SizeAccordion";
 import { observer } from "mobx-react-lite";
 import store from "../../store/Products";
 import { useLocation } from "react-router-dom";
 import PriceAccordion from "./PriceAccordion";
+import { useNavigate } from "react-router-dom";
 
 const Filter = observer(({ name }) => {
   const [toggle, setToggle] = useState(false);
@@ -16,6 +16,7 @@ const Filter = observer(({ name }) => {
   const [action, setAction] = useState(null);
   const [urlSizes, setUrlSizes] = useState([]);
   const [priceFilters, setPriceFilters] = useState("");
+  const navigate = useNavigate();
 
   const location = useLocation();
 
@@ -82,8 +83,8 @@ const Filter = observer(({ name }) => {
 
       store.setUrl(newUrl);
 
-      window.location.href = store.url;
-
+      navigate(newUrl);
+      store.setIsFiltersChanged(false);
       setAction(null);
     } else if (action === "clear") {
       // Ваша логика для кнопки "Очистити"

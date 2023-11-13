@@ -51,7 +51,21 @@ const Header = observer(() => {
   const showNavbar = () => {
     setIsNavOpen(!isNavOpen);
   };
+  useEffect(() => {
+    const body = document.body;
 
+    // Добавляем класс для предотвращения скролла на body при открытом бургер-меню
+    if (isNavOpen) {
+      body.classList.add(classes.noScroll);
+    } else {
+      body.classList.remove(classes.noScroll);
+    }
+
+    return () => {
+      // Убираем класс при размонтировании компонента (cleanup)
+      body.classList.remove(classes.noScroll);
+    };
+  }, [isNavOpen]);
   return (
     <header>
       <div className={classes.header_conteiner}>
@@ -76,7 +90,13 @@ const Header = observer(() => {
 
         <div className={classes.stripe}></div>
 
-        <nav className={isNavOpen ? classes.responsive_nav : ""}>
+        <nav
+          className={
+            isNavOpen
+              ? `${classes.responsive_nav} ${classes.scrollable_nav}`
+              : ""
+          }
+        >
           <div
             className={classes.control_conteiner}
             style={{
