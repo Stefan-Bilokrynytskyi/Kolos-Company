@@ -6,12 +6,11 @@ import leftArrow from "../../../../../icons/left-arrow.svg";
 const NotificationHeader = ({ backToShopHandler }) => {
   return (
     <div className={classes.header_container}>
-      <div className={classes.flex_container}>
-        <img
-          src={leftArrow}
-          alt="left-arrow"
-          onClick={() => backToShopHandler(false)}
-        />
+      <div
+        className={classes.flex_container}
+        onClick={() => backToShopHandler(false)}
+      >
+        <img src={leftArrow} alt="left-arrow" />
         <div> Назад до покупок</div>
       </div>
 

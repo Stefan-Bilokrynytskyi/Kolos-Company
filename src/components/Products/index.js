@@ -8,12 +8,13 @@ import { useParams } from "react-router-dom";
 import Pagination from "./Pagination";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { toJS } from "mobx";
 
 import store from "../../store/Products";
 
 function Products() {
   const { category } = useParams();
-
+  console.log(toJS(store.collections));
   return (
     <div className={classes.products_page}>
       <Header />

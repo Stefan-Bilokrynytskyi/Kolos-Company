@@ -1,0 +1,16 @@
+.flex_container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  .caption {
+    background-color: #fff;
+    padding: 3px 7px;
+    color: #000;
+    font-family: LT Oksana;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

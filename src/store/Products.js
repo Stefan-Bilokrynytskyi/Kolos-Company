@@ -19,6 +19,9 @@ class Products {
   isFiltersChanged = false;
   isSizeFilterChanged = false;
   isPriceFilterChanged = false;
+  categories = [];
+  collections = [];
+
   setSizeFilterChanged(isFilterSizeChanged) {
     this.isSizeFilterChanged = isFilterSizeChanged;
   }
@@ -197,6 +200,15 @@ class Products {
       const response = await $api.get(url);
 
       return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  async fetchCategoriesAndCollections(url) {
+    try {
+      const response = await $api.get(url);
+      this.collections = response.data.collections;
+      console.log(this.collections);
     } catch (e) {
       console.log(e);
     }

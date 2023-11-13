@@ -6,6 +6,7 @@ import Car from "../../../icons/car.svg";
 import mail from "../../../icons/mail.svg";
 import inst from "../../../icons/instagram.svg";
 import phone from "../../../icons/phone.svg";
+import telegram from "../../../icons/telegram.svg";
 
 const Contacts = () => {
   return (
@@ -51,6 +52,14 @@ const Contacts = () => {
         <Link to="/#">
           <div className={`${classes.menu_link} ${classes.more_gap}`}>
             +38 096 510 66 22
+          </div>
+        </Link>
+      </div>
+      <div className={classes.menu_container}>
+        <img src={telegram} alt="" className={classes.telegram}></img>
+        <Link to="/#">
+          <div className={`${classes.menu_link} ${classes.more_gap}`}>
+            @kolos.ua
           </div>
         </Link>
       </div>

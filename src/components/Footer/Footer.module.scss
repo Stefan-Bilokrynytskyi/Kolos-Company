@@ -77,10 +77,12 @@ a {
   }
 
   .footer_icons {
-    margin-top: 9px;
-
-    a {
-      margin: 0 10px;
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    .icon {
+      margin-left: 3px;
     }
   }
 }

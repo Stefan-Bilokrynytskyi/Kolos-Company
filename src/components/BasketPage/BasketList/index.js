@@ -5,6 +5,7 @@ import BasketCard from "./BasketCard";
 import store from "../../../store/Products";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
+import PageCaption from "../../UI/PageCaption";
 
 const BasketList = observer(() => {
   useEffect(() => {
@@ -41,7 +42,7 @@ const BasketList = observer(() => {
     <div>
       <div className={classes.basket}>
         <div className={classes.basket_container}>
-          <h1>Кошик</h1>
+          <PageCaption caption="Кошик" />
 
           <button className={classes.btn}>До касси</button>
           {basketList}

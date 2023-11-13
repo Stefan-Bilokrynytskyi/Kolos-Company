@@ -6,20 +6,39 @@ import ProductItem from "./components/ProductItem";
 import BasketPage from "./components/BasketPage";
 import AboutPage from "./components/AboutPage";
 import store from "./store/Products";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await store.fetchCategoriesAndCollections("/api/category-collection");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path={`/products/:category/`} element={<Products />} />
-        <Route
-          path="/products/:category/:id/:color"
-          element={<ProductItem />}
-        />
-        <Route path="/basket" element={<BasketPage />} />
-        <Route path="/about" element={<AboutPage/>} />
-      </Routes>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path={`/products/:category/`} element={<Products />} />
+          <Route
+            path="/products/:category/:id/:color"
+            element={<ProductItem />}
+          />
+          <Route path="/basket" element={<BasketPage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+      )}
     </div>
   );
 }

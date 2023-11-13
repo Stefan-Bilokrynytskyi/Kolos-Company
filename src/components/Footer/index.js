@@ -4,6 +4,7 @@ import Logo from "../../icons/logo.svg";
 import Mail from "../../icons/mail.svg";
 import Instagram from "../../icons/instagram.svg";
 import Phone from "../../icons/phone.svg";
+import telegram from "../../icons/telegram.svg";
 
 import { Link } from "react-router-dom";
 
@@ -21,13 +22,16 @@ function Footer() {
         </div>
         <div className={classes.footer_icons}>
           <a href="mailto:youremail@example.com">
-            <img className="icon" src={Mail} alt="mail" />
+            <img className={classes.icon} src={Mail} alt="mail" />
           </a>
           <a href="https://www.instagram.com/yourinstagram">
-            <img className="icon" src={Instagram} alt="inst" />
+            <img className={classes.icon} src={Instagram} alt="inst" />
           </a>
           <a href="tel:+1234567890">
-            <img className="icon" src={Phone} alt="phone" />
+            <img className={classes.icon} src={Phone} alt="phone" />
+          </a>
+          <a href="#">
+            <img src={telegram} alt="telegram" />
           </a>
         </div>
       </div>

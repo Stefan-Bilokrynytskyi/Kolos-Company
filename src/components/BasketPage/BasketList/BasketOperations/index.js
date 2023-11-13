@@ -14,7 +14,7 @@ const BasketOperations = ({
         <div className={classes.operations}>
           {quantityItem > 0 && (
             <button onClick={decreaseNumber} disabled={quantityItem === 1}>
-              -
+              −
             </button>
           )}
           <span className={classes.quantity}>{quantityItem}</span>
