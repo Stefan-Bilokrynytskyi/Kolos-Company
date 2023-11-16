@@ -39,6 +39,7 @@ const ProductsStore = observer(({ category }) => {
           const productsArr = toJS(store.productPerpage);
           store.category = category;
           setProductsData(productsArr);
+          console.log("Test: ", productsArr);
         } catch (e) {
           console.log(e);
         }
