@@ -8,22 +8,33 @@ import { useParams } from "react-router-dom";
 import Pagination from "./Pagination";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { toJS } from "mobx";
+import { toJS, runInAction } from "mobx";
+import { autorun } from "mobx";
 
 import store from "../../store/Products";
 
 function Products() {
   const { category } = useParams();
-  console.log(toJS(store.collections));
+  useEffect(() => {
+    runInAction(() => {
+      store.setCategory(category);
+      store.getAccordion();
+    });
+
+    // Cleanup the autorun when the component unmounts
+  }, [category]);
+
   return (
     <div className={classes.products_page}>
+      {console.log("here")}
       <Header />
 
       <Filter name={"Фільтр"} />
-      {console.log("tut")}
+
       <ProductsStore category={category} />
-      {console.log("tam")}
+
       <Footer />
+      {console.log("here")}
     </div>
   );
 }

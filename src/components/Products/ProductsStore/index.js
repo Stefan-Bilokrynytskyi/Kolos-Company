@@ -5,7 +5,7 @@ import { toJS, autorun } from "mobx";
 import ListOfProducts from "./ListOfProducts";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
-import { action } from "mobx";
+import { action, runInAction } from "mobx";
 
 const ProductsStore = observer(({ category }) => {
   const [productsData, setProductsData] = useState(null);
@@ -19,25 +19,21 @@ const ProductsStore = observer(({ category }) => {
   let currentPage = searchParams.get("page");
 
   if (!currentPage) currentPage = 1;
-  const setCurrentPageHandler = (page) => {
-    action(() => {
-      store.setCurrentPage(page);
-    })();
-  };
-
-  setCurrentPageHandler(currentPage);
+  const setCurrentPageHandler = action((page) => {
+    store.setCurrentPage(page);
+    store.setUrl(currentUrl);
+  });
 
   useEffect(() => {
+    setCurrentPageHandler(currentPage);
     const dispose = autorun(() => {
       async function fetchData() {
         try {
-          if (!store.url) {
-            store.setUrl(currentUrl);
-          }
+          console.log("ya peniks");
           setProductsData(null);
           await store.fetchProducts(`/api${store.url}`);
           const productsArr = toJS(store.productPerpage);
-          store.category = category;
+
           setProductsData(productsArr);
         } catch (e) {
           console.log(e);
@@ -48,7 +44,7 @@ const ProductsStore = observer(({ category }) => {
     return () => {
       dispose();
     };
-  }, [category, currentUrl]);
+  }, [category, currentPage, currentUrl]);
 
   return (
     <div className={classes.store_conteiner}>

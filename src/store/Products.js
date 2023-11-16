@@ -20,7 +20,7 @@ class Products {
   isFiltersChanged = false;
   isSizeFilterChanged = false;
   isPriceFilterChanged = false;
-  categories = [];
+  genders = [];
   collections = [];
   sections = [];
 
@@ -32,6 +32,10 @@ class Products {
   }
   setIsFiltersChanged(isFiltersChanged) {
     this.isFiltersChanged = isFiltersChanged;
+  }
+
+  setCategory(category) {
+    this.category = category;
   }
 
   updatePriceRange(minPrice, maxPrice) {
@@ -74,6 +78,9 @@ class Products {
   get Page() {
     return this.page;
   }
+  get Url() {
+    return this.url;
+  }
 
   findProductInBasket(item) {
     console.log(item);
@@ -99,19 +106,29 @@ class Products {
     return index;
   }
 
-  getAccordion(genders, collections) {
+  getAccordion() {
+    const genders = this.genders;
+    const collections = this.collections;
     const result = [{ Жінки: [] }, { Чоловіки: [] }, { Колекції: [] }];
     genders.map((elem) =>
       elem.gender.includes("Female")
         ? result[0]["Жінки"].push(
-            <Link to={`${elem.link_name}`}>{elem.name}</Link>
+            <Link
+              to={`/products/female/${this.category}/?amount_items=${this.limit}&category=${elem.link_name}`}
+            >
+              {elem.name}
+            </Link>
           )
         : null
     );
     genders.map((elem) =>
       elem.gender.includes("Male")
         ? result[1]["Чоловіки"].push(
-            <Link to={`${elem.link_name}`}>{elem.name}</Link>
+            <Link
+              to={`/products/male/${this.category}/?amount_items=${this.limit}&category=${elem.link_name}`}
+            >
+              {elem.name}
+            </Link>
           )
         : null
     );
@@ -120,6 +137,8 @@ class Products {
         <Link to={`${elem.link_name}`}>{elem.name}</Link>
       )
     );
+
+    this.sections = [];
     this.sections.push(...result);
   }
 
@@ -234,7 +253,8 @@ class Products {
     try {
       const response = await $api.get(url);
       this.collections = response.data.collections;
-      this.getAccordion(response.data.categories, response.data.collections);
+      this.genders = response.data.categories;
+      this.getAccordion();
     } catch (e) {
       console.log(e);
     }
