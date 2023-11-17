@@ -4,6 +4,7 @@ import { toJS } from "mobx";
 import { Link } from "react-router-dom";
 
 class Products {
+  allProducts = [];
   productPerpage = [];
   basket = [];
   page = 1;
@@ -23,6 +24,7 @@ class Products {
   genders = [];
   collections = [];
   sections = [];
+  recommendedProducts = [];
 
   setSizeFilterChanged(isFilterSizeChanged) {
     this.isSizeFilterChanged = isFilterSizeChanged;
@@ -48,7 +50,7 @@ class Products {
   constructor() {
     // Укажите `actions` в параметре конфигурации для makeAutoObservable
     makeAutoObservable(this, {
-      addToBasket: action, // Указываем, что addToBasket является действием
+      addToBasket: action,
     });
   }
 
@@ -193,6 +195,27 @@ class Products {
     return totalPrice.toFixed(2);
   }
 
+  generateRecommendations(allProducts, cartItems) {
+
+    // Получаем уникальные категории продуктов в корзине
+    const cartCategories = Array.from(new Set(cartItems.map(item => item.category)));
+  
+    // Фильтруем все продукты по категориям из корзины
+    const filteredProducts = allProducts.filter(product => cartCategories.includes(product.category));
+  
+    // Исключаем продукты, которые уже есть в корзине
+    const uniqueFilteredProducts = filteredProducts.filter(product => !cartItems.some(item => item.id === product.id));
+  
+    // Выводим первые три уникальных рекомендации (по категории)
+    const recommendedProducts = uniqueFilteredProducts.slice(0, 3);
+  
+    this.recommendedProducts.push(...recommendedProducts);
+    
+    console.log("Recommended products:", this.recommendedProducts);
+
+    console.log(typeof recommendedProducts);
+  }  
+
   setCount(count) {
     this.count = count;
   }
@@ -210,10 +233,12 @@ class Products {
   get maxPages() {
     return Math.ceil(this.count / this.limit);
   }
+
   async fetchProducts(url) {
     try {
       const response = await $api.get(url);
-      console.log(response);
+
+      console.log("response: ", response);
 
       this.productPerpage = response.data.results;
       this.updatePriceRange(
@@ -257,6 +282,21 @@ class Products {
       this.getAccordion();
     } catch (e) {
       console.log(e);
+    }
+  }
+
+  async fetchAllProducts() {
+    try {
+      const response = await $api.get('/api/products/casual/'); //нужно исправить!
+
+      console.log("all products response: ", response);
+
+      this.allProducts = response.data;
+
+      console.log(this.allProducts);
+      
+    } catch (e) {
+      console.error(e);
     }
   }
 }

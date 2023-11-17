@@ -16,6 +16,7 @@ const BasketList = observer(() => {
     }
   }, []);
   const basketData = toJS(store.basket);
+  console.log(basketData);
 
   const findAvailableQuantity = (product, index) => {
     const availableQuantity = basketData[index].sizes_color_quantity.find(
