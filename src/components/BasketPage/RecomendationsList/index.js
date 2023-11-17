@@ -74,13 +74,7 @@ const RecomendationsList = observer(() => {
 
   return (
     <div className={classes.RecomendationsList}>
-      <Slider {...settings}>
-        {
-          <div>
-            {RecomendationsList}
-          </div>
-        }
-      </Slider>
+      <Slider {...settings}>{RecomendationsList}</Slider>
     </div>
   );
 });

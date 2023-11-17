@@ -3,10 +3,10 @@ import classes from './Recomendations.module.scss';
 import { observer } from "mobx-react-lite";
 import Rectangle from "../../../../img/Rectangle.jpg"
 
-const Recomendations = (
+const Recomendations = ({
   id,
   name,
-  image) => {
+  image }) => {
   return (
     <div className={classes.recomendation_item}>
       <div className={classes.recomendation_img}>
