@@ -16,10 +16,15 @@ function ProductCard({
 }) {
   const [selectedColor, setSelectedColor] = useState(colours[0]);
   const [selectedImage, setSelectedImage] = useState(image);
+  const [quantity, setQuantity] = useState(colours_sizes[0].quantity);
   const selectColorHandler = (color) => {
     const updatedImage = colours_sizes.find((item) => item.hex === color)
       .photo_urls[0];
+    const updatedQuantity = colours_sizes.find(
+      (item) => item.hex === color
+    ).quantity;
     setSelectedImage(updatedImage);
+    setQuantity(updatedQuantity);
     setSelectedColor(color);
     store.selectedColor = color;
   };
@@ -37,7 +42,14 @@ function ProductCard({
   return (
     <div className={classes.card_conteiner}>
       <Link to={`/products/${store.category}/${id}/${selectedColor.slice(1)}`}>
-        <img src={selectedImage} alt="product" className={classes.image} />
+        <div className={classes.photo_container}>
+          {quantity === 0 && (
+            <div className={classes.section_overlay}>
+              <div>Немає в наявності</div>
+            </div>
+          )}
+          <img src={selectedImage} alt="product" className={classes.image} />
+        </div>
         <div className={classes.caption}>{name}</div>
       </Link>
       <div className={classes.price_colors_conteiner}>

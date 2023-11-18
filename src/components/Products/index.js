@@ -26,7 +26,6 @@ function Products() {
 
   return (
     <div className={classes.products_page}>
-      {console.log("here")}
       <Header />
 
       <Filter name={"Фільтр"} />
@@ -34,7 +33,6 @@ function Products() {
       <ProductsStore category={category} />
 
       <Footer />
-      {console.log("here")}
     </div>
   );
 }

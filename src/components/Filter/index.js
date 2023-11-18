@@ -58,7 +58,6 @@ const Filter = observer(({ name }) => {
   const getPriceFilters = (min, max) => {
     setPriceFilters(`&min_price=${min}&max_price=${max}`);
     store.setPriceFilterChanged(true);
-    console.log("ye");
   };
 
   const clearFiltersHandler = () => {};
@@ -78,7 +77,6 @@ const Filter = observer(({ name }) => {
         const regex = /(\?|&)(page|min_price|max_price)=[^&]*/g;
         newUrl = newUrl.replace(regex, "");
         newUrl += priceFilters;
-        console.log("lol");
       }
 
       store.setUrl(newUrl);
@@ -87,7 +85,6 @@ const Filter = observer(({ name }) => {
       store.setIsFiltersChanged(false);
       setAction(null);
     } else if (action === "clear") {
-      // Ваша логика для кнопки "Очистити"
     } else return;
   };
 

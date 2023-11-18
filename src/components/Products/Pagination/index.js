@@ -24,11 +24,9 @@ const Pagination = observer(() => {
     if (page === store.maxPages) {
       return; // Не выполняем обработчик, если страница уже на максимуме
     }
-    console.log("penis");
 
     setPage((page) => page + 1);
     navigate(store.nextUrl);
-    console.log("penis");
   };
 
   return (

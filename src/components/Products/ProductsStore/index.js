@@ -29,7 +29,6 @@ const ProductsStore = observer(({ category }) => {
     const dispose = autorun(() => {
       async function fetchData() {
         try {
-          console.log("ya peniks");
           setProductsData(null);
           await store.fetchProducts(`/api${store.url}`);
           const productsArr = toJS(store.productPerpage);

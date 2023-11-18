@@ -39,8 +39,8 @@ class Products {
   }
 
   updatePriceRange(minPrice, maxPrice) {
-    this.minPrice = minPrice;
-    this.maxPrice = maxPrice;
+    this.minPrice = Math.floor(minPrice);
+    this.maxPrice = Math.ceil(maxPrice);
   }
   setGlobalCategory(isGlobalCategory) {
     this.isGlobalCategory = isGlobalCategory;

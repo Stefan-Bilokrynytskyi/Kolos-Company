@@ -16,7 +16,6 @@ const PriceSlider = observer(({ getPriceFilters }) => {
   const [values, setValues] = useState([minPrice, maxPrice]);
 
   useEffect(() => {
-    console.log("l");
     setValues([minPrice, maxPrice]);
   }, [minPrice, maxPrice]);
 
