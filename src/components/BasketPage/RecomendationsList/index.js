@@ -18,17 +18,11 @@ const RecomendationsList = observer(() => {
     const fetchData = async () => {
       try {
         await store.fetchAllProducts();
-        // console.log("All products response: ", store.allProducts);
-
-        // console.log("All products: ", toJS(response));
-        // console.log("All products in basket: ", toJS(store.basket));
 
         await store.generateRecommendations(
           toJS(store.allProducts),
           toJS(store.basket)
         );
-
-        // console.log('Recommended products: ', toJS(store.recommendedProducts));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -53,7 +47,7 @@ const RecomendationsList = observer(() => {
 
   const settings = {
     infinite: false,
-    slidesToShow: 2.3, // количество отображаемых элементов
+    slidesToShow: 2.5, // количество отображаемых элементов
     slidesToScroll: 1,
     swipeToSlide: true,
     responsive: [

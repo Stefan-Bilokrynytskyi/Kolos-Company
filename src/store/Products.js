@@ -196,7 +196,6 @@ class Products {
   }
 
   generateRecommendations(allProducts, cartItems) {
-
     // Получаем уникальные категории продуктов в корзине
     const cartCategories = Array.from(new Set(cartItems.map(item => item.category)));
   
@@ -207,13 +206,11 @@ class Products {
     const uniqueFilteredProducts = filteredProducts.filter(product => !cartItems.some(item => item.id === product.id));
   
     // Выводим первые три уникальных рекомендации (по категории)
-    const recommendedProducts = uniqueFilteredProducts.slice(0, 3);
+    const recommendedProducts = uniqueFilteredProducts.slice(0, 6);
   
     this.recommendedProducts.push(...recommendedProducts);
     
     console.log("Recommended products:", this.recommendedProducts);
-
-    console.log(typeof recommendedProducts);
   }  
 
   setCount(count) {
@@ -287,7 +284,7 @@ class Products {
 
   async fetchAllProducts() {
     try {
-      const response = await $api.get('/api/products/casual/'); //нужно исправить!
+      const response = await $api.get('/api/items/'); //нужно исправить!
 
       console.log("all products response: ", response);
 
