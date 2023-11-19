@@ -9,11 +9,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { toJS } from "mobx";
-import { type } from "@testing-library/user-event/dist/type";
 
 const RecomendationsList = observer(() => {
   useEffect(() => {
-    console.log("All products without feth: ", toJS(store.allProducts));
 
     const fetchData = async () => {
       try {
@@ -23,27 +21,35 @@ const RecomendationsList = observer(() => {
           toJS(store.allProducts),
           toJS(store.basket)
         );
+
+        if (toJS(store.allProducts).length > 0) {
+          store.category = toJS(store.allProducts)[0].category;
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [store.basket]);
 
   const recomendedPoductsCreate = toJS(store.recommendedProducts);
+  const limitedProducts = recomendedPoductsCreate.slice(0, 6); 
 
-  const RecomendationsList = recomendedPoductsCreate.map((product, index) => (
+  const RecomendationsList = limitedProducts.map((product, index) => (
     <Recomendations
       key={index}
       id={product.id}
       name={product.name}
       price={product.price}
-      // image={product.image}
+      category={product.global_category
+      }
+      checkColor={product.sizes_color_quantity[0].hex}
+      image={product.sizes_color_quantity[0].photo_urls[0]}
     />
   ));
-  console.log(typeof RecomendationsList);
-  console.log(RecomendationsList);
+
+  console.log("hyinya: ", toJS(store.recommendedProducts));
 
   const settings = {
     infinite: false,

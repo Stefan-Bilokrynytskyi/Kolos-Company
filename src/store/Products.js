@@ -196,22 +196,58 @@ class Products {
   }
 
   generateRecommendations(allProducts, cartItems) {
-    // Получаем уникальные категории продуктов в корзине
-    const cartCategories = Array.from(new Set(cartItems.map(item => item.category)));
+    // Check if cartItems have changed
+    if (this.lastCartItems !== cartItems) {
+      // Clear previous recommendations
+      this.recommendedProducts.clear();
   
-    // Фильтруем все продукты по категориям из корзины
-    const filteredProducts = allProducts.filter(product => cartCategories.includes(product.category));
+      // Получаем уникальные категории продуктов в корзине
+      const cartCategories = Array.from(new Set(cartItems.map(item => item.category)));
   
-    // Исключаем продукты, которые уже есть в корзине
-    const uniqueFilteredProducts = filteredProducts.filter(product => !cartItems.some(item => item.id === product.id));
+      // Фильтруем все продукты по категориям из корзины
+      const filteredProducts = allProducts.filter(product => cartCategories.includes(product.category));
   
-    // Выводим первые три уникальных рекомендации (по категории)
-    const recommendedProducts = uniqueFilteredProducts.slice(0, 6);
+      // Исключаем продукты, которые уже есть в корзине
+      const uniqueFilteredProducts = filteredProducts.filter(product => !cartItems.some(item => item.id === product.id));
   
-    this.recommendedProducts.push(...recommendedProducts);
+      // Выводим первые три уникальных рекомендации (по категории)
+      let recommendedProducts = [...uniqueFilteredProducts];
+  
+      // Дополняем массив продуктами до 6
+      while (recommendedProducts.length < 6) {
+        const remainingProducts = allProducts.filter(product => !cartItems.some(item => item.id === product.id));
+  
+        if (remainingProducts.length > 0) {
+          // Находим первый уникальный продукт
+          const nextUniqueProduct = remainingProducts.find(product => !recommendedProducts.some(recProduct => recProduct.id === product.id));
+  
+          // Если найден, добавляем его к рекомендациям
+          if (nextUniqueProduct) {
+            recommendedProducts.push(nextUniqueProduct);
+          } else {
+            // Если не удалось найти уникальный продукт, выходим из цикла
+            break;
+          }
+        } else {
+          // Break the loop if there are no more remaining products
+          break;
+        }
+      }
+  
+      // Обновляем MobX-массив с рекомендациями
+      this.recommendedProducts.replace(recommendedProducts);
+  
+      // Update lastCartItems
+      this.lastCartItems = cartItems;
+  
+      console.log("Recommended products: ", toJS(this.recommendedProducts));
+    }
+  }
+  
+  
+  
+  
     
-    console.log("Recommended products:", this.recommendedProducts);
-  }  
 
   setCount(count) {
     this.count = count;

@@ -40,7 +40,7 @@ function App() {
           <Route
             path="/products/:category/:id/:color"
             element={<ProductItem />}
-          />
+          />         
           <Route path="/basket" element={<BasketPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
