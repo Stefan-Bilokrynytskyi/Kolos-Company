@@ -61,14 +61,14 @@ const RecomendationsList = observer(() => {
         breakpoint: 720,
         settings: {
           slidesToShow: 2.5,
-          slidesToScroll: 1,
+          // slidesToScroll: 1,
         },
       },
       {
         breakpoint: 1200,
         settings: {
           slidesToShow: 3.5,
-          slidesToScroll: 1,
+          // slidesToScroll: 1,
         },
       },
     ],
