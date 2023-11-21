@@ -1,0 +1,45 @@
+.container {
+  margin-top: 8px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.button {
+  background-color: #d2d2d2;
+  width: 33px;
+  height: 16.5px;
+  border-radius: 200px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s;
+}
+.button::before {
+  position: absolute;
+  content: "";
+  background-color: #fff;
+  width: 12.5px;
+  height: 12.5px;
+  border-radius: 200px;
+  margin: 2px;
+  transition: 0.2s;
+}
+
+.switch_input:checked + .button {
+  background-color: #20096d;
+}
+.switch_input:checked + .button::before {
+  transform: translateX(132%);
+}
+.switch_input {
+  display: none;
+}
+.text {
+  color: #3c4f35;
+
+  font-family: LT Oksana;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

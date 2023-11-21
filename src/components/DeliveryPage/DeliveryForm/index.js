@@ -2,6 +2,7 @@ import { set } from "mobx";
 import classes from "./DeliveryForm.module.scss";
 import Input from "./Input";
 import { useState } from "react";
+import SwitchInput from "../../UI/SwitchInput";
 
 function DeliveryForm() {
   const [name, setName] = useState("");
@@ -94,6 +95,7 @@ function DeliveryForm() {
         type="tel"
         isValid={phoneValid}
       />
+      <SwitchInput />
     </div>
   );
 }

@@ -68,8 +68,10 @@ const Filter = observer(({ name }) => {
       let newUrl = store.url;
 
       if (store.isSizeFilterChanged) {
+        console.log(newUrl);
         const regex = /(\?|&)(size|page)=[^&]*/g;
         newUrl = newUrl.replace(regex, "");
+        console.log(newUrl);
         const newUrlSizes = urlSizes.join("");
         newUrl += newUrlSizes;
       }
@@ -78,11 +80,14 @@ const Filter = observer(({ name }) => {
         newUrl = newUrl.replace(regex, "");
         newUrl += priceFilters;
       }
+      console.log(newUrl);
 
       store.setUrl(newUrl);
 
       navigate(newUrl);
       store.setIsFiltersChanged(false);
+      store.setSizeFilterChanged(false);
+      store.setPriceFilterChanged(false);
       setAction(null);
     } else if (action === "clear") {
     } else return;

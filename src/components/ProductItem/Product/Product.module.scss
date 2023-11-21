@@ -68,6 +68,7 @@ button {
 
     display: flex;
     gap: 15px;
+    margin-bottom: 23px;
   }
 
   .warning {
@@ -76,26 +77,13 @@ button {
     font-weight: bold;
   }
 
-  .button_checkout {
-    width: 325px;
-    height: 40px;
-    background: #d9d9d9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    margin-top: 23px;
-    margin-bottom: 40px;
-  }
   .accordions_container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 40px;
     margin-bottom: 196px;
   }
   .stripe_container {

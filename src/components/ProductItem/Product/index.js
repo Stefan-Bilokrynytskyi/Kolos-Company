@@ -6,9 +6,10 @@ import store from "../../../store/Products";
 import { observer } from "mobx-react-lite";
 import Swiper from "./Swiper";
 import BasketNotification from "./BasketNotification";
-
 import ProductAccordion from "./ProductAccordion";
 import Stripe from "../../UI/Stripe";
+import Button from "../../UI/Button";
+
 const Product = observer(({ product, color }) => {
   console.log(product);
   let colorName = "";
@@ -138,9 +139,7 @@ const Product = observer(({ product, color }) => {
             </SizeButton>
           </div>
           {warning && <div className={classes.warning}>Оберіть розмір</div>}
-          <div className={classes.button_checkout} onClick={handleCheckout}>
-            Додати в кошик
-          </div>
+          <Button onClick={handleCheckout}>Додати в кошик</Button>
         </div>
       </div>
       <div className={classes.accordions_container}>

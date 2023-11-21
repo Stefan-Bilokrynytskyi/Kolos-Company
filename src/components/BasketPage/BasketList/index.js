@@ -6,6 +6,7 @@ import store from "../../../store/Products";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import PageCaption from "../../UI/PageCaption";
+import Button from "../../UI/Button";
 
 const BasketList = observer(({ toCashierHandler }) => {
   useEffect(() => {
@@ -45,9 +46,12 @@ const BasketList = observer(({ toCashierHandler }) => {
         <div className={classes.basket_container}>
           <PageCaption caption="Кошик" />
 
-          <button className={classes.btn} onClick={toCashierHandler}>
+          <Button
+            onClick={toCashierHandler}
+            customStyles={{ marginBottom: "21px", marginTop: "20px" }}
+          >
             До касси
-          </button>
+          </Button>
           {basketList}
         </div>
       </div>

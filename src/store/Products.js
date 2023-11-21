@@ -48,7 +48,6 @@ class Products {
     this.isGlobalCategory = isGlobalCategory;
   }
   constructor() {
-    // Укажите `actions` в параметре конфигурации для makeAutoObservable
     makeAutoObservable(this, {
       addToBasket: action,
     });
@@ -200,27 +199,40 @@ class Products {
     if (this.lastCartItems !== cartItems) {
       // Clear previous recommendations
       this.recommendedProducts.clear();
-  
+
       // Получаем уникальные категории продуктов в корзине
-      const cartCategories = Array.from(new Set(cartItems.map(item => item.category)));
-  
+      const cartCategories = Array.from(
+        new Set(cartItems.map((item) => item.category))
+      );
+
       // Фильтруем все продукты по категориям из корзины
-      const filteredProducts = allProducts.filter(product => cartCategories.includes(product.category));
-  
+      const filteredProducts = allProducts.filter((product) =>
+        cartCategories.includes(product.category)
+      );
+
       // Исключаем продукты, которые уже есть в корзине
-      const uniqueFilteredProducts = filteredProducts.filter(product => !cartItems.some(item => item.id === product.id));
-  
+      const uniqueFilteredProducts = filteredProducts.filter(
+        (product) => !cartItems.some((item) => item.id === product.id)
+      );
+
       // Выводим первые три уникальных рекомендации (по категории)
       let recommendedProducts = [...uniqueFilteredProducts];
-  
+
       // Дополняем массив продуктами до 6
       while (recommendedProducts.length < 6) {
-        const remainingProducts = allProducts.filter(product => !cartItems.some(item => item.id === product.id));
-  
+        const remainingProducts = allProducts.filter(
+          (product) => !cartItems.some((item) => item.id === product.id)
+        );
+
         if (remainingProducts.length > 0) {
           // Находим первый уникальный продукт
-          const nextUniqueProduct = remainingProducts.find(product => !recommendedProducts.some(recProduct => recProduct.id === product.id));
-  
+          const nextUniqueProduct = remainingProducts.find(
+            (product) =>
+              !recommendedProducts.some(
+                (recProduct) => recProduct.id === product.id
+              )
+          );
+
           // Если найден, добавляем его к рекомендациям
           if (nextUniqueProduct) {
             recommendedProducts.push(nextUniqueProduct);
@@ -233,21 +245,16 @@ class Products {
           break;
         }
       }
-  
+
       // Обновляем MobX-массив с рекомендациями
       this.recommendedProducts.replace(recommendedProducts);
-  
+
       // Update lastCartItems
       this.lastCartItems = cartItems;
-  
+
       console.log("Recommended products: ", toJS(this.recommendedProducts));
     }
   }
-  
-  
-  
-  
-    
 
   setCount(count) {
     this.count = count;
@@ -270,13 +277,16 @@ class Products {
   async fetchProducts(url) {
     try {
       const response = await $api.get(url);
+      const regex = /(\?|&)(min_price|max_price)=[^&]*/g;
+      const newUrl = url.replace(regex, "");
+      const priceRangePerSize = await $api.get(newUrl);
 
       console.log("response: ", response);
 
       this.productPerpage = response.data.results;
       this.updatePriceRange(
-        response.data.results[0].min_price,
-        response.data.results[0].max_price
+        priceRangePerSize.data.results[0].min_price,
+        priceRangePerSize.data.results[0].max_price
       );
 
       if (response.data.previous)
@@ -320,14 +330,13 @@ class Products {
 
   async fetchAllProducts() {
     try {
-      const response = await $api.get('/api/items/'); //нужно исправить!
+      const response = await $api.get("/api/items/"); //нужно исправить!
 
       console.log("all products response: ", response);
 
       this.allProducts = response.data;
 
       console.log(this.allProducts);
-      
     } catch (e) {
       console.error(e);
     }

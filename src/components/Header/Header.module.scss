@@ -69,7 +69,7 @@
   .cart_conteiner {
     display: flex;
     justify-content: flex-end;
-    flex-basis: 28%;
+    flex: 1;
     .cart_quantity {
       margin-left: 4px;
     }

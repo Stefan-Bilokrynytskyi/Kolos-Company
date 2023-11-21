@@ -6,6 +6,8 @@ import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import NotificationHeader from "./NotificationHeader";
 import { Link } from "react-router-dom";
+import Button from "../../../UI/Button";
+import { useNavigate } from "react-router-dom";
 
 const BasketNotification = observer(
   ({ id, colorName, size, setIsProductSelected }) => {
@@ -14,6 +16,10 @@ const BasketNotification = observer(
     const deleteBasketItemHandler = () => {
       store.deleteFromBasket({ id, colorName, selectedSize: size });
       setIsProductSelected(false);
+    };
+    const navigate = useNavigate();
+    const toBasketHandler = () => {
+      navigate("/basket");
     };
 
     return (
@@ -29,12 +35,10 @@ const BasketNotification = observer(
           size={product.selectedSize}
         />
         <div className={classes.buttons_container}>
-          <Link to="/basket" className={classes.link}>
-            <button className={classes.btn}>До касси</button>
-          </Link>
+          <Button onClick={toBasketHandler}>До касси</Button>
 
           <div className={classes.or}>AБО</div>
-          <button className={classes.btn}>Одразу до оплати</button>
+          <Button>Одразу до оплати</Button>
         </div>
       </div>
     );

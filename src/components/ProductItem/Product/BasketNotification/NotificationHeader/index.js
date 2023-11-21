@@ -2,6 +2,7 @@ import React from "react";
 
 import classes from "./NotificationHeader.module.scss";
 import leftArrow from "../../../../../icons/left-arrow.svg";
+import Stripe from "../../../../UI/Stripe";
 
 const NotificationHeader = ({ backToShopHandler }) => {
   return (
@@ -15,7 +16,7 @@ const NotificationHeader = ({ backToShopHandler }) => {
         <div onClick={() => backToShopHandler(false)}> Назад до покупок</div>
       </div>
 
-      <div className={classes.stripe}></div>
+      <Stripe customStyles={{ width: "100%" }} />
     </div>
   );
 };

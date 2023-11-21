@@ -27,7 +27,6 @@ const Sections = observer(() => {
       >
         <div className={classes.section_conteiner}>
           <div className={classes.section}>
-            {/* {isChosen && <div className={classes.section_overlay}></div>} */}
             <div className={classes.section_name}>Кежуал</div>
           </div>
         </div>
@@ -42,7 +41,6 @@ const Sections = observer(() => {
       >
         <div className={classes.section_conteiner}>
           <div className={classes.section_1}>
-            {/* {!isChosen && <div className={classes.section_overlay}></div>} */}
             <div className={classes.section_name}>Класика</div>
           </div>
         </div>

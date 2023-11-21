@@ -1,0 +1,46 @@
+.total_container {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  padding: 9px 11px;
+  border: 2px solid #000;
+  .quantity_products {
+    margin-bottom: 15px;
+  }
+  .item_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    .item_name {
+      color: #000;
+      font-family: Cochin;
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      margin-right: 20px;
+    }
+    .item_quantity {
+      color: #000;
+      font-family: Inter;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+  .total_price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .total_caption {
+      color: #000;
+      font-family: Cochin;
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}

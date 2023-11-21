@@ -13,6 +13,12 @@
   border: 2px solid rgb(0, 0, 0);
   transform: translate(0, -50%);
 }
+.thumb-0 {
+  margin-right: 15px;
+}
+.thumb-1 {
+  margin-left: 15px;
+}
 .slider_price_values {
   margin: 15px auto 20px auto;
   text-align: center;

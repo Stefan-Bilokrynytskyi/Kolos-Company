@@ -22,7 +22,7 @@ const BasketOperations = ({
             +
           </button>
         </div>
-        <div className={classes.price}>{productPrice.toFixed(2)}</div>
+        <div className={classes.price}>{productPrice.toFixed(2)}грн</div>
       </div>
       <hr></hr>
     </>
