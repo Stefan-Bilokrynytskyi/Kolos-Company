@@ -36,7 +36,6 @@ const BasketNotification = observer(
         />
         <div className={classes.buttons_container}>
           <Button onClick={toBasketHandler}>До касси</Button>
-
           <div className={classes.or}>AБО</div>
           <Button>Одразу до оплати</Button>
         </div>

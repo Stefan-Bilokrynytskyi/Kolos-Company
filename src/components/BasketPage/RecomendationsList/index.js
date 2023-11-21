@@ -12,7 +12,6 @@ import { toJS } from "mobx";
 
 const RecomendationsList = observer(() => {
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         await store.fetchAllProducts();
@@ -34,7 +33,7 @@ const RecomendationsList = observer(() => {
   }, [store.basket]);
 
   const recomendedPoductsCreate = toJS(store.recommendedProducts);
-  const limitedProducts = recomendedPoductsCreate.slice(0, 6); 
+  const limitedProducts = recomendedPoductsCreate.slice(0, 6);
 
   const RecomendationsList = limitedProducts.map((product, index) => (
     <Recomendations
@@ -42,14 +41,13 @@ const RecomendationsList = observer(() => {
       id={product.id}
       name={product.name}
       price={product.price}
-      category={product.global_category
-      }
+      category={product.global_category}
       checkColor={product.sizes_color_quantity[0].hex}
       image={product.sizes_color_quantity[0].photo_urls[0]}
     />
   ));
 
-  console.log("hyinya: ", toJS(store.recommendedProducts));
+  // console.log("hyinya: ", toJS(store.recommendedProducts));
 
   const settings = {
     infinite: false,

@@ -5,6 +5,7 @@ import Products from "./components/Products";
 import ProductItem from "./components/ProductItem";
 import BasketPage from "./components/BasketPage";
 import AboutPage from "./components/AboutPage";
+import CollectionProducts from "./components/CollectionProducts";
 import store from "./store/Products";
 import { useEffect, useState } from "react";
 
@@ -37,10 +38,11 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path={`/products/:category/`} element={<Products />} />
           <Route path={`/products/:gender/:category/`} element={<Products />} />
+          <Route path={`/collection-items/`} element={<CollectionProducts />} />
           <Route
             path="/products/:category/:id/:color"
             element={<ProductItem />}
-          />         
+          />
           <Route path="/basket" element={<BasketPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>

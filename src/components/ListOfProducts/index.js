@@ -1,7 +1,7 @@
 import classes from "./ListOfProducts.module.scss";
-import ProductCard from "../ProductCard";
-import Rectangle from "../../../../img/Rectangle.jpg";
-import Pagination from "../../Pagination";
+import ProductCard from "./ProductCard";
+
+import Pagination from "./Pagination";
 
 function ListOfProducts({ productsData }) {
   const ProductsList = productsData.map((product) => (

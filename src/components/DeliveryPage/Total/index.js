@@ -12,13 +12,17 @@ function Total() {
 
   const message = getCorrectWord(store.cartQuantity);
   const basketData = toJS(store.basket);
+  console.log(basketData);
   const basketList = basketData.map((product, index) => (
-    <diV className={classes.item_container}>
+    <div
+      className={classes.item_container}
+      key={product.id + product.colorName}
+    >
       <div className={classes.item_name}>{product.name}</div>
       <div className={classes.item_quantity}>
         {product.price * product.quantity}
       </div>
-    </diV>
+    </div>
   ));
 
   return (

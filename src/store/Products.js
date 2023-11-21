@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 class Products {
   allProducts = [];
   productPerpage = [];
+  collectionDescription = [];
   basket = [];
   page = 1;
   currentPage = 1;
@@ -84,19 +85,17 @@ class Products {
   }
 
   findProductInBasket(item) {
-    console.log(item);
     const index = this.basket.findIndex(
       (basketItem) =>
         basketItem.id === item.id &&
         basketItem.colorName === item.colorName &&
         basketItem.selectedSize === item.size
     );
-    console.log(toJS(this.basket));
+
     return this.basket[index];
   }
 
   findIndexOfProductInBasket(item) {
-    console.log(item);
     const index = this.basket.findIndex(
       (basketItem) =>
         basketItem.id === item.id &&
@@ -135,7 +134,9 @@ class Products {
     );
     collections.map((elem) =>
       result[2]["Колекції"].push(
-        <Link to={`${elem.link_name}`}>{elem.name}</Link>
+        <Link to={`/collection-items/?collection=${elem.link_name}`}>
+          {elem.name}
+        </Link>
       )
     );
 
@@ -144,16 +145,15 @@ class Products {
   }
 
   deleteFromBasket(item) {
-    console.log("tut");
     const index = this.basket.findIndex(
       (basketItem) =>
         basketItem.id === item.id &&
         basketItem.colorName === item.colorName &&
         basketItem.selectedSize === item.selectedSize
     );
-    console.log(index);
+
     if (index !== -1) {
-      this.basket.splice(index, 1); // Удаляем элемент из массива
+      this.basket.splice(index, 1);
       localStorage.setItem("basket", JSON.stringify(this.basket));
     }
   }
@@ -195,37 +195,29 @@ class Products {
   }
 
   generateRecommendations(allProducts, cartItems) {
-    // Check if cartItems have changed
     if (this.lastCartItems !== cartItems) {
-      // Clear previous recommendations
       this.recommendedProducts.clear();
 
-      // Получаем уникальные категории продуктов в корзине
       const cartCategories = Array.from(
         new Set(cartItems.map((item) => item.category))
       );
 
-      // Фильтруем все продукты по категориям из корзины
       const filteredProducts = allProducts.filter((product) =>
         cartCategories.includes(product.category)
       );
 
-      // Исключаем продукты, которые уже есть в корзине
       const uniqueFilteredProducts = filteredProducts.filter(
         (product) => !cartItems.some((item) => item.id === product.id)
       );
 
-      // Выводим первые три уникальных рекомендации (по категории)
       let recommendedProducts = [...uniqueFilteredProducts];
 
-      // Дополняем массив продуктами до 6
       while (recommendedProducts.length < 6) {
         const remainingProducts = allProducts.filter(
           (product) => !cartItems.some((item) => item.id === product.id)
         );
 
         if (remainingProducts.length > 0) {
-          // Находим первый уникальный продукт
           const nextUniqueProduct = remainingProducts.find(
             (product) =>
               !recommendedProducts.some(
@@ -233,15 +225,12 @@ class Products {
               )
           );
 
-          // Если найден, добавляем его к рекомендациям
           if (nextUniqueProduct) {
             recommendedProducts.push(nextUniqueProduct);
           } else {
-            // Если не удалось найти уникальный продукт, выходим из цикла
             break;
           }
         } else {
-          // Break the loop if there are no more remaining products
           break;
         }
       }
@@ -251,8 +240,6 @@ class Products {
 
       // Update lastCartItems
       this.lastCartItems = cartItems;
-
-      console.log("Recommended products: ", toJS(this.recommendedProducts));
     }
   }
 
@@ -281,13 +268,46 @@ class Products {
       const newUrl = url.replace(regex, "");
       const priceRangePerSize = await $api.get(newUrl);
 
-      console.log("response: ", response);
-
       this.productPerpage = response.data.results;
       this.updatePriceRange(
         priceRangePerSize.data.results[0].min_price,
         priceRangePerSize.data.results[0].max_price
       );
+
+      if (response.data.previous)
+        this.setPrevUrl(
+          response.data.previous.replace(
+            "https://kolos-api-prod.onrender.com/api",
+            ""
+          )
+        );
+      if (response.data.next)
+        this.setNextUrl(
+          response.data.next.replace(
+            "https://kolos-api-prod.onrender.com/api",
+            ""
+          )
+        );
+      this.setCount(response.data.count);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async fetchCollectionProducts(url) {
+    try {
+      const response = await $api.get(url);
+      console.log(response);
+      // const regex = /(\?|&)(min_price|max_price)=[^&]*/g;
+      // const newUrl = url.replace(regex, "");
+      // const priceRangePerSize = await $api.get(newUrl);
+
+      this.productPerpage = response.data.items;
+      this.collectionDescription = response.data.collection;
+      // this.updatePriceRange(
+      //   priceRangePerSize.data.results[0].min_price,
+      //   priceRangePerSize.data.results[0].max_price
+      // );
 
       if (response.data.previous)
         this.setPrevUrl(
@@ -320,6 +340,7 @@ class Products {
   async fetchCategoriesAndCollections(url) {
     try {
       const response = await $api.get(url);
+      console.log(response.data);
       this.collections = response.data.collections;
       this.genders = response.data.categories;
       this.getAccordion();
@@ -332,11 +353,7 @@ class Products {
     try {
       const response = await $api.get("/api/items/"); //нужно исправить!
 
-      console.log("all products response: ", response);
-
       this.allProducts = response.data;
-
-      console.log(this.allProducts);
     } catch (e) {
       console.error(e);
     }

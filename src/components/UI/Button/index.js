@@ -5,9 +5,14 @@ const Button = (props) => {
   const styles = props.customStyles || {};
 
   return (
-    <div className={classes.button} style={styles} onClick={props.onClick}>
+    <button
+      className={props.disabled ? classes.button_disabled : classes.button}
+      style={styles}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {props.children}
-    </div>
+    </button>
   );
 };
 

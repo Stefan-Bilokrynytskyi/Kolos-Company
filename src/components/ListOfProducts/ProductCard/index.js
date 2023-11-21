@@ -1,7 +1,7 @@
 import classes from "./ProductCard.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import store from "../../../../store/Products";
+import store from "../../../store/Products";
 
 function ProductCard({
   id,
@@ -17,7 +17,7 @@ function ProductCard({
   const [selectedColor, setSelectedColor] = useState(colours[0]);
   const [selectedImage, setSelectedImage] = useState(image);
   const [quantity, setQuantity] = useState(colours_sizes[0].quantity);
-  
+
   const selectColorHandler = (color) => {
     const updatedImage = colours_sizes.find((item) => item.hex === color)
       .photo_urls[0];
@@ -42,7 +42,11 @@ function ProductCard({
 
   return (
     <div className={classes.card_conteiner}>
-      <Link to={`/products/${store.category}/${id}/${selectedColor.slice(1)}`}>
+      <Link
+        to={`/products/${global_category.toLowerCase()}/${id}/${selectedColor.slice(
+          1
+        )}`}
+      >
         <div className={classes.photo_container}>
           {quantity === 0 && (
             <div className={classes.section_overlay}>

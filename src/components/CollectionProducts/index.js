@@ -1,19 +1,14 @@
 import Header from "../Header";
 import Footer from "../Footer";
-import ProductItem from "../ProductItem";
-import classes from "./Products.module.scss";
-import ProductsStore from "./ProductsStore";
+import classes from "./CollectionProducts.module.scss";
+import CollectionStore from "./CollectionStore";
 import Filter from "../Filter";
 import { useParams } from "react-router-dom";
-
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { toJS, runInAction } from "mobx";
-import { autorun } from "mobx";
-
 import store from "../../store/Products";
 
-function Products() {
+function CollectionProducts() {
   const { category } = useParams();
   useEffect(() => {
     runInAction(() => {
@@ -30,11 +25,11 @@ function Products() {
 
       <Filter name={"Фільтр"} />
 
-      <ProductsStore category={category} />
+      <CollectionStore category={category} />
 
       <Footer />
     </div>
   );
 }
 
-export default Products;
+export default CollectionProducts;

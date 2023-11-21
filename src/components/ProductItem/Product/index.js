@@ -42,6 +42,9 @@ const Product = observer(({ product, color }) => {
   );
   const [warning, setWarning] = useState(false);
   const [isProductSelected, setIsProductSelected] = useState(false); // Повідомлення про додавання в кошик
+  const isProductAvailable =
+    product.sizes_color_quantity.find((item) => item.hex === color).quantity >
+    0;
 
   const handleColorChange = (color) => {
     setSelectedColor(color);
@@ -86,7 +89,11 @@ const Product = observer(({ product, color }) => {
         <div className={classes.container}>
           <h1>{product.name}</h1>
           <Swiper slides={selectedSlides} />
-
+          {!isProductAvailable && (
+            <div className={classes.notAvailable_caption}>
+              Немає в наявності
+            </div>
+          )}
           <p className={classes.price}>{product.price}</p>
 
           <div className={classes.choose_color}>
@@ -139,7 +146,9 @@ const Product = observer(({ product, color }) => {
             </SizeButton>
           </div>
           {warning && <div className={classes.warning}>Оберіть розмір</div>}
-          <Button onClick={handleCheckout}>Додати в кошик</Button>
+          <Button onClick={handleCheckout} disabled={!isProductAvailable}>
+            Додати в кошик
+          </Button>
         </div>
       </div>
       <div className={classes.accordions_container}>

@@ -1,4 +1,4 @@
-import classes from "./ProductsStore.module.scss";
+import classes from "./CollectionStore.module.scss";
 import { useEffect, useState } from "react";
 import store from "../../../store/Products";
 import { toJS, autorun } from "mobx";
@@ -6,13 +6,15 @@ import ListOfProducts from "../../ListOfProducts";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
 import { action, runInAction } from "mobx";
+import CollectionDescription from "./CollectionDescription";
 
-const ProductsStore = observer(({ category }) => {
+const CollectionStore = observer(({ category }) => {
   const [productsData, setProductsData] = useState(null);
+  const [collectionDescription, setCollectionDescription] = useState(null);
   const location = useLocation();
   const { pathname, search } = location;
   const currentUrl = (pathname + search).replace(
-    `https://kolos-api-prod.onrender.com/api`,
+    `https://kolos-api-prod.onrender.com/api/`,
     ""
   );
   const searchParams = new URLSearchParams(location.search);
@@ -30,9 +32,10 @@ const ProductsStore = observer(({ category }) => {
       async function fetchData() {
         try {
           setProductsData(null);
-          await store.fetchProducts(`/api${store.url}`);
+          await store.fetchCollectionProducts(`/api${store.url}`);
           const productsArr = toJS(store.productPerpage);
-
+          const collectionDescription = toJS(store.collectionDescription);
+          setCollectionDescription(collectionDescription);
           setProductsData(productsArr);
         } catch (e) {
           console.log(e);
@@ -48,7 +51,12 @@ const ProductsStore = observer(({ category }) => {
   return (
     <div className={classes.store_conteiner}>
       {productsData ? (
-        <ListOfProducts productsData={productsData} />
+        <div>
+          <CollectionDescription
+            collectionDescription={collectionDescription}
+          />
+          <ListOfProducts productsData={productsData} />
+        </div>
       ) : (
         <p>Loading...</p>
       )}
@@ -56,4 +64,4 @@ const ProductsStore = observer(({ category }) => {
   );
 });
 
-export default ProductsStore;
+export default CollectionStore;
