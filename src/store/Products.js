@@ -267,7 +267,7 @@ class Products {
       const regex = /(\?|&)(min_price|max_price)=[^&]*/g;
       const newUrl = url.replace(regex, "");
       const priceRangePerSize = await $api.get(newUrl);
-
+      console.log(response.data);
       this.productPerpage = response.data.results;
       this.updatePriceRange(
         priceRangePerSize.data.results[0].min_price,
@@ -308,22 +308,6 @@ class Products {
       //   priceRangePerSize.data.results[0].min_price,
       //   priceRangePerSize.data.results[0].max_price
       // );
-
-      if (response.data.previous)
-        this.setPrevUrl(
-          response.data.previous.replace(
-            "https://kolos-api-prod.onrender.com/api",
-            ""
-          )
-        );
-      if (response.data.next)
-        this.setNextUrl(
-          response.data.next.replace(
-            "https://kolos-api-prod.onrender.com/api",
-            ""
-          )
-        );
-      this.setCount(response.data.count);
     } catch (e) {
       console.log(e);
     }

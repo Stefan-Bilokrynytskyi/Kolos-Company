@@ -6,6 +6,7 @@ import ListOfProducts from "../../ListOfProducts";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
 import { action, runInAction } from "mobx";
+import Pagination from "../../Pagination";
 
 const ProductsStore = observer(({ category }) => {
   const [productsData, setProductsData] = useState(null);
@@ -48,7 +49,10 @@ const ProductsStore = observer(({ category }) => {
   return (
     <div className={classes.store_conteiner}>
       {productsData ? (
-        <ListOfProducts productsData={productsData} />
+        <div>
+          <ListOfProducts productsData={productsData} />
+          <Pagination />
+        </div>
       ) : (
         <p>Loading...</p>
       )}

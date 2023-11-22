@@ -8,10 +8,9 @@ import { toJS } from "mobx";
 import store from "../../../store/Products";
 import leftArrowIcon from "../../../icons/left-arrow.svg";
 import rightArrowIcon from "../../../icons/right-arrow.svg";
-
+import { useNavigate } from "react-router-dom";
 const Slider = observer(() => {
   const slides = toJS(store.collections);
-  //console.log(slides[0].photo_url);
   console.log(slides);
 
   const [swiper, setSwiper] = useState(null);
@@ -27,6 +26,10 @@ const Slider = observer(() => {
       swiper.slideNext();
     }
   };
+  const navigate = useNavigate();
+
+  const onClickHandler = (link) =>
+    navigate(`/collection-items/?collection=${link}`);
 
   return (
     <div className={classes.container}>
@@ -51,7 +54,10 @@ const Slider = observer(() => {
           onSwiper={setSwiper}
         >
           {slides.map((slide, index) => (
-            <SwiperSlide key={slide.id}>
+            <SwiperSlide
+              key={slide.id}
+              onClick={() => onClickHandler(slide.link_name)}
+            >
               <div
                 className={classes.slider_container}
                 style={{

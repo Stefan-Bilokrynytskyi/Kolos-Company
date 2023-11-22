@@ -13,6 +13,7 @@ function ProductCard({
   image,
   colours,
   colours_sizes,
+  collection,
 }) {
   const [selectedColor, setSelectedColor] = useState(colours[0]);
   const [selectedImage, setSelectedImage] = useState(image);
@@ -57,6 +58,9 @@ function ProductCard({
         </div>
         <div className={classes.caption}>{name}</div>
       </Link>
+      {collection && (
+        <div className={classes.collection_text}>колекція "{collection}"</div>
+      )}
       <div className={classes.price_colors_conteiner}>
         <div className={classes.price_conteiner}>
           <div className={classes.price}>{price}</div>

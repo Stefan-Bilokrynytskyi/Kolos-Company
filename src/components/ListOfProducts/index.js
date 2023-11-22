@@ -1,9 +1,11 @@
 import classes from "./ListOfProducts.module.scss";
 import ProductCard from "./ProductCard";
-
-import Pagination from "./Pagination";
+import { useLocation } from "react-router-dom";
 
 function ListOfProducts({ productsData }) {
+  const location = useLocation();
+  const { pathname } = location;
+  console.log(pathname.includes("collection-items"));
   const ProductsList = productsData.map((product) => (
     <ProductCard
       id={product.id}
@@ -15,6 +17,9 @@ function ListOfProducts({ productsData }) {
       image={product.sizes_color_quantity[0].photo_urls[0]}
       colours={product.sizes_color_quantity.map((item) => item.hex)}
       colours_sizes={product.sizes_color_quantity}
+      collection={
+        pathname.includes("collection-items") ? null : product.collection
+      }
       key={product.id}
     />
   ));
@@ -22,7 +27,6 @@ function ListOfProducts({ productsData }) {
   return (
     <div>
       <div className={classes.flex_conteiner}>{ProductsList}</div>
-      <Pagination />
     </div>
   ); // added ProductsList to the return statement
 }

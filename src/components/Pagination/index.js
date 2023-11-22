@@ -1,9 +1,9 @@
 import classes from "./Pagination.module.scss";
 import { useState } from "react";
 import { observer } from "mobx-react-lite";
-import leftArrow from "../../../icons/left-arrow.svg";
-import rightArrow from "../../../icons/right-arrow.svg";
-import store from "../../../store/Products";
+import leftArrow from "../../icons/left-arrow.svg";
+import rightArrow from "../../icons/right-arrow.svg";
+import store from "../../store/Products";
 import { Link, useNavigate } from "react-router-dom";
 
 const Pagination = observer(() => {
