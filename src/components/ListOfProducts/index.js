@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 function ListOfProducts({ productsData }) {
   const location = useLocation();
   const { pathname } = location;
-  console.log(pathname.includes("collection-items"));
+
   const ProductsList = productsData.map((product) => (
     <ProductCard
       id={product.id}
@@ -28,7 +28,7 @@ function ListOfProducts({ productsData }) {
     <div>
       <div className={classes.flex_conteiner}>{ProductsList}</div>
     </div>
-  ); // added ProductsList to the return statement
+  );
 }
 
 export default ListOfProducts;
