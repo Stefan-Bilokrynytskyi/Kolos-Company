@@ -17,6 +17,7 @@ function ListOfProducts({ productsData }) {
       image={product.sizes_color_quantity[0].photo_urls[0]}
       colours={product.sizes_color_quantity.map((item) => item.hex)}
       colours_sizes={product.sizes_color_quantity}
+      discount={product.sizes_color_quantity[0].discount}
       collection={
         pathname.includes("collection-items") ? null : product.collection
       }

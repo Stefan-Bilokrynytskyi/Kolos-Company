@@ -14,10 +14,12 @@ function ProductCard({
   colours,
   colours_sizes,
   collection,
+  discount,
 }) {
   const [selectedColor, setSelectedColor] = useState(colours[0]);
   const [selectedImage, setSelectedImage] = useState(image);
   const [quantity, setQuantity] = useState(colours_sizes[0].quantity);
+  const [discountValue, setDiscountValue] = useState(discount);
 
   const selectColorHandler = (color) => {
     const updatedImage = colours_sizes.find((item) => item.hex === color)
@@ -25,6 +27,10 @@ function ProductCard({
     const updatedQuantity = colours_sizes.find(
       (item) => item.hex === color
     ).quantity;
+    const updatedDiscount = colours_sizes.find(
+      (item) => item.hex === color
+    ).discount;
+    setDiscountValue(updatedDiscount);
     setSelectedImage(updatedImage);
     setQuantity(updatedQuantity);
     setSelectedColor(color);
@@ -61,10 +67,23 @@ function ProductCard({
       {collection && (
         <div className={classes.collection_text}>колекція "{collection}"</div>
       )}
+
       <div className={classes.price_colors_conteiner}>
-        <div className={classes.price_conteiner}>
-          <div className={classes.price}>{price}</div>
-        </div>
+        {discountValue && quantity ? (
+          <div>
+            <span className={classes.crossed_price}>{price}</span>
+            <span className={classes.discount_price}>
+              {` ${(((100 - discountValue) / 100) * price).toFixed(2)}`}
+              <span style={{ fontFamily: "Commissioner" }}> грн</span>
+            </span>
+          </div>
+        ) : (
+          <div>
+            {`${price}`}
+            <span style={{ fontFamily: "Commissioner" }}> грн</span>
+          </div>
+        )}
+
         <div className={classes.colours_conteiner}>
           {uniqueColours.map((color, index) => (
             <div

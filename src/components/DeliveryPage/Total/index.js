@@ -20,7 +20,7 @@ function Total() {
     >
       <div className={classes.item_name}>{product.name}</div>
       <div className={classes.item_quantity}>
-        {product.price * product.quantity}
+        {(product.price * product.quantity).toFixed(2)}
       </div>
     </div>
   ));

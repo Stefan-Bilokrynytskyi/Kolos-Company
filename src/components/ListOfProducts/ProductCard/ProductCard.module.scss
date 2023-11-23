@@ -21,15 +21,12 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 5px;
-    .price_conteiner {
-      position: relative;
-      .price {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(0%, -50%);
-      }
-    }
+
+    // .price {
+    //   display: flex;
+    //   //align-items: center;
+    // }
+
     .colours_conteiner {
       display: flex;
       gap: 4px;
@@ -74,6 +71,22 @@
 
   font-family: Commissioner;
   font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.crossed_price {
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: line-through;
+}
+.discount_price {
+  color: #e80101;
+  font-family: Inter;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

@@ -24,7 +24,6 @@ button {
     h1 {
       color: #000;
 
-      margin-bottom: 55px;
       margin-top: 50px;
       color: #000;
 
@@ -97,4 +96,30 @@ button {
     font-weight: 400;
     line-height: normal;
   }
+}
+.crossed_price {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: line-through;
+}
+.discount_price {
+  color: #e80101;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.collection_link {
+  color: #909090;
+
+  font-family: Commissioner;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 55px;
 }

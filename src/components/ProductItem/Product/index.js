@@ -9,6 +9,7 @@ import BasketNotification from "./BasketNotification";
 import ProductAccordion from "./ProductAccordion";
 import Stripe from "../../UI/Stripe";
 import Button from "../../UI/Button";
+import { set } from "mobx";
 
 const Product = observer(({ product, color }) => {
   console.log(product);
@@ -33,10 +34,14 @@ const Product = observer(({ product, color }) => {
     return slides;
   };
 
+  const findDiscount = (color) =>
+    product.sizes_color_quantity.find((item) => item.hex === color).discount;
+
   // Доступні розміри [S, M, L, XL
   const [selectedColor, setSelectedColor] = useState(color); // Обраний колір
   const [selectedSize, setSelectedSize] = useState(); // Обраний розмір
   const [selectedSlides, setSelectedSlides] = useState(findImage(color)); // Обране зображення [photo_url
+  const [discount, setDiscount] = useState(findDiscount(color)); // Знижка [0, 10, 20, 30, 40, 50
   const [availableSizes, setAvailableSizes] = useState(
     findAvailableSizes(selectedColor)
   );
@@ -50,6 +55,7 @@ const Product = observer(({ product, color }) => {
     setSelectedColor(color);
     setAvailableSizes(findAvailableSizes(color));
     setSelectedSlides(findImage(color));
+    setDiscount(findDiscount(color));
     setSelectedSize();
   };
 
@@ -60,7 +66,8 @@ const Product = observer(({ product, color }) => {
 
   const handleCheckout = () => {
     const selectedImage = selectedSlides[0];
-
+    if (discount)
+      product.price = (((100 - discount) / 100) * product.price).toFixed(2);
     if (selectedSize) {
       store.addToBasket({
         ...product,
@@ -88,13 +95,32 @@ const Product = observer(({ product, color }) => {
       <div className={classes.product_item}>
         <div className={classes.container}>
           <h1>{product.name}</h1>
+          {product.collection && (
+            <div className={classes.collection_link}>
+              <Link to={`/collection-items/?collection=${product.collection}`}>
+                {" "}
+                {/*исправить*/}
+                Колекція "{product.collection}"
+              </Link>
+            </div>
+          )}
           <Swiper slides={selectedSlides} />
           {!isProductAvailable && (
             <div className={classes.notAvailable_caption}>
               Немає в наявності
             </div>
           )}
-          <p className={classes.price}>{product.price}</p>
+          {discount ? (
+            <div className={classes.price}>
+              <span className={classes.crossed_price}>{product.price}</span>
+              <span className={classes.discount_price}>
+                {` ${((100 - discount) / 100) * product.price}`}
+                <span style={{ fontFamily: "Commissioner" }}> грн</span>
+              </span>
+            </div>
+          ) : (
+            <div className={classes.price}>{product.price}</div>
+          )}
 
           <div className={classes.choose_color}>
             {uniqueColours.map((color) => (
