@@ -26,6 +26,14 @@ class Products {
   collections = [];
   sections = [];
   recommendedProducts = [];
+  setCheckboxStates;
+  setValues;
+  setClearCheckboxes(setCheckboxStates) {
+    this.setCheckboxStates = setCheckboxStates;
+  }
+  setClearValues(setValues) {
+    this.setValues = setValues;
+  }
 
   setSizeFilterChanged(isFilterSizeChanged) {
     this.isSizeFilterChanged = isFilterSizeChanged;
@@ -264,14 +272,10 @@ class Products {
   async fetchProducts(url) {
     try {
       const response = await $api.get(url);
-      const regex = /(\?|&)(min_price|max_price)=[^&]*/g;
-      const newUrl = url.replace(regex, "");
-      const priceRangePerSize = await $api.get(newUrl);
-      console.log(response.data);
       this.productPerpage = response.data.results;
       this.updatePriceRange(
-        priceRangePerSize.data.results[0].min_price,
-        priceRangePerSize.data.results[0].max_price
+        response.data.results[0].min_price,
+        response.data.results[0].max_price
       );
 
       if (response.data.previous)

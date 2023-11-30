@@ -8,6 +8,7 @@ import store from "../../store/Products";
 import { useLocation } from "react-router-dom";
 import PriceAccordion from "./PriceAccordion";
 import { useNavigate } from "react-router-dom";
+import { set } from "mobx";
 
 const Filter = observer(({ name }) => {
   const [toggle, setToggle] = useState(false);
@@ -16,6 +17,10 @@ const Filter = observer(({ name }) => {
   const [action, setAction] = useState(null);
   const [urlSizes, setUrlSizes] = useState([]);
   const [priceFilters, setPriceFilters] = useState("");
+  const [isClearButtonDisabled, setIsClearButtonDisabled] = useState(
+    store.url.match(/(\?|&)(min_price|size)=[^&]*/g) === null
+  );
+
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -60,7 +65,22 @@ const Filter = observer(({ name }) => {
     store.setPriceFilterChanged(true);
   };
 
-  const clearFiltersHandler = () => {};
+  const clearFiltersHandler = () => {
+    if (isClearButtonDisabled) return;
+    // store.setIsFiltersChanged(false);
+    // store.setSizeFilterChanged(false);
+    // store.setPriceFilterChanged(false);
+    store.setCheckboxStates({ S: false, M: false, L: false, XL: false });
+    store.setClearValues([store.minPrice, store.maxPrice]);
+    setUrlSizes([]);
+    setPriceFilters("");
+    let newUrl = store.url;
+    setIsClearButtonDisabled(true);
+    const regex = /(\?|&)(size|page|min_price|max_price)=[^&]*/g;
+    newUrl = newUrl.replace(regex, "");
+    store.setUrl(newUrl);
+    navigate(newUrl);
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -85,11 +105,13 @@ const Filter = observer(({ name }) => {
       store.setUrl(newUrl);
 
       navigate(newUrl);
+      setIsClearButtonDisabled(
+        store.url.match(/(\?|&)(min_price|size)=[^&]*/g) === null
+      );
       store.setIsFiltersChanged(false);
       store.setSizeFilterChanged(false);
       store.setPriceFilterChanged(false);
       setAction(null);
-    } else if (action === "clear") {
     } else return;
   };
 
@@ -134,6 +156,7 @@ const Filter = observer(({ name }) => {
             <div className={classes.control_buttons}>
               <button
                 className={classes.control_button}
+                style={{ color: isClearButtonDisabled ? "gray" : "#000" }}
                 onClick={clearFiltersHandler}
               >
                 Очистити

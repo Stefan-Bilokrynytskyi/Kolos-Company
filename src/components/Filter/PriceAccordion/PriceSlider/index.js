@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import store from "../../../../store/Products";
 import Slider from "react-slider";
 import { observer } from "mobx-react-lite";
-
 import { useLocation } from "react-router-dom";
 
 const PriceSlider = observer(({ getPriceFilters }) => {
@@ -12,10 +11,6 @@ const PriceSlider = observer(({ getPriceFilters }) => {
 
   let minPrice = Number(searchParams.get("min_price")) || store.minPrice;
   let maxPrice = Number(searchParams.get("max_price")) || store.maxPrice;
-  if (minPrice < store.minPrice) minPrice = store.minPrice;
-  if (maxPrice > store.maxPrice) maxPrice = store.maxPrice;
-  if (maxPrice < minPrice) maxPrice = store.maxPrice;
-  if (minPrice > maxPrice) minPrice = store.minPrice;
 
   const [values, setValues] = useState([minPrice, maxPrice]);
 

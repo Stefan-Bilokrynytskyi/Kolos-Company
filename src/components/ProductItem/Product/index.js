@@ -94,16 +94,20 @@ const Product = observer(({ product, color }) => {
       )}
       <div className={classes.product_item}>
         <div className={classes.container}>
-          <h1>{product.name}</h1>
-          {product.collection && (
-            <div className={classes.collection_link}>
-              <Link to={`/collection-items/?collection=${product.collection}`}>
-                {" "}
-                {/*исправить*/}
-                Колекція "{product.collection}"
-              </Link>
-            </div>
-          )}
+          <div className={classes.name_collection}>
+            <h1>{product.name}</h1>
+            {product.collection && (
+              <div className={classes.collection_link}>
+                <Link
+                  to={`/collection-items/?collection=${product.link_collection}`}
+                >
+                  {" "}
+                  {/*исправить*/}
+                  Колекція "{product.collection}"
+                </Link>
+              </div>
+            )}
+          </div>
           <Swiper slides={selectedSlides} />
           {!isProductAvailable && (
             <div className={classes.notAvailable_caption}>
