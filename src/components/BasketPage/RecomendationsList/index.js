@@ -51,21 +51,21 @@ const RecomendationsList = observer(() => {
 
   const settings = {
     infinite: false,
-    slidesToShow: 2.5, // количество отображаемых элементов
+    slidesToShow: 2, // количество отображаемых элементов
     slidesToScroll: 1,
     swipeToSlide: true,
     responsive: [
       {
         breakpoint: 720,
         settings: {
-          slidesToShow: 2.5,
-          // slidesToScroll: 1,
+          slidesToShow: 2,
+          // slidesToScroll: 2,
         },
       },
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3.5,
+          slidesToShow: 3,
           // slidesToScroll: 1,
         },
       },

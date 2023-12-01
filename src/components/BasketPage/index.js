@@ -9,6 +9,8 @@ import DeliveryPage from "../DeliveryPage";
 import { useParams } from "react-router-dom";
 
 import store from "../../store/Products";
+import { useObserver } from "mobx-react-lite";
+import EmptyBasket from "./EmptyBasket";
 
 function BasketPage() {
   const [isDeliveryPageSlected, setIsDeliveryPageSlected] = useState(false);
@@ -16,20 +18,28 @@ function BasketPage() {
   const toCashierHandler = () => {
     setIsDeliveryPageSlected(true);
   };
-  return (
+  return useObserver(() => (
     <div>
       {isDeliveryPageSlected ? (
         <DeliveryPage />
       ) : (
         <div>
           <Header />
-          <BasketList toCashierHandler={toCashierHandler} />
-          <TotalPrice />
-          <RecomendationsList />
+          {store.basket.length === 0 ? (
+            <>
+              <EmptyBasket />
+            </>
+          ) : (
+            <>
+              <BasketList toCashierHandler={toCashierHandler} />
+              <TotalPrice />
+              <RecomendationsList />            
+            </>
+          )}
         </div>
       )}
     </div>
-  );
+  ));
 }
 
 export default BasketPage;
