@@ -16,7 +16,7 @@ function DeliveryForm() {
     const userName = e.target.value;
     setName(userName);
     const regex = /^[a-zA-Zа-яА-ЯІіЇїЄє-]+$/;
-    console.log(regex.test(userName));
+
     if (regex.test(userName)) {
       if (userName.length >= 2)
         setNameValid((nameValid) => ({
@@ -66,10 +66,25 @@ function DeliveryForm() {
   };
   const phoneChangeHandler = (e) => {
     const userPhone = e.target.value;
-    const regex = /^\d{0,9}$/;
+    if (!/^[+0-9]{0,15}$/.test(userPhone)) return;
+    const regex = /^\+?\d{1,15}$/;
+    setPhone(userPhone);
 
-    if (regex.test(userPhone)) setPhone(userPhone);
-    else return;
+    if (regex.test(userPhone)) {
+      console.log("correct");
+      setPhoneValid((phoneValid) => ({
+        ...phoneValid,
+        value: true,
+        length: userPhone.length,
+      }));
+    } else {
+      console.log(";lol");
+      setPhoneValid((phoneValid) => ({
+        ...phoneValid,
+        value: false,
+        length: userPhone.length,
+      }));
+    }
   };
 
   return (

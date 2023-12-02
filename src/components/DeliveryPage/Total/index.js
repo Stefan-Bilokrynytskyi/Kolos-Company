@@ -15,12 +15,18 @@ function Total() {
   console.log(basketData);
   const basketList = basketData.map((product, index) => (
     <div
-      className={classes.item_container}
-      key={product.id + product.colorName}
+      key={product.id + product.colorName + product.selectedSize}
+      className={classes.total_product}
     >
-      <div className={classes.item_name}>{product.name}</div>
-      <div className={classes.item_quantity}>
-        {(product.price * product.quantity).toFixed(2)}
+      <div className={classes.item_container}>
+        <div className={classes.item_name}>{product.name}</div>
+        <div className={classes.item_quantity}>
+          {(product.price * product.quantity).toFixed(2)}
+        </div>
+      </div>
+      <div className={classes.item_info}>
+        Кількість: {product.quantity} Колір: {product.colorName} Розмір:
+        {product.selectedSize}
       </div>
     </div>
   ));

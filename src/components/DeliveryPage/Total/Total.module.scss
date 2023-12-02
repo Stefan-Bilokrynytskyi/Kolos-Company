@@ -18,7 +18,6 @@
       font-style: normal;
       font-weight: 500;
       line-height: normal;
-      margin-right: 20px;
     }
     .item_quantity {
       color: #000;
@@ -28,6 +27,15 @@
       font-weight: 400;
       line-height: normal;
     }
+  }
+  .item_info {
+    color: #909090;
+
+    font-family: Commissioner;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
   .total_price {
     display: flex;
@@ -42,5 +50,8 @@
       font-weight: 500;
       line-height: normal;
     }
+  }
+  .total_product {
+    margin-bottom: 14px;
   }
 }

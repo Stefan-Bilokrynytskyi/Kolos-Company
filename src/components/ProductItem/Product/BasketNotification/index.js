@@ -12,13 +12,18 @@ import { useNavigate } from "react-router-dom";
 const BasketNotification = observer(
   ({ id, colorName, size, setIsProductSelected }) => {
     const product = toJS(store.findProductInBasket({ id, colorName, size }));
-    console.log(product);
+
     const deleteBasketItemHandler = () => {
       store.deleteFromBasket({ id, colorName, selectedSize: size });
       setIsProductSelected(false);
     };
     const navigate = useNavigate();
     const toBasketHandler = () => {
+      store.setDeliveryPageSelected(false);
+      navigate("/basket");
+    };
+    const toDeliveryHandler = () => {
+      store.setDeliveryPageSelected(store.isBasketProductsAvailable());
       navigate("/basket");
     };
 
@@ -37,7 +42,7 @@ const BasketNotification = observer(
         <div className={classes.buttons_container}>
           <Button onClick={toBasketHandler}>До касси</Button>
           <div className={classes.or}>AБО</div>
-          <Button>Одразу до оплати</Button>
+          <Button onClick={toDeliveryHandler}>Одразу до оплати</Button>
         </div>
       </div>
     );

@@ -17,7 +17,7 @@ const BasketList = observer(({ toCashierHandler }) => {
     }
   }, []);
   const basketData = toJS(store.basket);
-  console.log(basketData);
+  // console.log(basketData);
 
   const findAvailableQuantity = (product, index) => {
     const availableQuantity = basketData[index].sizes_color_quantity.find(
@@ -40,6 +40,7 @@ const BasketList = observer(({ toCashierHandler }) => {
       key={product.colorName + product.selectedSize}
     />
   ));
+
   return (
     <div>
       <div className={classes.basket}>
@@ -48,7 +49,8 @@ const BasketList = observer(({ toCashierHandler }) => {
 
           <Button
             onClick={toCashierHandler}
-            customStyles={{ marginBottom: "21px", marginTop: "20px" }}
+            customStyles={{ marginBottom: "9px", marginTop: "20px" }}
+            disabled={!store.isBasketProductsAvailable()}
           >
             До касси
           </Button>

@@ -123,7 +123,7 @@ const Product = observer(({ product, color }) => {
               </span>
             </div>
           ) : (
-            <div className={classes.price}>{product.price}</div>
+            <div className={classes.price}>{product.price} грн</div>
           )}
 
           <div className={classes.choose_color}>

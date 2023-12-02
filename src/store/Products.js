@@ -28,6 +28,10 @@ class Products {
   recommendedProducts = [];
   setCheckboxStates;
   setValues;
+  isDeliveryPageSelected;
+  setDeliveryPageSelected(isDeliveryPageSelected) {
+    this.isDeliveryPageSelected = isDeliveryPageSelected;
+  }
   setClearCheckboxes(setCheckboxStates) {
     this.setCheckboxStates = setCheckboxStates;
   }
@@ -92,6 +96,22 @@ class Products {
     return this.url;
   }
 
+  isBasketProductsAvailable() {
+    const basketData = toJS(this.basket);
+
+    const findAvailableQuantity = (product, index) => {
+      const availableQuantity = basketData[index].sizes_color_quantity.find(
+        (item) =>
+          item.color === product.colorName && item.size === product.selectedSize
+      ).quantity;
+      return availableQuantity;
+    };
+
+    return basketData.every(
+      (item, index) => item.quantity <= findAvailableQuantity(item, index)
+    );
+  }
+
   findProductInBasket(item) {
     const index = this.basket.findIndex(
       (basketItem) =>
@@ -104,11 +124,12 @@ class Products {
   }
 
   findIndexOfProductInBasket(item) {
+    console.log(item);
     const index = this.basket.findIndex(
       (basketItem) =>
         basketItem.id === item.id &&
         basketItem.colorName === item.colorName &&
-        basketItem.selectedSize === item.size
+        basketItem.selectedSize === item.selectedSize
     );
 
     return index;
@@ -176,8 +197,12 @@ class Products {
     }
   }
 
-  increaseProductQuantity(id, colorName, size) {
-    const index = this.findIndexOfProductInBasket({ id, colorName, size });
+  increaseProductQuantity(id, colorName, selectedSize) {
+    const index = this.findIndexOfProductInBasket({
+      id,
+      colorName,
+      selectedSize,
+    });
     if (index !== -1) {
       this.basket[index].quantity++;
       this.basket[index].productPrice += this.basket[index].price;
@@ -185,8 +210,12 @@ class Products {
     localStorage.setItem("basket", JSON.stringify(this.basket));
   }
 
-  decreaseProductQuantity(id, colorName, size) {
-    const index = this.findIndexOfProductInBasket({ id, colorName, size });
+  decreaseProductQuantity(id, colorName, selectedSize) {
+    const index = this.findIndexOfProductInBasket({
+      id,
+      colorName,
+      selectedSize,
+    });
     if (index !== -1) {
       this.basket[index].quantity--;
       this.basket[index].productPrice -= this.basket[index].price;
