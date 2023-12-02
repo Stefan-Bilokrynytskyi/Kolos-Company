@@ -28,8 +28,9 @@ const Slider = observer(() => {
   };
   const navigate = useNavigate();
 
-  const onClickHandler = (link) =>
+  const onClickHandler = (link) => {
     navigate(`/collection-items/?collection=${link}`);
+  };
 
   return (
     <div className={classes.container}>

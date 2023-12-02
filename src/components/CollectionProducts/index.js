@@ -18,7 +18,8 @@ function CollectionProducts() {
 
     // Cleanup the autorun when the component unmounts
   }, [category]);
-
+  store.setUrl(window.location.href);
+  console.log(store.url);
   return (
     <div className={classes.products_page}>
       <Header />

@@ -330,17 +330,13 @@ class Products {
   async fetchCollectionProducts(url) {
     try {
       const response = await $api.get(url);
-      console.log(response);
-      // const regex = /(\?|&)(min_price|max_price)=[^&]*/g;
-      // const newUrl = url.replace(regex, "");
-      // const priceRangePerSize = await $api.get(newUrl);
+      this.updatePriceRange(
+        response.data.items[0].min_price,
+        response.data.items[0].max_price
+      );
 
       this.productPerpage = response.data.items;
       this.collectionDescription = response.data.collection;
-      // this.updatePriceRange(
-      //   priceRangePerSize.data.results[0].min_price,
-      //   priceRangePerSize.data.results[0].max_price
-      // );
     } catch (e) {
       console.log(e);
     }

@@ -8,7 +8,6 @@ import store from "../../store/Products";
 import { useLocation } from "react-router-dom";
 import PriceAccordion from "./PriceAccordion";
 import { useNavigate } from "react-router-dom";
-import { set } from "mobx";
 
 const Filter = observer(({ name }) => {
   const [toggle, setToggle] = useState(false);
