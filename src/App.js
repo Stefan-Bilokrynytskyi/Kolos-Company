@@ -8,6 +8,7 @@ import AboutPage from "./components/AboutPage";
 import CollectionProducts from "./components/CollectionProducts";
 import store from "./store/Products";
 import { useEffect, useState } from "react";
+import ReturnProductPage from "./components/ReturnProductPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -45,6 +46,7 @@ function App() {
           />
           <Route path="/basket" element={<BasketPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/return_product" element={<ReturnProductPage />} />
         </Routes>
       )}
     </div>

@@ -21,7 +21,7 @@ const Contacts = () => {
       </div>
       <div className={classes.menu_container}>
         <img src={Car} alt=""></img>
-        <Link to="/#">
+        <Link to="/return_product">
           <div className={classes.menu_link}>Доставка</div>
         </Link>
       </div>
