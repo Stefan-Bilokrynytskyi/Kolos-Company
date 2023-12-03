@@ -13,7 +13,7 @@ const Contacts = () => {
     <div className={classes.addition_block}>
       <div className={classes.menu_container}>
         <img src={Face} alt=""></img>
-        <Link to="/#">
+        <Link to="/contact-us">
           <div className={`${classes.menu_link} ${classes.more_gap}`}>
             Підтримка
           </div>
@@ -27,7 +27,7 @@ const Contacts = () => {
       </div>
       <div className={classes.menu_container}>
         <img src={Logo} alt="" className={classes.small_logo}></img>
-        <Link to="/#">
+        <Link to="/about">
           <div className={`${classes.menu_link} ${classes.more_gap}`}>
             Про нас
           </div>

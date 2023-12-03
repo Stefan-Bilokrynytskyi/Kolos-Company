@@ -1,16 +1,17 @@
 import { set } from "mobx";
-import classes from "./DeliveryForm.module.scss";
+import classes from "./Inputs.module.scss";
 import Input from "./Input";
 import { useState } from "react";
-import SwitchInput from "../../UI/SwitchInput";
 
-function DeliveryForm() {
+function Inputs({ nameChanger, phoneChanger, themeChanger }) {
   const [name, setName] = useState("");
   const [nameValid, setNameValid] = useState({ value: true, length: 0 });
-  const [surname, setSurname] = useState("");
-  const [surnameValid, setSurnameValid] = useState({ value: true, length: 0 });
+
   const [phone, setPhone] = useState("");
   const [phoneValid, setPhoneValid] = useState({ value: true, length: 0 });
+
+  const [theme, setTheme] = useState("");
+  const [themeValid, setThemeValid] = useState({ value: true, length: 2 });
 
   const nameChangeHandler = (e) => {
     const userName = e.target.value;
@@ -18,52 +19,31 @@ function DeliveryForm() {
     const regex = /^[a-zA-Zа-яА-ЯІіЇїЄє-]+$/;
 
     if (regex.test(userName)) {
-      if (userName.length >= 2)
+      if (userName.length >= 2) {
         setNameValid((nameValid) => ({
           ...nameValid,
           value: true,
           length: userName.length,
         }));
-      else
+        nameChanger(userName);
+      } else {
         setNameValid((nameValid) => ({
           ...nameValid,
           value: false,
           length: userName.length,
         }));
+        nameChanger("");
+      }
     } else {
       setNameValid((nameValid) => ({
         ...nameValid,
         value: false,
         length: userName.length,
       }));
+      nameChanger("");
     }
   };
 
-  const surnameChangeHandler = (e) => {
-    const userSurname = e.target.value;
-    setSurname(userSurname);
-    const regex = /^[a-zA-Zа-яА-ЯІіЇїЄє-]+$/;
-    if (regex.test(userSurname)) {
-      if (userSurname.length >= 2)
-        setSurnameValid((surnameValid) => ({
-          ...surnameValid,
-          value: true,
-          length: userSurname.length,
-        }));
-      else
-        setSurnameValid((surnameValid) => ({
-          ...surnameValid,
-          value: false,
-          length: userSurname.length,
-        }));
-    } else {
-      setSurnameValid((surnameValid) => ({
-        ...surnameValid,
-        value: false,
-        length: userSurname.length,
-      }));
-    }
-  };
   const phoneChangeHandler = (e) => {
     const userPhone = e.target.value;
     if (!/^[+0-9]{0,15}$/.test(userPhone)) return;
@@ -71,20 +51,26 @@ function DeliveryForm() {
     setPhone(userPhone);
 
     if (regex.test(userPhone)) {
-      console.log("correct");
       setPhoneValid((phoneValid) => ({
         ...phoneValid,
         value: true,
         length: userPhone.length,
       }));
+      phoneChanger(userPhone);
     } else {
-      console.log(";lol");
       setPhoneValid((phoneValid) => ({
         ...phoneValid,
         value: false,
         length: userPhone.length,
       }));
+      phoneChanger("");
     }
+  };
+
+  const themeChangeHandler = (e) => {
+    const theme = e.target.value;
+    setTheme(theme);
+    themeChanger(theme);
   };
 
   return (
@@ -97,22 +83,21 @@ function DeliveryForm() {
         isValid={nameValid}
       />
       <Input
-        title="Прізвище*"
-        value={surname}
-        onChange={surnameChangeHandler}
-        type="text"
-        isValid={surnameValid}
-      />
-      <Input
         title="Телефон*"
         value={phone}
         onChange={phoneChangeHandler}
         type="tel"
         isValid={phoneValid}
       />
-      <SwitchInput />
+      <Input
+        title="Тема запитання"
+        value={theme}
+        onChange={themeChangeHandler}
+        type="text"
+        isValid={themeValid}
+      />
     </div>
   );
 }
 
-export default DeliveryForm;
+export default Inputs;

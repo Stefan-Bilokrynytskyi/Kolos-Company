@@ -301,6 +301,7 @@ class Products {
   async fetchProducts(url) {
     try {
       const response = await $api.get(url);
+
       this.productPerpage = response.data.results;
       this.updatePriceRange(
         response.data.results[0].min_price,
@@ -330,6 +331,7 @@ class Products {
   async fetchCollectionProducts(url) {
     try {
       const response = await $api.get(url);
+      console.log(url);
       this.updatePriceRange(
         response.data.items[0].min_price,
         response.data.items[0].max_price
