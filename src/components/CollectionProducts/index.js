@@ -3,31 +3,25 @@ import Footer from "../Footer";
 import classes from "./CollectionProducts.module.scss";
 import CollectionStore from "./CollectionStore";
 import Filter from "../Filter";
-import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { toJS, runInAction } from "mobx";
+import { runInAction } from "mobx";
 import store from "../../store/Products";
 
 function CollectionProducts() {
-  const { category } = useParams();
-  useEffect(() => {
-    runInAction(() => {
-      store.setCategory(category);
-      store.getAccordion();
-    });
+  const currentUrl = window.location.href;
 
-    // Cleanup the autorun when the component unmounts
-  }, [category]);
-  store.setUrl(window.location.href);
+  // Find the index of "/collection-items"
+  const collectionItemsIndex = currentUrl.indexOf("/collection-items");
+
+  // Set the URL in the MobX store, starting from "/collection-items" onwards
+  store.setUrl(currentUrl.slice(collectionItemsIndex));
+
   console.log(store.url);
   return (
     <div className={classes.products_page}>
       <Header />
-
       <Filter name={"Фільтр"} />
-
-      <CollectionStore category={category} />
-
+      <CollectionStore />
       <Footer />
     </div>
   );

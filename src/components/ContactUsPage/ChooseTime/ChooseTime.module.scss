@@ -1,0 +1,125 @@
+.container {
+  margin-top: 12px;
+  color: #000;
+
+  font-family: Commissioner;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.accordion {
+  width: 100%;
+
+  background: #ffffff;
+  border: 2px solid #000000;
+}
+
+ul {
+  list-style: none; /* Remove bullets or markers */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+.accordion_visible {
+  background: #ffffff;
+  width: 100%;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #000000;
+
+  font-family: Commissioner;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 21px;
+}
+.accordion_visible span {
+  padding: 15px 30px 15px 6px;
+  font-size: 20px;
+}
+.accordion_visible img {
+  width: 20px;
+  transform: rotate(-180deg);
+  transition: transform 0.2s ease-in-out;
+  margin-right: 10px;
+}
+.accordion_visible img.active {
+  transform: rotate(0deg);
+}
+
+.accordion_toggle {
+  color: #000;
+  overflow: hidden;
+
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  color: #333;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.selectedValue {
+  color: #000;
+  text-decoration: none;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
+  width: 100%;
+
+  font-family: Commissioner;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+}
+
+.animated {
+  opacity: 1;
+
+  transition: all 0.5s ease-in-out;
+}
+
+.option {
+  color: #000;
+  text-decoration: none;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
+  width: 100%;
+  color: #909090;
+
+  font-family: Commissioner;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+}
+
+.list_categories {
+  margin: 8px 5px;
+}

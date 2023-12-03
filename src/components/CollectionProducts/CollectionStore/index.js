@@ -32,6 +32,7 @@ const CollectionStore = observer(({ category }) => {
       async function fetchData() {
         try {
           setProductsData(null);
+          console.log(store.url);
           await store.fetchCollectionProducts(`/api${store.url}`);
           const productsArr = toJS(store.productPerpage);
           const collectionDescription = toJS(store.collectionDescription);
@@ -46,7 +47,7 @@ const CollectionStore = observer(({ category }) => {
     return () => {
       dispose();
     };
-  }, [category, currentPage, currentUrl]);
+  }, [currentPage, currentUrl]);
 
   return (
     <div className={classes.store_conteiner}>

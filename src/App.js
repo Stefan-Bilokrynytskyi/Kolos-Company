@@ -6,6 +6,7 @@ import ProductItem from "./components/ProductItem";
 import BasketPage from "./components/BasketPage";
 import AboutPage from "./components/AboutPage";
 import CollectionProducts from "./components/CollectionProducts";
+import ContactUsPage from "./components/ContactUsPage";
 import store from "./store/Products";
 import { useEffect, useState } from "react";
 import ReturnProductPage from "./components/ReturnProductPage";
@@ -40,6 +41,7 @@ function App() {
           <Route path={`/products/:category/`} element={<Products />} />
           <Route path={`/products/:gender/:category/`} element={<Products />} />
           <Route path={`/collection-items/`} element={<CollectionProducts />} />
+          <Route path={`/contact-us/`} element={<ContactUsPage />} />
           <Route
             path="/products/:category/:id/:color"
             element={<ProductItem />}
