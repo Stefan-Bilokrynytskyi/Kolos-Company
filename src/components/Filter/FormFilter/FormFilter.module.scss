@@ -1,10 +1,11 @@
+@import "../../../styles/variables.scss";
 .form_container {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 .filter {
-  color: #545454;
+  color: $textColor;
 
   font-family: Inter;
   font-size: 17px;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import classes from "./ChooseTime.module.scss";
-import DropDown from "../../../icons/dropdown.svg";
+import DropDown from "../../../icons/dropdown-black.svg";
 
 export default function ChooseTime({ timeChanger }) {
   const [toggle, setToggle] = useState(false);

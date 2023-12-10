@@ -1,5 +1,6 @@
+@import "../../../styles/_variables.scss";
 .addition_block {
-  background-color: rgb(239, 233, 233);
+  background-color: $backgroundColor;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -12,7 +13,7 @@
   align-items: center;
   gap: 5px;
   .menu_link {
-    color: #000;
+    color: $textColor;
 
     font-family: Inter;
     font-size: 18px;

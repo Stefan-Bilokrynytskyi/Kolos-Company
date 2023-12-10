@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Accordion from "../Acordion/Acordion";
 import Burger from "../../icons/burger.svg";
-import Logo from "../../icons/logo.svg";
+import Logo from "../../icons/logo-black.svg";
 import Cart from "../../icons/cart.svg";
 import { Link } from "react-router-dom";
 import store from "../../store/Products";
@@ -46,7 +46,6 @@ const Header = observer(() => {
           </button>
         </div>
         <Link to="/" className={classes.logo_container}>
-          <div className={classes.name}>КОЛОС</div>
           <img src={Logo} className={classes.logo} alt="Logo"></img>
         </Link>
         <div className={classes.cart_conteiner}>
@@ -65,12 +64,7 @@ const Header = observer(() => {
               : ""
           }
         >
-          <div
-            className={classes.control_conteiner}
-            style={{
-              backgroundColor: store.isGlobalCategory ? "#fff" : "#efe9e9",
-            }}
-          >
+          <div className={classes.control_conteiner}>
             <button
               className={`${classes.nav_btn} ${classes.nav_cross_btn}`}
               onClick={showNavbar}

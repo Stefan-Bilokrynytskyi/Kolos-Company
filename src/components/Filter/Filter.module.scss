@@ -1,7 +1,8 @@
+@import "../../styles/_variables.scss";
 .accordion {
   width: 100%;
 
-  background: #ffffff;
+  background: #fff;
 }
 
 .accordion_visible {
@@ -9,12 +10,12 @@
   margin: 15px auto 0 auto;
   width: 92.5%;
   max-height: 41px;
-  background-color: #d9d9d9;
+  background-color: $backgroundColor;
   align-items: center;
   padding: 10px 0px;
   gap: 12px;
 
-  color: #000;
+  color: $textColor;
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
@@ -40,7 +41,7 @@
   flex: 1;
 }
 .accordion_toggle {
-  color: #000;
+  color: $textColor;
   width: 92.5%;
   margin: 0 auto;
 
@@ -61,7 +62,7 @@
 }
 
 .menu_link a {
-  color: #000;
+  color: $textColor;
   text-decoration: none;
   font-family: Inter;
   font-size: 15px;
@@ -82,7 +83,7 @@
 }
 
 .filters_container {
-  background-color: #d9d9d9;
+  background-color: $backgroundColor;
 }
 .control_buttons {
   display: flex;
@@ -94,7 +95,7 @@
     width: 120px;
 
     border-radius: 3px;
-    border: 1px solid #909090;
+    border: 1px solid #f6f6f6;
     text-align: center;
     margin: 20px 0px 31px 0px;
   }

@@ -1,6 +1,6 @@
 import classes from "./Footer.module.scss";
 
-import Logo from "../../icons/logo.svg";
+import Logo from "../../icons/logo-white.svg";
 import Mail from "../../icons/mail.svg";
 import Instagram from "../../icons/instagram.svg";
 import Phone from "../../icons/phone.svg";
@@ -14,7 +14,6 @@ function Footer() {
       <div className={classes.footer_content}>
         <div className={classes.footer_logo}>
           <img src={Logo} className={classes.logo} alt="logo" />
-          <h2>КОЛОС</h2>
         </div>
         <div className={classes.footer_links}>
           <Link to="/about">Про нас</Link>

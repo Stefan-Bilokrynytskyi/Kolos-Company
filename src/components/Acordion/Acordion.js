@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import classes from "./Acсordion.module.scss";
-import DropDown from "../../icons/dropdown.svg";
+import DropDown from "../../icons/dropdown-white.svg";
 import { Link } from "react-router-dom";
 
 export default function Accordion({ listMenu, name }) {
@@ -25,7 +25,7 @@ export default function Accordion({ listMenu, name }) {
       <button onClick={toggleState} className={classes.accordion_visible}>
         <span className={classes.name_category}>{name}</span>
         <img
-          className={toggle ? classes.active : ""}
+          className={toggle ? `${classes.active}` : ""}
           src={DropDown}
           alt="dropdown"
         />

@@ -1,3 +1,4 @@
+@import "../../../styles/_variables.scss";
 .accordion {
   width: 100%;
 }
@@ -7,12 +8,12 @@
 
   width: 100%;
   max-height: 41px;
-  background-color: #d9d9d9;
+  background-color: $backgroundColor;
   align-items: center;
   padding: 10px 0px;
   gap: 12px;
 
-  color: #000;
+  color: $textColor;
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
@@ -38,7 +39,7 @@
   flex: 1;
 }
 .accordion_toggle {
-  color: #000;
+  color: $textColor;
   overflow: hidden;
 
   font-family: Inter;
@@ -61,7 +62,7 @@
 }
 
 .menu_link a {
-  color: #000;
+  color: $textColor;
   text-decoration: none;
   font-family: Inter;
   font-size: 15px;

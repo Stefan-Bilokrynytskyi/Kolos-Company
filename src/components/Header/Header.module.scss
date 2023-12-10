@@ -1,7 +1,7 @@
+@import "../../styles/_variables.scss";
 :root {
   --mainColor: #ffffff;
-  --mainColorLight: #5767aa;
-  --secondaryColor: #000000;
+
   --textColor: #000000;
 }
 .header_conteiner {
@@ -69,7 +69,7 @@
   .cart_conteiner {
     display: flex;
     justify-content: flex-end;
-    flex: 1;
+
     .cart_quantity {
       margin-left: 4px;
     }
@@ -79,9 +79,9 @@
   }
   .logo_container {
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    gap: 7px;
+
     .name {
       color: #000;
 
@@ -93,19 +93,18 @@
     }
 
     .logo {
-      height: 34px;
-      width: 34px;
+      fill: #000000 !important;
     }
   }
 
   .cross {
     width: 20px;
     height: 20px;
+    fill: #ffffff;
   }
 
   .header_conteiner {
-    justify-content: flex-start;
-    gap: 7px;
+    justify-content: space-between;
   }
   .nav_btn {
     visibility: visible;
@@ -115,7 +114,6 @@
   .burger_menu {
     display: flex;
     justify-content: flex-start;
-    flex-basis: 34%;
   }
 
   .menu_nav {
@@ -141,7 +139,7 @@
 
   .responsive_nav {
     left: 0;
-    background-color: #efe9e9;
+    background-color: $backgroundColor;
   }
 
   .control_conteiner {

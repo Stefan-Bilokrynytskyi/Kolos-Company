@@ -2,15 +2,15 @@
   margin: 14px auto;
   width: 72.5%;
   height: 1px;
-  background-color: #000000;
+  background-color: #f6f6f6;
 }
 .slider_price .thumb {
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  background-color: #d9d9d9;
+  background-color: #0d2c1a;
   cursor: grab;
-  border: 2px solid rgb(0, 0, 0);
+  border: 2px solid #f6f6f6;
   transform: translate(0, -50%);
 }
 .thumb-0 {
@@ -28,4 +28,5 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  color: #f6f6f6;
 }

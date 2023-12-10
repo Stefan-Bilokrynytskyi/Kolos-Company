@@ -1,6 +1,6 @@
 import classes from "./Filter.module.scss";
 import React, { useState, useEffect, useRef } from "react";
-import DropDown from "../../icons/dropdown.svg";
+import DropDown from "../../icons/dropdown-white.svg";
 import FilterIcon from "../../icons/filter.svg";
 import SizeAccordion from "./SizeAccordion";
 import { observer } from "mobx-react-lite";
@@ -155,14 +155,14 @@ const Filter = observer(({ name }) => {
             <div className={classes.control_buttons}>
               <button
                 className={classes.control_button}
-                style={{ color: isClearButtonDisabled ? "gray" : "#000" }}
+                style={{ color: isClearButtonDisabled ? "gray" : "#f6f6f6" }}
                 onClick={clearFiltersHandler}
               >
                 Очистити
               </button>
               <button
                 className={classes.control_button}
-                style={{ color: store.isFiltersChanged ? "#000" : "gray" }}
+                style={{ color: store.isFiltersChanged ? "#f6f6f6" : "gray" }}
                 type="submit"
                 onClick={() => setAction("apply")}
                 disabled={!store.isFiltersChanged}

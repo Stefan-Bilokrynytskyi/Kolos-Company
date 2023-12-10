@@ -16,7 +16,7 @@ function Inputs({ nameChanger, phoneChanger, themeChanger }) {
   const nameChangeHandler = (e) => {
     const userName = e.target.value;
     setName(userName);
-    const regex = /^[a-zA-Zа-яА-ЯІіЇїЄє-]+$/;
+    const regex = /^[a-zA-Zа-яА-ЯІіЇїЄє\s-]+$/;
 
     if (regex.test(userName)) {
       if (userName.length >= 2) {
