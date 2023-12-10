@@ -1,0 +1,44 @@
+
+.container {
+  width: 90%;
+  margin: 30px auto;
+}
+
+.help_return {
+
+  .title_container {
+
+    h2 {
+      color: #000;
+      font-size: 30px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+  
+      .flexGrow {
+        height: 2px; 
+        // width: 100%;
+        background-color: #000; 
+        flex-grow: 1;
+        margin-left: 10px;
+      }
+
+  }
+
+  .second_title{
+    margin-bottom: 20px;
+  }
+
+  }
+  ul {
+    list-style-type: none;
+
+    li {
+      margin-bottom: 25px;
+
+      color: #000;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+}
