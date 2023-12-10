@@ -25,7 +25,7 @@ function Total() {
         </div>
       </div>
       <div className={classes.item_info}>
-        Кількість: {product.quantity} Колір: {product.colorName} Розмір:
+        Кількість: {product.quantity} Колір: {product.colorName} Розмір:{" "}
         {product.selectedSize}
       </div>
     </div>

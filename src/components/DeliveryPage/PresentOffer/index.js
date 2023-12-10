@@ -1,6 +1,6 @@
 import classes from "./PresentOffer.module.scss";
 import Stripe from "../../UI/Stripe";
-import Casual from "../../../img/Casual.jpg";
+import Casual from "../../../img/Rectangle.jpg";
 
 function PresentOffer() {
   return (

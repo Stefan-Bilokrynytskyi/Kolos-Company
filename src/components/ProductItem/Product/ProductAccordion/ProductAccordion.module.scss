@@ -1,3 +1,4 @@
+@import "../../../../styles/_global.scss";
 .accordion {
   width: 327px;
 
@@ -24,7 +25,7 @@ ul {
   border-top-right-radius: 3px;
   color: #000;
 
-  font-family: Inter;
+  font-family: "Commissioner", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -48,7 +49,7 @@ ul {
   color: #000;
   overflow: hidden;
 
-  font-family: Inter;
+  font-family: "Commissioner", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -69,7 +70,7 @@ ul {
 .menu_link a {
   color: #000;
   text-decoration: none;
-  font-family: Inter;
+  font-family: "Commissioner", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -85,4 +86,11 @@ ul {
 
 .list_categories {
   margin: 8px 25px;
+}
+.description {
+  font-family: "Commissioner", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

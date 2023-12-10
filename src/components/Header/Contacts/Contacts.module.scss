@@ -1,11 +1,9 @@
-@import "../../../styles/_variables.scss";
+@import "../../../styles/_global.scss";
 .addition_block {
   background-color: $backgroundColor;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-top: 12px;
-  margin-top: 5px;
 }
 .menu_container {
   margin-left: 18px;
@@ -15,8 +13,9 @@
   .menu_link {
     color: $textColor;
 
-    font-family: Inter;
-    font-size: 18px;
+    font-family: "Commissioner", sans-serif;
+
+    font-size: 17px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -47,4 +46,12 @@
     width: 30px;
     height: 34px;
   }
+}
+
+.stripe {
+  width: 100%;
+  background-color: #f6f6f6;
+  margin-left: 13px;
+  height: 1.75px;
+  margin-bottom: 14px;
 }

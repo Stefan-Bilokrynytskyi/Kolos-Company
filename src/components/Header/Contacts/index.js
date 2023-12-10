@@ -11,6 +11,7 @@ import telegram from "../../../icons/telegram.svg";
 const Contacts = () => {
   return (
     <div className={classes.addition_block}>
+      <div className={classes.stripe}></div>
       <div className={classes.menu_container}>
         <img src={Face} alt=""></img>
         <Link to="/contact-us">
@@ -33,6 +34,7 @@ const Contacts = () => {
           </div>
         </Link>
       </div>
+
       <div className={classes.menu_container}>
         <img src={mail} alt="" className={classes.mail}></img>
         <Link to="/#">

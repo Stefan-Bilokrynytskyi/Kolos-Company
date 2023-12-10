@@ -1,3 +1,4 @@
+@import "../../../styles/_global.scss";
 * {
   margin: 0;
   padding: 0;
@@ -35,6 +36,7 @@ button {
     }
 
     .price {
+      font-family: "Inter", sans-serif;
       color: #000;
       font-size: 17px;
       font-weight: 400;
@@ -98,7 +100,7 @@ button {
   }
 }
 .crossed_price {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -107,7 +109,7 @@ button {
 }
 .discount_price {
   color: #e80101;
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;

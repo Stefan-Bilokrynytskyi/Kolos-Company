@@ -1,4 +1,4 @@
-@import "../../styles/_variables";
+@import "../../styles/_global";
 .accordion {
   width: 100%;
 
@@ -48,8 +48,8 @@ ul {
   color: #000;
   overflow: hidden;
 
-  font-family: Inter;
-  font-size: 15px;
+  font-family: "Commissioner", sans-serif;
+  font-size: 17px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -69,8 +69,8 @@ ul {
 .menu_link a {
   color: $textColor;
   text-decoration: none;
-  font-family: Inter;
-  font-size: 15px;
+  font-family: "Commissioner", sans-serif;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

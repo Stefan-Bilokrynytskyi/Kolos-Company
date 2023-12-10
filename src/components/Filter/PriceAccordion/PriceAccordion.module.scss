@@ -1,4 +1,4 @@
-@import "../../../styles/_variables.scss";
+@import "../../../styles/_global.scss";
 .accordion {
   width: 100%;
 }
@@ -83,4 +83,9 @@
 }
 .name_category {
   margin-left: 4px;
+  font-family: "Commissioner", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

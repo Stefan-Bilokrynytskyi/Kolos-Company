@@ -28,6 +28,7 @@ export default function ProductAccordion({ name, text }) {
           className={toggle ? classes.active : ""}
           src={DropDown}
           alt="dropdown"
+          style={{ width: "20px", height: "20px" }}
         />
       </button>
 
@@ -40,7 +41,7 @@ export default function ProductAccordion({ name, text }) {
         style={{ height: heightEl }}
         ref={refHeight}
       >
-        {toggle && <div>{text}</div>}
+        {toggle && <div className={classes.description}>{text}</div>}
       </div>
     </div>
   );

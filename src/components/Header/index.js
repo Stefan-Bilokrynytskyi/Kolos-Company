@@ -55,7 +55,10 @@ const Header = observer(() => {
           </Link>
         </div>
 
-        <div className={classes.stripe}></div>
+        <div
+          className={classes.stripe}
+          style={{ display: isNavOpen ? "none" : "block" }}
+        ></div>
 
         <nav
           className={

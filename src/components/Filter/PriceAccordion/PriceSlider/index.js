@@ -1,4 +1,5 @@
 import "./PriceSlider.css";
+import classes from "./PriceSlider.module.scss";
 import React, { useState, useEffect } from "react";
 import store from "../../../../store/Products";
 import Slider from "react-slider";
@@ -35,9 +36,10 @@ const PriceSlider = observer(({ getPriceFilters }) => {
         pearling={false}
       />
       <div className={"slider_price_values"}>
-        <span>
-          {values[0]} - {values[1]} грн
+        <span className={classes.range}>
+          {values[0]} - {values[1]}
         </span>
+        грн
       </div>
     </div>
   );

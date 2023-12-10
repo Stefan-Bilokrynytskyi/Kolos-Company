@@ -46,10 +46,7 @@ const Slider = observer(() => {
           pagination={{ clickable: true }}
         >
           {slides.map((slide, index) => (
-            <SwiperSlide
-              key={slide.id}
-              onClick={() => onClickHandler(slide.link_name)}
-            >
+            <SwiperSlide key={slide.id}>
               <div className={classes.slider_container}>
                 <div
                   className={classes.collection_container}
@@ -58,7 +55,19 @@ const Slider = observer(() => {
                     justifyContent:
                       slides[0] === slide ? "flex-end" : "space-between",
                   }}
-                ></div>
+                >
+                  <div className={classes.flex_container}>
+                    <div className={classes.collection_name}>
+                      {slide.name.toUpperCase()}
+                    </div>
+                    <div
+                      className={classes.to_collection}
+                      onClick={() => onClickHandler(slide.link_name)}
+                    >
+                      До колекції
+                    </div>
+                  </div>
+                </div>
               </div>
             </SwiperSlide>
           ))}

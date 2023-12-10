@@ -1,11 +1,10 @@
-
+@import "../../../styles/_global.scss";
 .container {
   width: 90%;
   margin: 30px auto;
 }
 
 .conditions_section {
-  
 }
 
 .title_block {
@@ -25,9 +24,9 @@
     align-items: center;
 
     .flexGrow {
-      height: 2px; 
+      height: 2px;
       width: 100%;
-      background-color: #000; 
+      background-color: #000;
       flex-grow: 1;
       margin-left: 10px;
     }
@@ -42,10 +41,6 @@
   width: 100%;
 }
 
-
-
-
-
 .return_rules {
   margin-top: 20px;
 }
@@ -58,15 +53,7 @@
 .return_rules li {
   margin-bottom: 25px;
   color: #000;
-  font-family: Commissioner;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
-
-
-
 
 .return_benefits {
   margin-top: 30px;
@@ -104,4 +91,12 @@
       font-weight: 400;
     }
   }
+}
+
+.advantages {
+  font-family: "Commissioner", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

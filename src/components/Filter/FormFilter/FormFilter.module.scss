@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@import "../../../styles/_global.scss";
 .form_container {
   display: flex;
   flex-direction: column;
@@ -15,5 +15,23 @@
 }
 .label_container {
   display: flex;
+  align-items: center;
   gap: 3px;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+.checkbox:checked + .label {
+  background-image: url("../../../icons/checked.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.label {
+  content: "";
+  border-radius: 5px;
+  border: 2px solid #f6f6f6;
+
+  width: 17px;
+  height: 17px;
 }

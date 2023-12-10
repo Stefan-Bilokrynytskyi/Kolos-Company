@@ -28,7 +28,7 @@ const Sections = observer(() => {
       >
         <div className={classes.section_conteiner}>
           <div className={classes.section}>
-            <div className={classes.section_name}>Кежуал</div>
+            <div className={classes.section_name}>КЕЖУАЛ</div>
           </div>
         </div>
       </Link>
@@ -42,7 +42,7 @@ const Sections = observer(() => {
       >
         <div className={classes.section_conteiner}>
           <div className={classes.section_1}>
-            <div className={classes.section_name}>Класика</div>
+            <div className={classes.section_name}>КЛАСИКА</div>
           </div>
         </div>
       </Link>

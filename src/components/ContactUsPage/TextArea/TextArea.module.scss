@@ -1,10 +1,11 @@
+@import "../../../styles/_global.scss";
 .textarea {
   width: 100%;
   height: 93px;
   border: 2px solid #000000;
   padding: 1px 5px;
   color: #000;
-  font-family: Commissioner;
+  font-family: "Commissioner", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -12,9 +13,12 @@
 }
 .area {
   margin-top: 12px;
-  font-family: Commissioner;
+  font-family: "Commissioner", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.label {
+  font-family: "Commissioner", sans-serif;
 }

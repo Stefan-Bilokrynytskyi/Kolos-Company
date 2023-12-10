@@ -17,7 +17,10 @@ const DeliveryHeader = () => {
           alt="left-arrow"
           onClick={() => backToShopHandler()}
         />
-        <div onClick={() => backToShopHandler()}> Назад до покупок</div>
+        <div onClick={() => backToShopHandler()} className={classes.text}>
+          {" "}
+          Назад до покупок
+        </div>
       </div>
     </div>
   );

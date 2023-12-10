@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./FormFilter.module.scss";
 import store from "../../../store/Products";
-import { useEffect } from "react";
+import checked from "../../../icons/checked.svg";
 
 function FormFilter({ filters, getSizeFilters, currentSizes }) {
   const [checkboxStates, setCheckboxStates] = useState(
@@ -26,16 +26,18 @@ function FormFilter({ filters, getSizeFilters, currentSizes }) {
   return (
     <div className={classes.form_container}>
       {filters.map((filter) => (
-        <label key={filter} className={classes.label_container}>
+        <div key={filter} className={classes.label_container}>
           <input
+            className={classes.checkbox}
             type="checkbox"
             checked={checkboxStates[filter]}
             onChange={() => {
               handleCheckboxChange(filter);
             }}
           />
+          <label className={classes.label}></label>
           <div className={classes.filter}>{filter}</div>
-        </label>
+        </div>
       ))}
     </div>
   );

@@ -13,7 +13,10 @@ const NotificationHeader = ({ backToShopHandler }) => {
           alt="left-arrow"
           onClick={() => backToShopHandler(false)}
         />
-        <div onClick={() => backToShopHandler(false)}> Назад до покупок</div>
+        <div onClick={() => backToShopHandler(false)} className={classes.text}>
+          {" "}
+          Назад до покупок
+        </div>
       </div>
 
       <Stripe customStyles={{ width: "100%" }} />

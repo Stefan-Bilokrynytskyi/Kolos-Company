@@ -1,4 +1,4 @@
-@import "../../styles/_variables";
+@import "../../styles/_global";
 
 * {
   margin: 0;
@@ -63,6 +63,12 @@ a {
     gap: 4px;
 
     margin-top: 9px;
+    font-family: "Commissioner", sans-serif;
+    font-family: Commissioner;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 
     a {
       color: $textColor;

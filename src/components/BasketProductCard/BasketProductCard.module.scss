@@ -1,3 +1,4 @@
+@import "../..//styles/_global.scss";
 .product {
   display: flex;
   max-height: 93px;
@@ -51,5 +52,13 @@
     justify-content: flex-end;
 
     height: 100%;
+  }
+  .product_description p {
+    font-family: "Comissioner", sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #0d2c1a;
   }
 }

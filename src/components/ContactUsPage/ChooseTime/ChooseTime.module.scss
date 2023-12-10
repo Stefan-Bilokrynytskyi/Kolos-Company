@@ -1,8 +1,9 @@
+@import "../../../styles/_global.scss";
 .container {
   margin-top: 12px;
   color: #000;
 
-  font-family: Commissioner;
+  font-family: "Commissioner", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -10,6 +11,7 @@
 }
 
 .accordion {
+  margin-top: 7px;
   width: 100%;
 
   background: #ffffff;
@@ -35,7 +37,7 @@ ul {
   border-top-right-radius: 3px;
   color: #000000;
 
-  font-family: Commissioner;
+  font-family: "Commissioner", sans-serif;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -82,7 +84,7 @@ ul {
   display: block;
   width: 100%;
 
-  font-family: Commissioner;
+  font-family: "Commissioner", sans-serif;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -110,7 +112,7 @@ ul {
   width: 100%;
   color: #909090;
 
-  font-family: Commissioner;
+  font-family: "Commissioner", sans-serif;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -122,4 +124,19 @@ ul {
 
 .list_categories {
   margin: 8px 5px;
+}
+.label {
+  font-family: "Commissioner", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.name_category {
+  margin-left: 4px;
+  font-family: "Commissioner", sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

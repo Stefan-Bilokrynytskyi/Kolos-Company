@@ -36,14 +36,6 @@ function ProductCard({
     setSelectedColor(color);
     store.selectedColor = color;
   };
-  name = name
-    .split(" ")
-    .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
-
-  if (name.length >= 27) {
-    name = name.slice(0, 27) + "...";
-  }
 
   const uniqueColours = [...new Set(colours)];
 
@@ -78,7 +70,7 @@ function ProductCard({
             </span>
           </div>
         ) : (
-          <div>
+          <div className={classes.price}>
             {`${price}`}
             <span style={{ fontFamily: "Commissioner" }}> грн</span>
           </div>
