@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
 import { action, runInAction } from "mobx";
 import CollectionDescription from "./CollectionDescription";
+import Loading from "../../Loading";
 
 const CollectionStore = observer(({ category }) => {
   const [productsData, setProductsData] = useState(null);
@@ -59,7 +60,7 @@ const CollectionStore = observer(({ category }) => {
           <ListOfProducts productsData={productsData} />
         </div>
       ) : (
-        <p>Loading...</p>
+        <Loading isLoading={!productsData} />
       )}
     </div>
   );
