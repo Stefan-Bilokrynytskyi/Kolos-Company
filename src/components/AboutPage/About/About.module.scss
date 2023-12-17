@@ -1,3 +1,4 @@
+@import "../../../styles/_global.scss";
 * {
   margin: 0;
   padding: 0;
@@ -16,25 +17,21 @@ h1 {
     justify-content: center;
     width: 100%;
     height: 442px;
-    background: #D9D9D9;
-  
+    background: #d9d9d9;
+
     margin-bottom: 35px;
-  
+
     img {
       margin-bottom: 7px;
     }
-  
-    h1 {
-      color: #000;
-      font-size: 15px;
-      font-weight: 400;
-      margin-bottom: 12px;
-    }
-  
-    p {
-      color: #000;
-      font-size: 30px;
-      font-weight: 400;
+
+    .caption {
+      font-family: "Cochin";
+      font-size: 55px;
+      font-style: normal;
+
+      font-weight: 500;
+      line-height: normal;
     }
   }
 
@@ -44,20 +41,24 @@ h1 {
 
     h1 {
       color: #000;
+      font-family: "Cochin";
       font-size: 30px;
-      font-weight: 400;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
 
       margin-bottom: 7px;
     }
 
     p {
       color: #000;
+      font-family: "Commissioner", sans-serif;
       font-size: 20px;
+      font-style: normal;
       font-weight: 400;
+      line-height: normal;
     }
   }
-
-
 
   .pictures_grid {
     display: grid;
@@ -67,7 +68,7 @@ h1 {
   .pictures_grid_container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 1fr; 
+    grid-template-rows: 2fr 1fr;
     grid-gap: 10px;
     margin: 0 17px;
     margin-bottom: 55px;
@@ -80,32 +81,32 @@ h1 {
       height: 100%;
       object-fit: cover;
     }
-    
+
     .first_image {
       width: 184px;
       height: 258px;
       flex-shrink: 0;
 
       grid-column: 1 / 2; /* Занимает первую колонку */
-      grid-row: 1 / 3;    /* Занимает обе строки */
+      grid-row: 1 / 3; /* Занимает обе строки */
     }
-    
+
     .second_image {
       width: 149px;
       height: 159px;
       flex-shrink: 0;
 
       grid-column: 2 / 3; /* Занимает вторую колонку */
-      grid-row: 1 / 2;    /* Занимает только верхнюю строку */
+      grid-row: 1 / 2; /* Занимает только верхнюю строку */
     }
-    
+
     .third_image {
       width: 149px;
       height: 88px;
       flex-shrink: 0;
 
       grid-column: 2 / 3; /* Занимает вторую колонку */
-      grid-row: 2 / 3;    /* Занимает только нижнюю строку */
+      grid-row: 2 / 3; /* Занимает только нижнюю строку */
     }
   }
 
@@ -115,8 +116,11 @@ h1 {
 
     h1 {
       color: #000;
+      font-family: "Cochin";
       font-size: 30px;
-      font-weight: 400;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
 
       margin-bottom: 7px;
     }
@@ -127,8 +131,25 @@ h1 {
       font-weight: 400;
     }
   }
+
+  .subtitle_container {
+    position: relative;
+    margin-top: 32px;
+
+    // width: 347px;
+    .subtitle {
+      padding-right: 5px;
+      color: #000;
+
+      font-family: "Cochin";
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      background-color: rgb(255, 255, 255);
+      width: fit-content;
+      height: 39px;
+      z-index: 3;
+    }
+  }
 }
-
-
-
-

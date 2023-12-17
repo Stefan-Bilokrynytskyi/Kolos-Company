@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import Contacts from "./Contacts";
 import { toJS, runInAction } from "mobx";
-const Header = observer(() => {
+const Header = observer((props) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   let accordionSections = [];
   runInAction(() => {
@@ -34,30 +34,58 @@ const Header = observer(() => {
     };
   }, [isNavOpen]);
 
+  let logo, cart, burger, color, bgColor;
+
+  if (props.logo) {
+    logo = props.logo;
+    cart = props.cart;
+    burger = props.burger;
+    color = props.color;
+    bgColor = props.bgColor;
+    console.log(props.cart);
+  } else {
+    logo = Logo;
+    cart = Cart;
+    burger = Burger;
+    color = "black";
+    bgColor = "white";
+  }
+
   return (
     <header>
-      <div className={classes.header_conteiner}>
+      <div
+        className={classes.header_conteiner}
+        style={{ backgroundColor: `${bgColor}` }}
+      >
         {isNavOpen && (
           <div className={classes.overlay} onClick={showNavbar}></div>
         )}
         <div className={classes.burger_menu}>
           <button className={classes.nav_btn} onClick={showNavbar}>
-            <img src={Burger} alt="menu"></img>
+            <img src={burger} alt="menu"></img>
           </button>
         </div>
         <Link to="/" className={classes.logo_container}>
-          <img src={Logo} className={classes.logo} alt="Logo"></img>
+          <img src={logo} className={classes.logo} alt="Logo"></img>
         </Link>
         <div className={classes.cart_conteiner}>
           <Link to="/basket">
-            <img src={Cart} alt="cart"></img>
-            <div className={classes.cart_quantity}>{store.cartQuantity}</div>
+            <img src={cart} alt="cart"></img>
+            <div
+              className={classes.cart_quantity}
+              style={{ color: `${color}` }}
+            >
+              {store.cartQuantity}
+            </div>
           </Link>
         </div>
 
         <div
           className={classes.stripe}
-          style={{ display: isNavOpen ? "none" : "block" }}
+          style={{
+            display: isNavOpen ? "none" : "block",
+            backgroundColor: `${color}`,
+          }}
         ></div>
 
         <nav
@@ -74,7 +102,11 @@ const Header = observer(() => {
             >
               <AiOutlineClose className={classes.cross} />
             </button>
-            <div className={`${classes.stripe} ${classes.stripe_burger}`}></div>
+            {store.isGlobalCategory && (
+              <div
+                className={`${classes.stripe} ${classes.stripe_burger}`}
+              ></div>
+            )}
           </div>
           {store.isGlobalCategory && (
             <div className={classes.accordion_container}>

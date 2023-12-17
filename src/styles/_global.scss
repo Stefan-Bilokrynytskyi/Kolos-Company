@@ -1,4 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500&family=Inter:wght@400;500&display=swap");
+@font-face {
+  font-family: "Cochin";
+  src: url("../fonts/Cochin.eot");
+  src: url("../fonts/Cochin.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Cochin.woff2") format("woff2"),
+    url("../fonts/Cochin.woff") format("woff"),
+    url("../fonts/Cochin.ttf") format("truetype"),
+    url("../fonts/Cochin.svg#Cochin") format("svg");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cochin";
+  src: url("../fonts/Cochin-Bold.eot");
+  src: url("../fonts/Cochin-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Cochin-Bold.woff2") format("woff2"),
+    url("../fonts/Cochin-Bold.woff") format("woff"),
+    url("../fonts/Cochin-Bold.ttf") format("truetype"),
+    url("../fonts/Cochin-Bold.svg#Cochin-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
 
 $backgroundColor: #0d2c1a;
 $textColor: #f6f6f6;

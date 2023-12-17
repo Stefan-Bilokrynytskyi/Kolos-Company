@@ -1,3 +1,4 @@
+@import "../../../styles/_global.scss";
 .flex_container {
   display: flex;
   justify-content: center;
@@ -7,7 +8,7 @@
     background-color: #fff;
     padding: 3px 7px;
     color: #000;
-    font-family: LT Oksana;
+    font-family: "Cochin";
     font-size: 30px;
     font-style: normal;
     font-weight: 400;

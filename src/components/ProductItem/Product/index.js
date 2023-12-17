@@ -147,38 +147,40 @@ const Product = observer(({ product, color }) => {
               </Link>
             ))}
           </div>
-
-          <div className={classes.choose_size}>
-            <SizeButton
-              selectedSize={selectedSize}
-              handleSizeChange={handleSizeChange}
-              available={availableSizes.includes("S")}
-            >
-              S
-            </SizeButton>
-            <SizeButton
-              selectedSize={selectedSize}
-              handleSizeChange={handleSizeChange}
-              available={availableSizes.includes("M")}
-            >
-              M
-            </SizeButton>
-            <SizeButton
-              selectedSize={selectedSize}
-              handleSizeChange={handleSizeChange}
-              available={availableSizes.includes("L")}
-            >
-              L
-            </SizeButton>
-            <SizeButton
-              selectedSize={selectedSize}
-              handleSizeChange={handleSizeChange}
-              available={availableSizes.includes("XL")}
-            >
-              XL
-            </SizeButton>
+          <div className={classes.sizes}>
+            <div className={classes.choose_size}>
+              <SizeButton
+                selectedSize={selectedSize}
+                handleSizeChange={handleSizeChange}
+                available={availableSizes.includes("S")}
+              >
+                S
+              </SizeButton>
+              <SizeButton
+                selectedSize={selectedSize}
+                handleSizeChange={handleSizeChange}
+                available={availableSizes.includes("M")}
+              >
+                M
+              </SizeButton>
+              <SizeButton
+                selectedSize={selectedSize}
+                handleSizeChange={handleSizeChange}
+                available={availableSizes.includes("L")}
+              >
+                L
+              </SizeButton>
+              <SizeButton
+                selectedSize={selectedSize}
+                handleSizeChange={handleSizeChange}
+                available={availableSizes.includes("XL")}
+              >
+                XL
+              </SizeButton>
+            </div>
+            {warning && <div className={classes.warning}>Оберіть розмір</div>}
           </div>
-          {warning && <div className={classes.warning}>Оберіть розмір</div>}
+
           <Button onClick={handleCheckout} disabled={!isProductAvailable}>
             Додати в кошик
           </Button>

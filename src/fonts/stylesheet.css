@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Cochin';
+    src: url('Cochin.eot');
+    src: url('Cochin.eot?#iefix') format('embedded-opentype'),
+        url('Cochin.woff2') format('woff2'),
+        url('Cochin.woff') format('woff'),
+        url('Cochin.ttf') format('truetype'),
+        url('Cochin.svg#Cochin') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cochin';
+    src: url('Cochin-Bold.eot');
+    src: url('Cochin-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Cochin-Bold.woff2') format('woff2'),
+        url('Cochin-Bold.woff') format('woff'),
+        url('Cochin-Bold.ttf') format('truetype'),
+        url('Cochin-Bold.svg#Cochin-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

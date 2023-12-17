@@ -1,3 +1,4 @@
+@import "../../styles/_global";
 // .sections_container {
 //   display: flex;
 //   flex-wrap: wrap;
@@ -66,7 +67,7 @@
   }
   .section_name {
     color: #000;
-    font-family: Cochin;
+    font-family: "Cochin";
     font-size: 35px;
     font-style: normal;
     font-weight: 500;
@@ -83,7 +84,7 @@
     .name {
       color: #000;
 
-      font-family: LT Oksana;
+      font-family: "Cochin";
       font-size: 30px;
       font-style: normal;
       font-weight: 400;
