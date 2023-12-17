@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { toJS, runInAction } from "mobx";
 import { autorun } from "mobx";
+import Loading from "../Loading";
 
 import store from "../../store/Products";
 

@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
 import { action, runInAction } from "mobx";
 import Pagination from "../../Pagination";
+import Loading from "../../Loading";
 
 const ProductsStore = observer(({ category }) => {
   const [productsData, setProductsData] = useState(null);
@@ -54,7 +55,7 @@ const ProductsStore = observer(({ category }) => {
           <Pagination />
         </div>
       ) : (
-        <p>Loading...</p>
+        <Loading isLoading={!productsData} />
       )}
     </div>
   );

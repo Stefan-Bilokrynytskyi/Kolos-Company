@@ -1,4 +1,4 @@
-import React, { useState  } from "react";
+import React, { useState } from "react";
 import Header from "../Header";
 import classes from "./ProductItem.module.scss";
 import { useParams } from "react-router-dom";
@@ -6,6 +6,7 @@ import store from "../../store/Products";
 import { toJS } from "mobx";
 import { useEffect } from "react";
 import Product from "./Product";
+import Loading from "../Loading";
 
 function ProductItem() {
   const [product, setProduct] = useState(null);
@@ -34,7 +35,7 @@ function ProductItem() {
       {product ? (
         <Product product={product} color={"#" + color} />
       ) : (
-        <p>Loading...</p>
+        <Loading isLoading={!product} />
       )}
     </div>
   );
