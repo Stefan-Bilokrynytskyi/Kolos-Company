@@ -1,17 +1,16 @@
 @import "../../../styles/_global.scss";
 .card_conteiner {
-  height: 250px;
+  height: auto;
   color: #000;
   font-family: "Commissioner", sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 163px;
+  max-width: calc(50% - 7.5px);
   margin-bottom: 29px;
   .image {
-    width: 163px;
-    height: 204px;
+    width: 100%;
   }
   .caption {
     margin-top: 9px;
