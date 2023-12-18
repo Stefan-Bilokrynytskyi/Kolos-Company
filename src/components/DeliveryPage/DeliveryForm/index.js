@@ -3,6 +3,8 @@ import classes from "./DeliveryForm.module.scss";
 import Input from "./Input";
 import { useState } from "react";
 import SwitchInput from "../../UI/SwitchInput";
+import SelectArea from "../SelectArea";
+import areas from "./areas";
 
 function DeliveryForm() {
   const [name, setName] = useState("");
@@ -109,6 +111,11 @@ function DeliveryForm() {
         onChange={phoneChangeHandler}
         type="tel"
         isValid={phoneValid}
+      />
+      <SelectArea
+        valueList={areas}
+        label="Область*"
+        placeholder="Оберіть область"
       />
       <SwitchInput />
     </div>

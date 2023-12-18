@@ -22,15 +22,15 @@
   width: 12.5px;
   height: 12.5px;
   border-radius: 200px;
-  margin: 2px;
+  margin: 2px 3px;
   transition: 0.2s;
 }
 
 .switch_input:checked + .button {
-  background-color: #20096d;
+  background-color: #000000;
 }
 .switch_input:checked + .button::before {
-  transform: translateX(132%);
+  transform: translateX(142%);
 }
 .switch_input {
   display: none;

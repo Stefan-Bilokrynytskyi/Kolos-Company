@@ -29,6 +29,8 @@ class Products {
   setCheckboxStates;
   setValues;
   isDeliveryPageSelected;
+  cities = [];
+  departments = [];
   setDeliveryPageSelected(isDeliveryPageSelected) {
     this.isDeliveryPageSelected = isDeliveryPageSelected;
   }
@@ -369,6 +371,34 @@ class Products {
       const response = await $api.get("/api/items/"); //нужно исправить!
 
       this.allProducts = response.data;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async fetchCities(area) {
+    try {
+      const response = await $api.get("/api/np-city/", {
+        params: { area },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log(response);
+
+      this.cities = response.data;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  async fetchDepartments(cityRef) {
+    try {
+      const response = await $api.get("/api/np-warehouse/", {
+        params: { city_ref: cityRef },
+      });
+
+      this.departments = response.data;
     } catch (e) {
       console.error(e);
     }
