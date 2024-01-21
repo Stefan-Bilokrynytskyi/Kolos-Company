@@ -8,7 +8,6 @@ import Footer from "../Footer";
 import TextArea from "./TextArea";
 import ChooseTime from "./ChooseTime";
 import $api from "../http";
-import { type } from "@testing-library/user-event/dist/type";
 
 function ContactUsPage() {
   const [name, setName] = useState("");

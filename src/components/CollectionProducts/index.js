@@ -3,8 +3,6 @@ import Footer from "../Footer";
 import classes from "./CollectionProducts.module.scss";
 import CollectionStore from "./CollectionStore";
 import Filter from "../Filter";
-import { useEffect } from "react";
-import { runInAction } from "mobx";
 import store from "../../store/Products";
 
 function CollectionProducts() {

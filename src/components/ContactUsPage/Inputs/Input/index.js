@@ -1,5 +1,4 @@
 import React from "react";
-
 import classes from "./Input.module.scss";
 
 const Input = ({ title, value, onChange, type, isValid }) => {

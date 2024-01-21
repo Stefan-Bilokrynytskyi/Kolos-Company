@@ -5,7 +5,7 @@ import { toJS, autorun } from "mobx";
 import ListOfProducts from "../../ListOfProducts";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
-import { action, runInAction } from "mobx";
+import { action } from "mobx";
 import CollectionDescription from "./CollectionDescription";
 import Loading from "../../Loading";
 

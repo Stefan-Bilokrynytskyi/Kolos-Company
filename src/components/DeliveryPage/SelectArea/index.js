@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import classes from "./SelectArea.module.scss";
 import DropDown from "../../../icons/dropdown-black.svg";
 import store from "../../../store/Products";
-import { set } from "mobx";
 
 export default function SelectSearch({
   timeChanger,

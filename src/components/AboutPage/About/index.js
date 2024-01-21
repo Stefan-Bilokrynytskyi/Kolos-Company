@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./About.module.scss";
-import Logo from "../../../icons/logo.svg";
 import Rectangle from "../../../img/Rectangle.jpg";
 import Stripe from "../../UI/Stripe";
 

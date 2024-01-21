@@ -3,9 +3,7 @@ import classes from "./RecomendationsList.module.scss";
 import Recomendations from "./Recomendetions";
 import { observer } from "mobx-react-lite";
 import store from "../../../store/Products";
-
 import Slider from "react-slick";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { toJS } from "mobx";

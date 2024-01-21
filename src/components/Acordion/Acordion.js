@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import classes from "./Acсordion.module.scss";
 import DropDown from "../../icons/dropdown-white.svg";
-import { Link } from "react-router-dom";
 
 export default function Accordion({ listMenu, name }) {
   const [toggle, setToggle] = useState(false);
