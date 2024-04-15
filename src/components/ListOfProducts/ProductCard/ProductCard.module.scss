@@ -7,8 +7,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  max-width: calc(50% - 7.5px);
   margin-bottom: 29px;
+  width: 20%;
   .image {
     width: 100%;
   }
@@ -93,4 +93,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .card_conteiner {
+    width: 48%;
+  }
 }

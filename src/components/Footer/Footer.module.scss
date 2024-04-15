@@ -12,81 +12,224 @@ a {
 }
 
 .footer {
-  width: 100vh;
+  width: 100%;
+  height: 20.125rem;
 
+  padding: 45px 4px 62px 4px;
   background-color: $backgroundColor;
-  // position: fixed;
+
   bottom: 0;
   left: 0;
   justify-self: flex-end;
+  .footer_content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    align-items: center;
+    .footer_logo {
+      .logo {
+        width: 264px;
+        height: 63px;
+      }
+    }
+    .footer_links {
+      margin-left: 65px;
+      display: flex;
+      flex-direction: column;
+      gap: 21px;
+      .link {
+        display: flex;
+        align-items: center;
+        .face {
+          margin-right: 10px;
+        }
+        .car {
+          margin-right: 5px;
+        }
+        .arrow {
+          display: none;
+        }
+        a {
+          font-weight: 400;
+          font-size: 30px;
+          color: #f6f6f6;
+        }
+      }
+    }
+    .footer_icons {
+      margin-left: 115px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      .icon_container {
+        display: flex;
+        align-items: center;
+        .mail {
+          margin-right: 16px;
+        }
+        .inst,
+        .tg {
+          margin-right: 20px;
+        }
+        .phone {
+          margin-right: 24px;
+        }
+
+        a {
+          .icon_text {
+            font-family: "Commissioner", sans-serif;
+            font-weight: 400;
+            font-size: 30px;
+            color: #f6f6f6;
+            position: relative;
+
+            &:before {
+              content: "";
+              position: absolute;
+              bottom: 2px;
+              left: 0;
+              width: 100%;
+              height: 1.5px;
+              background-color: rgb(255, 255, 255);
+            }
+          }
+        }
+      }
+    }
+    .categories {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-left: 115px;
+      .category {
+        width: fit-content;
+        font-weight: 400;
+        font-size: 30px;
+        font-family: "Commissioner", sans-serif;
+        position: relative;
+        color: rgb(255, 255, 255);
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: 2px;
+          left: 0;
+          width: 100%;
+          height: 1.5px;
+          background-color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
 }
 
-.footer_content {
-  display: flex;
-  flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
-}
-
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 767.98px) {
   .footer {
     width: 100%;
-
+    height: 13.4rem;
+    padding: 0px 0px;
+    padding-bottom: 18px;
     background-color: $backgroundColor;
     margin-top: auto;
     color: $textColor;
-  }
 
-  .footer_content {
-    display: flex;
-    flex-direction: column;
-    // align-items: center;
-    justify-content: center;
-  }
-
-  .footer_logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 7px;
-  }
-
-  .footer_links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 12px;
-
-    margin-top: 9px;
-    margin-left: 15px;
-    font-family: "Commissioner", sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-
-    .link {
+    .footer_content {
       display: flex;
+      flex-direction: column;
       align-items: center;
-    }
+      justify-content: flex-start;
+      width: 100%;
 
-    a {
-      color: $textColor;
-      font-size: 20px;
-      font-weight: 400;
-      font-family: "Commissioner", sans-serif;
-    }
-  }
+      .categories {
+        display: none;
+      }
 
-  .footer_icons {
-    margin-top: 13px;
-    margin-left: 15px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    .icon {
-      margin-left: 3px;
+      .footer_logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 7px;
+        .logo {
+          width: 153px;
+          height: 37px;
+        }
+      }
+
+      .footer_links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 12px;
+
+        margin-top: 9px;
+        margin-left: 25px;
+        font-family: "Commissioner", sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        .link {
+          display: flex;
+          align-items: center;
+
+          .face,
+          .car {
+            display: none;
+          }
+
+          .arrow {
+            display: block;
+          }
+          a {
+            color: $textColor;
+            font-size: 20px;
+            font-weight: 400;
+            font-family: "Commissioner", sans-serif;
+          }
+        }
+      }
+      .footer_icons {
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+        .icon_container {
+          .icon {
+            margin-left: 3px;
+          }
+          .mail {
+            width: 37px;
+            height: 24px;
+            margin-right: 0;
+          }
+          .inst {
+            width: 25px;
+            height: 25px;
+            margin-right: 0;
+          }
+          .phone {
+            width: 26px;
+            height: 25px;
+            margin-right: 0;
+          }
+          .tg {
+            width: 31px;
+            height: 33px;
+            margin-right: 0;
+          }
+          a {
+            .icon_text {
+              display: none;
+            }
+          }
+        }
+      }
     }
   }
 }

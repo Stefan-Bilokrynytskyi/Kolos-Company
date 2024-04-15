@@ -1,4 +1,4 @@
-@import "../../styles/_global.scss";
+@import "../../../styles/_global.scss";
 :root {
   --mainColor: #ffffff;
 
@@ -54,7 +54,7 @@
 .search {
   display: none;
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 767.98px) {
   .overlay {
     z-index: 2;
     position: fixed;
@@ -94,6 +94,8 @@
 
     .logo {
       fill: #000000 !important;
+      height: 36px;
+      width: 147px;
     }
   }
 

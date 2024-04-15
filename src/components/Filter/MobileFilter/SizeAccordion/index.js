@@ -1,6 +1,6 @@
 import classes from "./SizeAccordion.module.scss";
 import React, { useState, useEffect, useRef } from "react";
-import DropDown from "../../../icons/dropdown-white.svg";
+import DropDown from "../../../../icons/dropdown-white.svg";
 
 import FormFilter from "../FormFilter";
 

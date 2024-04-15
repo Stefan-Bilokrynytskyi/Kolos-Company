@@ -1,11 +1,9 @@
-@media only screen and (max-width: 1024px) {
-  .stripe {
-    position: absolute;
-    //margin: 0 auto;
-    background-color: #000;
-    width: 92.5%;
+.stripe {
+  position: absolute;
+  //margin: 0 auto;
+  background-color: #000;
+  width: 100%;
 
-    height: 1.75px;
-    bottom: 0;
-  }
+  height: 1.75px;
+  bottom: 0;
 }

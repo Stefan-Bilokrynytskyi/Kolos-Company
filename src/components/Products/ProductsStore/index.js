@@ -5,7 +5,7 @@ import { toJS, autorun } from "mobx";
 import ListOfProducts from "../../ListOfProducts";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
-import { action, runInAction } from "mobx";
+import { action } from "mobx";
 import Pagination from "../../Pagination";
 import Loading from "../../Loading";
 
@@ -17,6 +17,7 @@ const ProductsStore = observer(({ category }) => {
     `https://kolos-api-prod.onrender.com/api`,
     ""
   );
+
   const searchParams = new URLSearchParams(location.search);
   let currentPage = searchParams.get("page");
 
@@ -50,10 +51,10 @@ const ProductsStore = observer(({ category }) => {
   return (
     <div className={classes.store_conteiner}>
       {productsData ? (
-        <div>
+        <>
           <ListOfProducts productsData={productsData} />
           <Pagination />
-        </div>
+        </>
       ) : (
         <Loading isLoading={!productsData} />
       )}

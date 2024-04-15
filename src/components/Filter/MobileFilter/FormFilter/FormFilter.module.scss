@@ -1,4 +1,4 @@
-@import "../../../styles/_global.scss";
+@import "../../../../styles/_global.scss";
 .form_container {
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
   position: absolute;
 }
 .checkbox:checked + .label {
-  background-image: url("../../../icons/checked.svg");
+  background-image: url("../../../../icons/checked.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }

@@ -108,7 +108,7 @@ function App() {
             path="/products/:category/:id/:color"
             element={<ProductItem />}
           />
-          <Route path="/basket" element={<BasketPage />} />
+          <Route path="/cart" element={<BasketPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/return_product" element={<ReturnProductPage />} />
         </Routes>

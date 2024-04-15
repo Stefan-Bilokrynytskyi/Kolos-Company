@@ -5,21 +5,20 @@ import store from "../../../store/Products";
 
 function ProductCard({
   id,
-  category,
-  gender,
   global_category,
   name,
-  price,
   image,
   colours,
   colours_sizes,
   collection,
-  discount,
 }) {
   const [selectedColor, setSelectedColor] = useState(colours[0]);
   const [selectedImage, setSelectedImage] = useState(image);
   const [quantity, setQuantity] = useState(colours_sizes[0].quantity);
-  const [discountValue, setDiscountValue] = useState(discount);
+  const [priceDefault, setPriceDefault] = useState(
+    colours_sizes[0].price_default
+  );
+  const [price, setPrice] = useState(colours_sizes[0].price_final);
 
   const selectColorHandler = (color) => {
     const updatedImage = colours_sizes.find((item) => item.hex === color)
@@ -27,13 +26,17 @@ function ProductCard({
     const updatedQuantity = colours_sizes.find(
       (item) => item.hex === color
     ).quantity;
-    const updatedDiscount = colours_sizes.find(
+    const updatedPriceDefault = colours_sizes.find(
       (item) => item.hex === color
-    ).discount;
-    setDiscountValue(updatedDiscount);
+    ).price_default;
+    const updatedPrice = colours_sizes.find(
+      (item) => item.hex === color
+    ).price_final;
+    setPriceDefault(updatedPriceDefault);
     setSelectedImage(updatedImage);
     setQuantity(updatedQuantity);
     setSelectedColor(color);
+    setPrice(updatedPrice);
     store.selectedColor = color;
   };
 
@@ -61,11 +64,13 @@ function ProductCard({
       )}
 
       <div className={classes.price_colors_conteiner}>
-        {discountValue && quantity ? (
+        {priceDefault !== price && quantity ? (
           <div>
-            <span className={classes.crossed_price}>{price}</span>
+            <span className={classes.crossed_price}>
+              {priceDefault.toFixed(2)}
+            </span>
             <span className={classes.discount_price}>
-              {` ${(((100 - discountValue) / 100) * price).toFixed(2)}`}
+              {` ${price.toFixed(2)}`}
               <span style={{ fontFamily: "Commissioner" }}> грн</span>
             </span>
           </div>

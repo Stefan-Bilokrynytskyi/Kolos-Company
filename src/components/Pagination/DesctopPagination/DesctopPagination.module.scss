@@ -1,0 +1,22 @@
+@import "../../../styles/_global.scss";
+.container {
+  margin: 1rem 0 6.25rem 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  .pagination_btn {
+    border: 2px solid #000;
+    border-radius: 3px;
+    width: 16.8rem;
+    padding: 0.2rem 0;
+    text-align: center;
+    font-weight: 300;
+    font-size: 30px;
+    font-family: "Commissioner", sans-serif;
+    &:hover {
+      cursor: pointer;
+      border-color: #c4c4c4;
+      color: #c4c4c4;
+    }
+  }
+}

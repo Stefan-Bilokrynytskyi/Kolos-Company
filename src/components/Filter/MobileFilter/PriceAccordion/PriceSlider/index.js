@@ -1,7 +1,7 @@
 import "./PriceSlider.css";
 import classes from "./PriceSlider.module.scss";
 import React, { useState, useEffect } from "react";
-import store from "../../../../store/Products";
+import store from "../../../../../store/Products";
 import Slider from "react-slider";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";

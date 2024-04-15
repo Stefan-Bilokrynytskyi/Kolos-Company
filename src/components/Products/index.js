@@ -1,17 +1,10 @@
 import Header from "../Header";
 import Footer from "../Footer";
-import ProductItem from "../ProductItem";
-import classes from "./Products.module.scss";
 import ProductsStore from "./ProductsStore";
 import Filter from "../Filter";
 import { useParams } from "react-router-dom";
-
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { toJS, runInAction } from "mobx";
-import { autorun } from "mobx";
-import Loading from "../Loading";
-
+import { runInAction } from "mobx";
 import store from "../../store/Products";
 
 function Products() {
@@ -26,15 +19,12 @@ function Products() {
   }, [category]);
 
   return (
-    <div className={classes.products_page}>
+    <>
       <Header />
-
-      <Filter name={"Фільтр"} />
-
+      <Filter />
       <ProductsStore category={category} />
-
       <Footer />
-    </div>
+    </>
   );
 }
 
