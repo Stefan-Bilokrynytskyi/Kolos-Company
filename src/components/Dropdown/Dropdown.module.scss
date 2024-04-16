@@ -1,4 +1,4 @@
-@import "../../../../../styles/_global";
+@import "../../styles/_global";
 .accordion {
   position: "relative";
   width: 100%;
@@ -6,11 +6,6 @@
   //background: transparent;
 }
 
-ul {
-  list-style: none; /* Remove bullets or markers */
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
-}
 .accordion_visible {
   background-color: transparent;
   width: 93.5%;
@@ -74,25 +69,4 @@ ul {
   opacity: 1;
 
   transition: all 0.5s ease-in-out;
-}
-
-.menu_link a {
-  color: #000;
-  text-decoration: none;
-  font-family: "Commissioner", sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  display: block;
-  width: 100%;
-}
-.menu_link {
-  margin-bottom: 16px;
-  display: block;
-  width: 100%;
-}
-
-.list_categories {
-  margin: 8px 25px;
 }

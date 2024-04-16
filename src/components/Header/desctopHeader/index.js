@@ -7,7 +7,6 @@ import store from "../../../store/Products";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { toJS, runInAction } from "mobx";
-import Dropdown from "./CategoriesMenu/Dropdown";
 import CategoriesMenu from "./CategoriesMenu";
 
 const DesctopHeader = observer((props) => {

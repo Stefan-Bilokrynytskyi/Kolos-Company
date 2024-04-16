@@ -1,5 +1,31 @@
 .accordion_container {
-  margin: 0 15px 0 4rem;
+  margin: 0 15px 0 2rem;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
+}
+
+.menu_link a {
+  color: #000;
+  text-decoration: none;
+  font-family: "Commissioner", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
+  width: 100%;
+}
+.menu_link {
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+}
+
+.list_categories {
+  margin: 8px 25px;
+}
+ul {
+  list-style: none; /* Remove bullets or markers */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 }

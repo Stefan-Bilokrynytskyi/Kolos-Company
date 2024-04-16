@@ -1,6 +1,8 @@
 import classes from "./DesctopPagination.module.scss";
+import store from "../../../store/Products";
 
 const DesctopPagination = () => {
+  console.log(store.nextUrl);
   const handlePaginationClick = () => {};
   return (
     <div className={classes.container}>

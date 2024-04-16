@@ -1,7 +1,7 @@
 import classes from "./PriceAccordion.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import DropDown from "../../../../icons/dropdown-white.svg";
-import PriceSlider from "./PriceSlider";
+import PriceSlider from "../../../PriceSlider";
 
 const PriceAccordion = ({ name, updateHeight, isOpen, getPriceFilters }) => {
   const [toggle, setToggle] = useState(false);

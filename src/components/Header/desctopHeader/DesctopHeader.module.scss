@@ -2,19 +2,19 @@
 .header_container {
   display: flex;
   align-items: center;
-  padding: 30px 40px 30px 20px;
-  width: calc(100% - 60px);
+  padding: 30px 20px 30px 20px;
+  width: calc(100% - 40px);
   //flex-wrap: wrap;
 
   .navigation_container {
     margin-left: 3rem;
     display: flex;
-    gap: 4rem;
+    gap: 2rem;
 
     .header_link {
       cursor: pointer;
       font-family: "Commissioner", sans-serif;
-      font-size: 28px;
+      font-size: 25px;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
@@ -34,6 +34,7 @@
 
   .cart_link {
     flex-grow: 1;
+    justify-self: flex-end;
     .cart_container {
       display: flex;
       gap: 2px;

@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import classes from "./Dropdown.module.scss";
-import DropDown from "../../../../../icons/dropdown-black.svg";
+import DropDown from "../../icons/dropdown-black.svg";
 
-export default function Accordion({ listMenu, name, isOpen, setIsOpen }) {
-  // const [toggle, setToggle] = useState(isToggle);
-
-  // const toggleState = () => {
-  //   setToggle(!toggle);
-  // };
-
+export default function Dropdown({
+  listMenu,
+  name,
+  isOpen,
+  setIsOpen,
+  children,
+}) {
+  console.log(children);
   return (
     <div className={classes.accordion}>
       <button onClick={setIsOpen} className={classes.accordion_visible}>
@@ -27,15 +28,7 @@ export default function Accordion({ listMenu, name, isOpen, setIsOpen }) {
             : `${classes.accordion_toggle}`
         }
       >
-        {isOpen && (
-          <ul className={classes.list_categories}>
-            {listMenu.map((menuItem, index) => (
-              <li className={classes.menu_link} key={index}>
-                {menuItem}
-              </li>
-            ))}
-          </ul>
-        )}
+        {isOpen && children}
       </div>
     </div>
   );

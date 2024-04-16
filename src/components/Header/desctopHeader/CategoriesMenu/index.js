@@ -1,5 +1,5 @@
 import classes from "./CategoriesMenu.module.scss";
-import Dropdown from "./Dropdown";
+import Dropdown from "../../../Dropdown";
 import { useState } from "react";
 
 const DesktopHeader = ({ accordionSections }) => {
@@ -26,7 +26,15 @@ const DesktopHeader = ({ accordionSections }) => {
           key={Object.keys(section)[0]}
           isOpen={section.isSelected}
           setIsOpen={() => closeMenuHandler(section)}
-        />
+        >
+          <ul className={classes.list_categories}>
+            {section[Object.keys(section)[0]].map((menuItem, index) => (
+              <li className={classes.menu_link} key={index}>
+                {menuItem}
+              </li>
+            ))}
+          </ul>
+        </Dropdown>
       ))}
     </div>
   );

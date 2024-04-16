@@ -70,7 +70,7 @@ const MobileHeader = observer((props) => {
           <img src={logo} className={classes.logo} alt="Logo"></img>
         </Link>
         <div className={classes.cart_conteiner}>
-          <Link to="/basket">
+          <Link to="/cart">
             <img src={cart} alt="cart"></img>
             <div
               className={classes.cart_quantity}
