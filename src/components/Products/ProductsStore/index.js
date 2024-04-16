@@ -53,7 +53,7 @@ const ProductsStore = observer(({ category }) => {
       {productsData ? (
         <>
           <ListOfProducts productsData={productsData} />
-          <Pagination />
+          <Pagination setProductsData={setProductsData} />
         </>
       ) : (
         <Loading isLoading={!productsData} />

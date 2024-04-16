@@ -303,6 +303,7 @@ class Products {
   async fetchProducts(url) {
     try {
       const response = await $api.get(url);
+      console.log(response);
 
       this.productPerpage = response.data.results;
       this.updatePriceRange(
@@ -325,6 +326,31 @@ class Products {
           )
         );
       this.setCount(response.data.count);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async fetchAdditionalProducts(url) {
+    try {
+      const response = await $api.get(url);
+
+      this.productPerpage = [...this.productPerpage, ...response.data.results];
+
+      if (response.data.previous)
+        this.setPrevUrl(
+          response.data.previous.replace(
+            "https://kolos-api-prod.onrender.com/api",
+            ""
+          )
+        );
+      if (response.data.next)
+        this.setNextUrl(
+          response.data.next.replace(
+            "https://kolos-api-prod.onrender.com/api",
+            ""
+          )
+        );
     } catch (e) {
       console.log(e);
     }

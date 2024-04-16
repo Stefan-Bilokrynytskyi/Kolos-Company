@@ -10,7 +10,6 @@ const Filters = () => {
     FILTERS.map((filter) => ({ filter, isSelected: false }))
   );
 
-  console.log(sections);
   const closeMenuHandler = (section) => {
     const newSections = sections.map((el) => {
       if (el !== section) {

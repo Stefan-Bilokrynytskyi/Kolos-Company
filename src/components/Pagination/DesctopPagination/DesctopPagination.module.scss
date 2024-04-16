@@ -19,4 +19,12 @@
       color: #c4c4c4;
     }
   }
+  .disabled {
+    border: 2px solid #e4e4e4;
+    color: #e4e4e4;
+    &:hover {
+      border: 2px solid #e4e4e4;
+      color: #e4e4e4;
+    }
+  }
 }
