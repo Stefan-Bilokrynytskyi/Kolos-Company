@@ -1,7 +1,7 @@
 @import "../..//styles/_global.scss";
 .product {
   display: flex;
-  max-height: 93px;
+  max-height: 13.0625rem;
 
   .cross_container {
     display: flex;
@@ -12,10 +12,10 @@
     }
   }
 
-  h2 {
+  .name {
     color: #000;
     font-family: "Cochin";
-    font-size: 18px;
+    font-size: 2.1875rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -45,8 +45,8 @@
     justify-content: space-between;
   }
   .img_basket {
-    height: 93px;
-    min-width: 74px;
+    height: 9.5rem;
+    min-width: 7.75rem;
   }
 
   .product_description {
@@ -56,12 +56,36 @@
 
     height: 100%;
   }
-  .product_description p {
+  .characteristic {
     font-family: "Comissioner", sans-serif;
-    font-size: 15px;
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     color: #0d2c1a;
+    .grey_text {
+      color: #b2b8b4;
+    }
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .product {
+    max-height: 5.8125rem;
+    .name {
+      font-size: 18px;
+    }
+  }
+
+  .product_info {
+    .characteristic {
+      font-size: 15px;
+      .grey_text {
+        color: black;
+      }
+    }
+    .img_basket {
+      height: 93px;
+      min-width: 74px;
+    }
   }
 }

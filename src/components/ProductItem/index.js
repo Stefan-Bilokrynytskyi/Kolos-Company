@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import store from "../../store/Products";
 import { toJS } from "mobx";
 import { useEffect } from "react";
-import Product from "./Product";
+import Product from "./Product/";
 import Loading from "../Loading";
 
 function ProductItem() {

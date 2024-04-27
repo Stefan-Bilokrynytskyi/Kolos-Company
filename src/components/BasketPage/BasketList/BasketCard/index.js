@@ -4,7 +4,8 @@ import store from "../../../../store/Products";
 import { observer } from "mobx-react-lite";
 import BasketOperations from "../BasketOperations";
 import BasketProductCard from "../../../BasketProductCard";
-
+import Stripe from "../../../UI/Stripe";
+import { useMediaQuery } from "react-responsive";
 const BasketProduct = observer(
   ({
     id,
@@ -45,6 +46,7 @@ const BasketProduct = observer(
       store.deleteFromBasket({ id, colorName, selectedSize: size });
     };
 
+    const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
     return (
       <div className={classes.product_container}>
         <BasketProductCard
@@ -63,6 +65,7 @@ const BasketProduct = observer(
           productPrice={productPrice}
           isIncreaseDisabled={isIncreaseDisabled}
         />
+        <Stripe customStyles={!isMobile && { backgroundColor: "#D9D9D9" }} />
       </div>
     );
   }

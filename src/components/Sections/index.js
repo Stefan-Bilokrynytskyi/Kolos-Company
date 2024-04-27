@@ -55,17 +55,17 @@ const Sections = observer(() => {
       </div>
       <div className={classes.caption}>
         <div className={classes.name_container}>
-          <div className={classes.name}>КОЛЕКЦІЇ</div>
           <Stripe
             customStyles={{
               backgroundColor: "black",
               left: "0",
               bottom: "50%",
               transform: "translate(0, 50%)",
-              zIndex: "-1",
+              zIndex: "0",
               width: "100%",
             }}
           />
+          <div className={classes.name}>КОЛЕКЦІЇ</div>
         </div>
       </div>
       <CollectionSlider />

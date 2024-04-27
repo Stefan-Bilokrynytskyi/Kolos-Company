@@ -22,10 +22,10 @@ const Filters = () => {
 
   return (
     <div className={classes.filters_container}>
-      {sections.map((section) => (
+      {sections.map((section, index) => (
         <Dropdown
           name={section.filter}
-          key={section.filter}
+          key={section.filter + index}
           isOpen={section.isSelected}
           setIsOpen={() => closeMenuHandler(section)}
         >

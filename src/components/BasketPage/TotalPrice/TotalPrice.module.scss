@@ -8,12 +8,14 @@
 
 .total_price_container {
   width: 90%;
+  position: relative;
 }
 
 .price_info {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   // margin-bottom: 16px;
 

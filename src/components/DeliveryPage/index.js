@@ -15,7 +15,7 @@ function DeliveryPage() {
         <DeliveryForm />
         <PresentOffer />
         <Total />
-        <Button>До оплати</Button>
+        <Button customStyles={{ marginTop: "20px" }}>До оплати</Button>
       </div>
     </div>
   );

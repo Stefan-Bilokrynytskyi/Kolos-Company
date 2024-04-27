@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Swiper, SwiperSlide, Navigation } from "swiper/react"; // Импортируем Navigation
+import { Swiper, SwiperSlide } from "swiper/react"; // Импортируем Navigation
 import "swiper/css";
 import classes from "./Swiper.module.scss";
 
@@ -39,7 +39,9 @@ const Slider = ({ slides }) => {
                 src={leftArrowIcon}
                 alt="Previous"
                 onClick={handlePrevClick}
-                className={slide === slides[0] ? classes.disabled : ""}
+                className={`${classes.arrow} ${
+                  slide === slides[0] ? classes.disabled : ""
+                }`}
               />
             </div>
 
@@ -49,9 +51,9 @@ const Slider = ({ slides }) => {
                 src={rightArrowIcon}
                 alt="Next"
                 onClick={handleNextClick}
-                className={
+                className={`${classes.arrow} ${
                   slide === slides[slides.length - 1] ? classes.disabled : ""
-                }
+                }`}
               />
             </div>
           </div>

@@ -35,6 +35,7 @@ function PresentOffer() {
           backgroundColor: "black",
           position: "relative",
           width: "100%",
+          marginBottom: "16px",
         }}
       />
     </div>

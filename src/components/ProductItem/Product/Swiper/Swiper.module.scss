@@ -1,26 +1,45 @@
 .image {
-  width: 325px;
-  height: 408px;
+  width: 87%;
+  //max-height: 43.75rem;
+  background-image: object-fit;
   background: #d9d9d9;
 }
-
-.slider_container {
-  position: relative;
+.arrow {
+  height: 47px;
+  width: 47px;
+  &:hover {
+    cursor: pointer;
+  }
 }
+
 .left_arrow {
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 0%;
   transform: translateY(-50%);
 }
 
 .right_arrow {
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 13%;
   transform: translateY(-50%);
 }
 
 .disabled {
   opacity: 0.5;
+}
+@media only screen and (max-width: 767.98px) {
+  .image {
+    width: 325px;
+    height: 408px;
+    background: #d9d9d9;
+  }
+  .arrow {
+    height: 24px;
+    width: 24px;
+  }
+  .right_arrow {
+    right: 0%;
+  }
 }

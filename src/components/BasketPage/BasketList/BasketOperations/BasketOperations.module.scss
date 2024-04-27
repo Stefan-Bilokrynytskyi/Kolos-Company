@@ -1,13 +1,47 @@
 .counter {
-  margin-left: 122px;
-  width: 100;
+  // width: 100%;
   display: flex;
   justify-content: flex-end;
+  gap: 5.5rem;
   margin-bottom: 20px;
   .quantity {
     margin: 0px 23px;
+    font-size: 1.5625rem;
+  }
+  .btn {
+    font-size: 1.5625rem;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .disabled {
+    color: #d1d1d1;
+    cursor: default !important;
   }
   .price {
-    margin-left: auto;
+    font-size: 1.5625rem;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .counter {
+    gap: 0;
+    margin-left: 122px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    .quantity {
+      margin: 0px 23px;
+      font-size: 1rem;
+    }
+    .price {
+      margin-left: auto;
+      font-size: 1rem;
+    }
+    .btn {
+      font-size: 1rem;
+      font-weight: bold;
+    }
   }
 }

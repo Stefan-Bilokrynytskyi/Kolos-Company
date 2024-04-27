@@ -1,15 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
 import classes from "./Dropdown.module.scss";
 import DropDown from "../../icons/dropdown-black.svg";
 
-export default function Dropdown({
-  listMenu,
-  name,
-  isOpen,
-  setIsOpen,
-  children,
-}) {
-  console.log(children);
+const Dropdown = ({ name, isOpen, setIsOpen, ...props }) => {
   return (
     <div className={classes.accordion}>
       <button onClick={setIsOpen} className={classes.accordion_visible}>
@@ -28,8 +20,10 @@ export default function Dropdown({
             : `${classes.accordion_toggle}`
         }
       >
-        {isOpen && children}
+        {isOpen && props.children}
       </div>
     </div>
   );
-}
+};
+
+export default Dropdown;

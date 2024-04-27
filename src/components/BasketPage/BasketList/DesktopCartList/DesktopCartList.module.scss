@@ -1,0 +1,19 @@
+@import "../../../../styles/_global.scss";
+.caption {
+  width: 100%;
+  text-align: center;
+  font-size: 3.75rem;
+  font-weight: 500;
+  font-family: "Cochin";
+}
+.flex_container {
+  margin-top: 1.9375rem;
+  padding: 0 55px;
+  display: flex;
+  align-items: flex-start;
+  gap: 3.5625rem;
+  .products_container {
+    flex-grow: 1;
+    position: relative;
+  }
+}

@@ -5,7 +5,6 @@ import store from "../../../../store/Products";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 import NotificationHeader from "./NotificationHeader";
-import { Link } from "react-router-dom";
 import Button from "../../../UI/Button";
 import { useNavigate } from "react-router-dom";
 
@@ -20,11 +19,11 @@ const BasketNotification = observer(
     const navigate = useNavigate();
     const toBasketHandler = () => {
       store.setDeliveryPageSelected(false);
-      navigate("/basket");
+      navigate("/cart");
     };
     const toDeliveryHandler = () => {
       store.setDeliveryPageSelected(store.isBasketProductsAvailable());
-      navigate("/basket");
+      navigate("/cart");
     };
 
     return (

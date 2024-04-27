@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import classes from "./Product.module.scss";
+import classes from "./MobileProduct.module.scss";
 import { Link } from "react-router-dom";
-import SizeButton from "./SizeButton/SizeButton";
-import store from "../../../store/Products";
+import SizeButton from "../SizeButton/SizeButton";
+import store from "../../../../store/Products";
 import { observer } from "mobx-react-lite";
-import Swiper from "./Swiper";
-import BasketNotification from "./BasketNotification";
-import ProductAccordion from "./ProductAccordion";
-import Stripe from "../../UI/Stripe";
-import Button from "../../UI/Button";
-import { set } from "mobx";
+import Swiper from "../Swiper";
+import BasketNotification from "../BasketNotification";
+import ProductAccordion from "../ProductAccordion";
+import Stripe from "../../../UI/Stripe";
+import Button from "../../../UI/Button";
 
-const Product = observer(({ product, color }) => {
+const MobileProduct = observer(({ product, color }) => {
   console.log(product);
   let colorName = "";
   const uniqueColours = [
@@ -83,7 +82,7 @@ const Product = observer(({ product, color }) => {
   };
 
   return (
-    <div>
+    <>
       {isProductSelected && (
         <BasketNotification
           id={product.id}
@@ -201,8 +200,8 @@ const Product = observer(({ product, color }) => {
           <Stripe customStyles={{ width: "100%" }} />
         </div>
       </div>
-    </div>
+    </>
   );
 });
 
-export default Product;
+export default MobileProduct;

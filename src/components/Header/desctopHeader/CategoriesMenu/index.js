@@ -16,14 +16,14 @@ const DesktopHeader = ({ accordionSections }) => {
     });
     setSections(newSections);
   };
-
+  console.log(sections);
   return (
     <div className={classes.accordion_container}>
-      {sections.map((section) => (
+      {sections.map((section, index) => (
         <Dropdown
           name={Object.keys(section)[0]}
           listMenu={section[Object.keys(section)[0]]}
-          key={Object.keys(section)[0]}
+          key={Object.keys(section)[0] + index}
           isOpen={section.isSelected}
           setIsOpen={() => closeMenuHandler(section)}
         >

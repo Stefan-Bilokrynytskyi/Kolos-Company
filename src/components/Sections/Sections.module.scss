@@ -41,7 +41,7 @@
           .section_name {
             color: #000;
             font-family: "Cochin";
-            font-size: 35px;
+            font-size: 3.75em;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
@@ -67,7 +67,7 @@
           .section_name {
             color: #000;
             font-family: "Cochin";
-            font-size: 35px;
+            font-size: 3.75em;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
@@ -81,21 +81,22 @@
   }
   .name_container {
     position: relative;
-    margin-top: 32px;
-
-    width: 347px;
+    margin: 2em 1.6875em 0 1.25em;
+    width: calc(100% - 47px);
     .name {
+      position: relative;
       color: #000;
-
+      width: fit-content;
       font-family: "Cochin";
-      font-size: 30px;
+      padding-right: 1.5625rem;
+      font-size: 3.75em;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
       background-color: rgb(255, 255, 255);
-      width: 146px;
-      height: 39px;
-      z-index: 3;
+      // width: 146px;
+      // height: 39px;
+      z-index: 4;
     }
   }
 }
@@ -137,7 +138,7 @@
             .section_name {
               color: #000;
               font-family: "Cochin";
-              font-size: 35px;
+              font-size: 2.1875em;
               font-style: normal;
               font-weight: 500;
               line-height: normal;
@@ -181,7 +182,7 @@
       .name_container {
         position: relative;
         margin-top: 32px;
-
+        margin-left: 0;
         width: 100%;
 
         .name {

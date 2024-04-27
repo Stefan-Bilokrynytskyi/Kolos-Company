@@ -19,11 +19,15 @@ const BasketProductCard = ({
           <img src={image} alt="america" className={classes.img_basket} />
 
           <div className={classes.info}>
-            <h2>{name}</h2>
+            <h2 className={classes.name}>{name}</h2>
 
             <div className={classes.product_description}>
-              <p>Колір: {colorName}</p>
-              <p>Розмір: {size}</p>
+              <p className={classes.characteristic}>
+                <span className={classes.grey_text}>Колір:</span> {colorName}
+              </p>
+              <p className={classes.characteristic}>
+                <span className={classes.grey_text}>Розмір:</span> {size}
+              </p>
             </div>
           </div>
         </div>

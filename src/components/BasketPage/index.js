@@ -31,8 +31,7 @@ const BasketPage = observer(() => {
           ) : (
             <>
               <BasketList toCashierHandler={toCashierHandler} />
-              <TotalPrice />
-              <RecomendationsList />
+              {/* <RecomendationsList /> */}
             </>
           )}
         </div>
