@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./SwitchInput.module.scss";
-import Stripe from "../Stripe";
 
 const SwitchInput = () => {
   return (

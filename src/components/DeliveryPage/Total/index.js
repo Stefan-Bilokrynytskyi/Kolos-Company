@@ -21,7 +21,8 @@ function Total() {
       <div className={classes.item_container}>
         <div className={classes.item_name}>{product.name}</div>
         <div className={classes.item_quantity}>
-          {(product.price * product.quantity).toFixed(2)}
+          {`${(product.price * product.quantity).toFixed(2)}    `}
+          <span>грн</span>
         </div>
       </div>
       <div className={classes.item_info}>
@@ -39,7 +40,7 @@ function Total() {
       {basketList}
       <div className={classes.total_price}>
         <div className={classes.total_caption}>Загальна сума</div>
-        <div>{store.calculateTotalPrice()}</div>
+        <div>{store.calculateTotalPrice()} грн</div>
       </div>
     </div>
   );

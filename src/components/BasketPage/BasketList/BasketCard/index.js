@@ -65,7 +65,11 @@ const BasketProduct = observer(
           productPrice={productPrice}
           isIncreaseDisabled={isIncreaseDisabled}
         />
-        <Stripe customStyles={!isMobile && { backgroundColor: "#D9D9D9" }} />
+        <Stripe
+          customStyles={
+            !isMobile && { position: "relative", backgroundColor: "#D9D9D9" }
+          }
+        />
       </div>
     );
   }

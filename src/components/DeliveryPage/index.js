@@ -5,19 +5,27 @@ import DeliveryForm from "./DeliveryForm";
 import PresentOffer from "./PresentOffer";
 import Total from "./Total";
 import Button from "../UI/Button";
+import Header from "../Header";
+import Footer from "../Footer";
+import { useMediaQuery } from "react-responsive";
 
 function DeliveryPage() {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
-    <div>
-      <DeliveryHeader />
+    <>
+      {isMobile ? <DeliveryHeader /> : <Header />}
       <div className={classes.delivery_container}>
         <PageCaption caption="Доставка" />
-        <DeliveryForm />
-        <PresentOffer />
-        <Total />
-        <Button customStyles={{ marginTop: "20px" }}>До оплати</Button>
+        <div className={classes.form_container}>
+          <DeliveryForm />
+          <PresentOffer />
+          <Total />
+
+          <Button customStyles={{ marginTop: "1.25rem" }}>До оплати</Button>
+        </div>
       </div>
-    </div>
+      {!isMobile && <Footer />}
+    </>
   );
 }
 

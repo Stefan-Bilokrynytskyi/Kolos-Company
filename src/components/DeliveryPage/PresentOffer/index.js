@@ -1,30 +1,42 @@
 import classes from "./PresentOffer.module.scss";
 import Stripe from "../../UI/Stripe";
 import Casual from "../../../img/Rectangle.jpg";
+import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 function PresentOffer() {
+  const [isChecked, setIsChecked] = useState(false);
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   return (
     <div>
       <div className={classes.name_container}>
         <div className={classes.name}>ХОЧЕТЕ ЗРОБИТИ ПОДАРУНОК?</div>
-        <Stripe
-          customStyles={{
-            backgroundColor: "black",
-            left: "0",
-            bottom: "75%",
-            transform: "translate(0, 50%)",
-            zIndex: "-1",
-            width: "100%",
-          }}
-        />
+        {isMobile && (
+          <Stripe
+            customStyles={{
+              backgroundColor: "black",
+              left: "0",
+              bottom: "75%",
+              transform: "translate(0, 50%)",
+              zIndex: "-1",
+              width: "100%",
+            }}
+          />
+        )}
       </div>
-      <label className={classes.checkbox_container}>
-        <input type="checkbox" className={classes.checkbox} />
+      <div className={classes.checkbox_container}>
+        <input
+          type="checkbox"
+          className={classes.checkbox}
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        />
+        <label className={classes.label}></label>
         <div className={classes.add_package}>
           Додати подарункове пакування до замовлення
         </div>
-        <div className={classes.price}>65</div>
-      </label>
+        <div className={classes.price}>65 грн</div>
+      </div>
       <div className={classes.description}>
         Замовлення буде надіслано у фірмовому папері і коробці від бренду
         “Колос”

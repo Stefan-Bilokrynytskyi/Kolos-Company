@@ -42,7 +42,6 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  height: 21px;
 }
 .accordion_visible span {
   padding: 15px 30px 15px 6px;
@@ -73,7 +72,7 @@ ul {
   width: 100%;
 
   font-family: "Commissioner", sans-serif;
-  font-size: 17px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -97,13 +96,16 @@ ul {
   color: #909090;
 
   font-family: "Commissioner", sans-serif;
-  font-size: 17px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   margin-bottom: 16px;
   display: block;
   width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .list_categories {
@@ -112,7 +114,7 @@ ul {
 }
 .label {
   font-family: "Commissioner", sans-serif;
-  font-size: 20px;
+  font-size: 1.5625rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -131,12 +133,22 @@ ul {
   flex: 1;
   height: 100%;
   font-family: "Commissioner", sans-serif;
-  font-size: 17px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   padding-left: 6px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 input:focus {
   outline: none;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .label,
+  .input {
+    font-size: 20px;
+  }
 }

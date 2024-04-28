@@ -9,52 +9,25 @@ import BasketNotification from "../BasketNotification";
 import ProductAccordion from "../ProductAccordion";
 import Stripe from "../../../UI/Stripe";
 import Button from "../../../UI/Button";
+import { findInfo } from "../utils";
 
 const MobileProduct = observer(({ product, color }) => {
   console.log(product);
-  let colorName = "";
+
   const uniqueColours = [
     ...new Set(product.sizes_color_quantity.map((item) => item.hex)),
   ];
-  const findAvailableSizes = (color) => {
-    let sizes = [];
-    product.sizes_color_quantity.forEach((item) =>
-      item.hex === color && item.quantity > 0 ? sizes.push(item.size) : null
-    );
 
-    return sizes;
-  };
-  const findImage = (color) => {
-    const index = product.sizes_color_quantity.findIndex(
-      (item) => item.hex === color
-    );
-    const slides = product.sizes_color_quantity[index].photo_urls;
-    colorName = product.sizes_color_quantity[index].color;
-    return slides;
-  };
-
-  const findDiscount = (color) =>
-    product.sizes_color_quantity.find((item) => item.hex === color).discount;
-
-  // Доступні розміри [S, M, L, XL
+  const [productInfo, setProductInfo] = useState(findInfo(color, product));
   const [selectedColor, setSelectedColor] = useState(color); // Обраний колір
-  const [selectedSize, setSelectedSize] = useState(); // Обраний розмір
-  const [selectedSlides, setSelectedSlides] = useState(findImage(color)); // Обране зображення [photo_url
-  const [discount, setDiscount] = useState(findDiscount(color)); // Знижка [0, 10, 20, 30, 40, 50
-  const [availableSizes, setAvailableSizes] = useState(
-    findAvailableSizes(selectedColor)
-  );
+  const [selectedSize, setSelectedSize] = useState(null); // Обраний розмір
+
   const [warning, setWarning] = useState(false);
   const [isProductSelected, setIsProductSelected] = useState(false); // Повідомлення про додавання в кошик
-  const isProductAvailable =
-    product.sizes_color_quantity.find((item) => item.hex === color).quantity >
-    0;
 
   const handleColorChange = (color) => {
     setSelectedColor(color);
-    setAvailableSizes(findAvailableSizes(color));
-    setSelectedSlides(findImage(color));
-    setDiscount(findDiscount(color));
+    setProductInfo(findInfo(color, product));
     setSelectedSize();
   };
 
@@ -64,9 +37,9 @@ const MobileProduct = observer(({ product, color }) => {
   };
 
   const handleCheckout = () => {
-    const selectedImage = selectedSlides[0];
-    if (discount)
-      product.price = (((100 - discount) / 100) * product.price).toFixed(2);
+    const selectedImage = productInfo.slides[0];
+    const price = productInfo.priceActual;
+    const colorName = productInfo.colorName;
     if (selectedSize) {
       store.addToBasket({
         ...product,
@@ -74,6 +47,7 @@ const MobileProduct = observer(({ product, color }) => {
         selectedSize,
         selectedImage,
         colorName,
+        price,
         quantity: 1,
       });
 
@@ -86,7 +60,7 @@ const MobileProduct = observer(({ product, color }) => {
       {isProductSelected && (
         <BasketNotification
           id={product.id}
-          colorName={colorName}
+          colorName={productInfo.colorName}
           size={selectedSize}
           setIsProductSelected={setIsProductSelected}
         />
@@ -107,23 +81,26 @@ const MobileProduct = observer(({ product, color }) => {
               </div>
             )}
           </div>
-          <Swiper slides={selectedSlides} />
-          {!isProductAvailable && (
+          <Swiper slides={productInfo.slides} />
+          {!productInfo.isProductAvailable && (
             <div className={classes.notAvailable_caption}>
               Немає в наявності
             </div>
           )}
-          {discount ? (
+          {productInfo.priceActual < productInfo.priceDefault ? (
             <div className={classes.price}>
-              <span className={classes.crossed_price}>{product.price}</span>
+              <span className={classes.crossed_price}>
+                {productInfo.priceDefault}
+              </span>
               <span className={classes.discount_price}>
-                {` ${((100 - discount) / 100) * product.price}`}
+                {" "}
+                {productInfo.priceActual}
                 <span style={{ fontFamily: "Commissioner" }}> грн</span>
               </span>
             </div>
           ) : (
             <div className={classes.price}>
-              {product.price}{" "}
+              {productInfo.priceActual}{" "}
               <span style={{ fontFamily: "Commissioner" }}> грн</span>
             </div>
           )}
@@ -151,28 +128,28 @@ const MobileProduct = observer(({ product, color }) => {
               <SizeButton
                 selectedSize={selectedSize}
                 handleSizeChange={handleSizeChange}
-                available={availableSizes.includes("S")}
+                available={productInfo.sizes.includes("S")}
               >
                 S
               </SizeButton>
               <SizeButton
                 selectedSize={selectedSize}
                 handleSizeChange={handleSizeChange}
-                available={availableSizes.includes("M")}
+                available={productInfo.sizes.includes("M")}
               >
                 M
               </SizeButton>
               <SizeButton
                 selectedSize={selectedSize}
                 handleSizeChange={handleSizeChange}
-                available={availableSizes.includes("L")}
+                available={productInfo.sizes.includes("L")}
               >
                 L
               </SizeButton>
               <SizeButton
                 selectedSize={selectedSize}
                 handleSizeChange={handleSizeChange}
-                available={availableSizes.includes("XL")}
+                available={productInfo.sizes.includes("XL")}
               >
                 XL
               </SizeButton>
@@ -180,7 +157,10 @@ const MobileProduct = observer(({ product, color }) => {
             {warning && <div className={classes.warning}>Оберіть розмір</div>}
           </div>
 
-          <Button onClick={handleCheckout} disabled={!isProductAvailable}>
+          <Button
+            onClick={handleCheckout}
+            disabled={!productInfo.isProductAvailable}
+          >
             Додати в кошик
           </Button>
         </div>

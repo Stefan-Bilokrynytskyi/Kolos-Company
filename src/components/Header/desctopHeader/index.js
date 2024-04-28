@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { toJS, runInAction } from "mobx";
 import CategoriesMenu from "./CategoriesMenu";
+import Stripe from "../../UI/Stripe";
 
 const DesctopHeader = observer((props) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -33,8 +34,8 @@ const DesctopHeader = observer((props) => {
   }, [isNavOpen]);
 
   return (
-    <header>
-      <div className={classes.header_container}>
+    <>
+      <header className={classes.header_container}>
         <Link to="/">
           <img src={Logo} alt="Logo"></img>
         </Link>
@@ -60,8 +61,16 @@ const DesctopHeader = observer((props) => {
             <div className={classes.cart_quantity}>{store.cartQuantity}</div>
           </div>
         </Link>
+      </header>
+      <div
+        style={{
+          position: "relative",
+          margin: "0 3.1875rem",
+        }}
+      >
+        <Stripe customStyles={{ backgroundColor: "#d1d1d1" }} />
       </div>
-    </header>
+    </>
   );
 });
 

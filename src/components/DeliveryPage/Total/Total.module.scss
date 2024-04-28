@@ -15,6 +15,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 6px;
+    gap: 2px;
     .item_name {
       color: #000;
       font-family: Cochin;
@@ -22,6 +23,7 @@
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+      max-width: 75%;
     }
     .item_quantity {
       color: #000;
