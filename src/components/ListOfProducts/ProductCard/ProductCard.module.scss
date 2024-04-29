@@ -19,6 +19,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 300;
+    font-size: 1.875rem;
   }
   .price_colors_conteiner {
     display: flex;
@@ -28,14 +30,16 @@
 
     .price {
       font-family: "Inter", sans-serif;
+      font-size: 1.5625rem;
     }
 
     .colours_conteiner {
       display: flex;
       gap: 4px;
       .color_of_product {
-        width: 17px;
-        height: 17px;
+        width: 1.875rem;
+        height: 1.875rem;
+
         border-radius: 50%;
         &:hover {
           cursor: pointer;
@@ -74,16 +78,15 @@
 
 .collection_text {
   color: #979797;
-
+  font-size: 1.25rem;
   font-family: "Commissioner", sans-serif;
-  font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 .crossed_price {
   font-family: "Inter", sans-serif;
-  font-size: 13px;
+  font-size: 1.5625rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -92,7 +95,8 @@
 .discount_price {
   color: #e80101;
   font-family: "Inter", sans-serif;
-  font-size: 15px;
+  font-size: 1.5625rem;
+
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -102,5 +106,28 @@
   .card_conteiner {
     width: 48%;
     margin-bottom: 29px;
+    .caption {
+      font-size: 1rem;
+    }
+    .price_colors_conteiner {
+      .price {
+        font-size: 15px;
+      }
+      .colours_conteiner {
+        .color_of_product {
+          width: 17px;
+          height: 17px;
+        }
+      }
+    }
+  }
+  .discount_price {
+    font-size: 15px;
+  }
+  .crossed_price {
+    font-size: 13px;
+  }
+  .collection_text {
+    font-size: 13px;
   }
 }

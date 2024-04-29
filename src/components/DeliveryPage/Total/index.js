@@ -26,8 +26,9 @@ function Total() {
         </div>
       </div>
       <div className={classes.item_info}>
-        Кількість: {product.quantity} Колір: {product.colorName} Розмір:{" "}
-        {product.selectedSize}
+        Кількість: {product.quantity}
+        <br className={classes.line_translation} /> Колір: {product.colorName}{" "}
+        Розмір: {product.selectedSize}
       </div>
     </div>
   ));
@@ -40,7 +41,7 @@ function Total() {
       {basketList}
       <div className={classes.total_price}>
         <div className={classes.total_caption}>Загальна сума</div>
-        <div>{store.calculateTotalPrice()} грн</div>
+        <div className={classes.price}>{store.calculateTotalPrice()} грн</div>
       </div>
     </div>
   );

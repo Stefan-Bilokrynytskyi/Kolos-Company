@@ -404,7 +404,7 @@ class Products {
 
   async fetchCities(area) {
     try {
-      const response = await $api.get("/api/np-city/", {
+      const response = await $api.post("/api/np-city/", {
         params: { area },
         headers: {
           "Content-Type": "application/json",

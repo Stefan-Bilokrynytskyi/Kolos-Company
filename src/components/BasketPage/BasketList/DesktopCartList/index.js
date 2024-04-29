@@ -5,9 +5,7 @@ import BasketCard from "../BasketCard";
 import store from "../../../../store/Products";
 import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
-import PageCaption from "../../../UI/PageCaption";
 import Button from "../../../UI/Button";
-import TotalPrice from "../../TotalPrice";
 import Total from "../../../DeliveryPage/Total";
 import Stripe from "../../../UI/Stripe";
 

@@ -11,6 +11,13 @@ import { useMediaQuery } from "react-responsive";
 
 function DeliveryPage() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const btnStyles = isMobile
+    ? { marginTop: "1.25rem" }
+    : {
+        marginTop: "1.25rem",
+        height: "3.25rem",
+        fontSize: "1.875rem",
+      };
   return (
     <>
       {isMobile ? <DeliveryHeader /> : <Header />}
@@ -21,7 +28,7 @@ function DeliveryPage() {
           <PresentOffer />
           <Total />
 
-          <Button customStyles={{ marginTop: "1.25rem" }}>До оплати</Button>
+          <Button customStyles={btnStyles}>До оплати</Button>
         </div>
       </div>
       {!isMobile && <Footer />}

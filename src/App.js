@@ -71,6 +71,7 @@ import store from "./store/Products";
 import { useEffect, useState } from "react";
 import ReturnProductPage from "./components/ReturnProductPage";
 import Loading from "./components/Loading";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -94,6 +95,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScrollToTop />
       {isLoading ? (
         <Loading isLoading={isLoading} />
       ) : (

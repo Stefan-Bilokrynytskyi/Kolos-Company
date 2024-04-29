@@ -3,6 +3,7 @@
   padding: 9px 11px;
   border: 2px solid #000;
   .quantity_products {
+    color: #909090;
     margin-bottom: 15px;
     font-family: "Commissioner", sans-serif;
     font-size: 15px;
@@ -19,7 +20,7 @@
     .item_name {
       color: #000;
       font-family: Cochin;
-      font-size: 25px;
+      font-size: 1.875rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -28,10 +29,11 @@
     .item_quantity {
       color: #000;
       font-family: "inter", sans-serif;
-      font-size: 15px;
+      font-size: 1.25rem;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
+      white-space: nowrap;
     }
   }
   .item_info {
@@ -51,13 +53,44 @@
     .total_caption {
       color: #000;
       font-family: Cochin;
-      font-size: 25px;
+      font-size: 1.875rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
     }
+    .price {
+      font-size: 1.25rem;
+      white-space: nowrap;
+    }
   }
   .total_product {
     margin-bottom: 14px;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .total_container {
+    .item_container {
+      .item_name {
+        font-size: 25px;
+        max-width: 85%;
+      }
+      .item_quantity {
+        font-size: 15px;
+      }
+    }
+    .total_price {
+      .total_caption {
+        font-size: 25px;
+      }
+      .price {
+        font-size: 0.9375rem;
+      }
+    }
+    .item_info {
+      .line_translation {
+        display: none;
+      }
+    }
   }
 }

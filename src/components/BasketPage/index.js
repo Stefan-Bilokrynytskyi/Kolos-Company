@@ -18,11 +18,11 @@ const BasketPage = observer(() => {
     setIsDeliveryPageSlected(true);
   };
   return (
-    <div>
+    <>
       {isDeliveryPageSlected ? (
         <DeliveryPage />
       ) : (
-        <div>
+        <>
           <Header />
           {store.basket.length === 0 ? (
             <>
@@ -34,9 +34,9 @@ const BasketPage = observer(() => {
               {/* <RecomendationsList /> */}
             </>
           )}
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 });
 

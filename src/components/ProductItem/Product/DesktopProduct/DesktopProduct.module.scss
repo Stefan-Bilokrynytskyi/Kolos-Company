@@ -139,7 +139,8 @@
       margin-bottom: 23px;
     }
     .checkout_container {
-      width: 40%;
+      min-width: 16.1875rem;
+      max-width: 50%;
       height: 3.25rem;
     }
     .description {
