@@ -4,7 +4,7 @@
   height: 44px;
   border: solid 1px #000;
 
-  font-size: 20px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -14,7 +14,7 @@
 .label {
   color: #000;
   font-family: "Commissioner", sans-serif;
-  font-size: 20px;
+  font-size: 1.5625rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -25,4 +25,11 @@
 
 .valid {
   color: red;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .label,
+  .input {
+    font-size: 20px;
+  }
 }

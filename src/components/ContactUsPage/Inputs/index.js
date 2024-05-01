@@ -1,5 +1,3 @@
-import { set } from "mobx";
-import classes from "./Inputs.module.scss";
 import Input from "./Input";
 import { useState } from "react";
 

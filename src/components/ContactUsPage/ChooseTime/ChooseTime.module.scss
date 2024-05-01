@@ -15,7 +15,7 @@
   width: 100%;
 
   background: #ffffff;
-  border: 2px solid #000000;
+  border: 1px solid #000000;
 }
 
 ul {
@@ -32,7 +32,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 7px 0px;
+  //padding: 7px 0px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   color: #000000;
@@ -42,10 +42,9 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  height: 21px;
 }
 .accordion_visible span {
-  padding: 15px 30px 15px 6px;
+  padding: 9px 30px 9px 6px;
   font-size: 20px;
 }
 .accordion_visible img {
@@ -59,33 +58,21 @@ ul {
 }
 
 .accordion_toggle {
-  color: #000;
-  overflow: hidden;
+  overflow: auto;
+  // color: #000;
 
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  opacity: 0;
   transition: all 0.5s ease-in-out;
-  color: #333;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+  // color: #333;
 }
 .selectedValue {
-  color: #000;
+  // color: #000;
   text-decoration: none;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+
   display: block;
   width: 100%;
 
   font-family: "Commissioner", sans-serif;
-  font-size: 17px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -101,33 +88,32 @@ ul {
 }
 
 .option {
-  color: #000;
   text-decoration: none;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+
   display: block;
   width: 100%;
   color: #909090;
 
   font-family: "Commissioner", sans-serif;
-  font-size: 17px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   margin-bottom: 16px;
   display: block;
-  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .list_categories {
   margin: 8px 5px;
+  overflow-y: auto;
 }
 .label {
   font-family: "Commissioner", sans-serif;
-  font-size: 20px;
+  font-size: 1.5625rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -139,4 +125,29 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.input {
+  border: none;
+  flex: 1;
+  height: 100%;
+  font-family: "Commissioner", sans-serif;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 6px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+input:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .label,
+  .input {
+    font-size: 20px;
+  }
 }

@@ -1,4 +1,4 @@
-import { makeAutoObservable, action } from "mobx";
+import { makeAutoObservable, action, runInAction } from "mobx";
 import $api from "../components/http";
 import { toJS } from "mobx";
 import { Link } from "react-router-dom";
@@ -31,6 +31,15 @@ class Products {
   isDeliveryPageSelected;
   cities = [];
   departments = [];
+
+  setSelectedCities(cities) {
+    this.cities = cities;
+  }
+  setSelectedDepartments(departments) {
+    //console.log()
+    this.departments = departments;
+  }
+
   setDeliveryPageSelected(isDeliveryPageSelected) {
     this.isDeliveryPageSelected = isDeliveryPageSelected;
   }
@@ -402,29 +411,51 @@ class Products {
     }
   }
 
-  async fetchCities(area) {
+  async fetchCities(refName) {
     try {
-      const response = await $api.post("/api/np-city/", {
-        params: { area },
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await $api.post(
+        "/api/np-city/",
+        { area: refName },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log(response.data);
+
+      runInAction(() => {
+        this.cities = response.data.map((city) => ({
+          name: city.name,
+          refName: city.ref_city,
+        }));
       });
-
-      console.log(response);
-
-      this.cities = response.data;
     } catch (e) {
       console.error(e);
     }
   }
-  async fetchDepartments(cityRef) {
-    try {
-      const response = await $api.get("/api/np-warehouse/", {
-        params: { city_ref: cityRef },
-      });
 
-      this.departments = response.data;
+  async fetchDepartments(cityRef) {
+    console.log(cityRef);
+    try {
+      const response = await $api.post(
+        "/api/np-warehouse/",
+        { city_ref: cityRef },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response);
+
+      runInAction(() => {
+        this.departments = response.data.map((department) => ({
+          name: department.name,
+          refName: department.name,
+        }));
+      });
     } catch (e) {
       console.error(e);
     }

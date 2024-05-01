@@ -2,72 +2,84 @@ import React, { useState, useEffect, useRef } from "react";
 import classes from "./SelectArea.module.scss";
 import DropDown from "../../../icons/dropdown-black.svg";
 import store from "../../../store/Products";
+import { set, toJS } from "mobx";
+import { observer } from "mobx-react-lite";
 
-export default function SelectSearch({
-  timeChanger,
+const SelectSearch = ({
   valueList,
+  placesList,
   label,
   placeholder,
-  nextStep,
-}) {
+  fetchData,
+  selectedValue,
+  setSelectedValue,
+  input,
+}) => {
   const [toggle, setToggle] = useState(false);
   const [heightEl, setHeightEl] = useState("0px");
-  const [selectedValue, setSelectedValue] = useState("");
-  const [areas, setAreas] = useState(valueList);
+  const [places, setPlaces] = useState(placesList);
   const refHeight = useRef();
 
   useEffect(() => {
+    setPlaces(placesList);
+  }, [placesList]);
+
+  useEffect(() => {
     if (refHeight.current && toggle) {
-      let height = 36 * areas.length;
+      let height = 36 * places.length;
       if (height > 150) height = 150;
       setHeightEl(`${height}px`);
     } else {
       setHeightEl("0px");
     }
-  }, [toggle, areas]);
+  }, [toggle, places]);
 
   const toggleState = () => {
     setToggle(!toggle);
   };
 
   const optionSelectHandler = (option) => {
-    setSelectedValue(option);
-    setAreas(valueList);
-    //timeChanger(option);
+    console.log(input, option);
+    setSelectedValue(input, option);
+    setPlaces(placesList);
+
     toggleState();
+    console.log(valueList);
+    const refName = valueList.find((place) => place.name === option).refName;
+    if (fetchData) fetchData(refName);
   };
 
   const inputHandler = (e) => {
     setToggle(true);
     const userInput = e.target.value;
-    setSelectedValue(userInput);
-    const selectedAreas = valueList.filter((area) =>
-      area.toLowerCase().includes(userInput.toLowerCase())
+    setSelectedValue(input, userInput);
+    const selectedAreas = placesList.filter((place) =>
+      place.toLowerCase().includes(userInput.toLowerCase())
     );
-    setAreas(selectedAreas);
+    setPlaces(selectedAreas);
   };
 
-  if (valueList.includes(selectedValue)) {
-    async function fetchData() {
-      try {
-        await store.fetchCities(selectedValue);
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    fetchData();
-  }
+  const disabled = placesList.length === 0;
   return (
     <div className={classes.container}>
-      <label className={classes.label}>{label}</label>
-      <div className={classes.accordion}>
-        <button className={classes.accordion_visible} onClick={toggleState}>
+      <label
+        className={`${classes.label} ${disabled && classes.disabled_label}`}
+      >
+        {label}
+      </label>
+      <div className={`${classes.accordion} ${disabled && classes.disabled}`}>
+        <button
+          className={classes.accordion_visible}
+          onClick={toggleState}
+          disabled={disabled}
+        >
           <input
             type="text"
             placeholder={placeholder}
             value={selectedValue}
             className={classes.input}
             onChange={inputHandler}
+            disabled={disabled}
           />
           <img
             className={toggle ? classes.active : ""}
@@ -87,18 +99,18 @@ export default function SelectSearch({
         >
           {toggle && (
             <ul className={classes.list_categories}>
-              {areas.map((area) => {
+              {places.map((place) => {
                 return (
                   <li
-                    key={area}
+                    key={place}
                     className={
-                      selectedValue === area
+                      selectedValue === place
                         ? classes.selectedValue
                         : classes.option
                     }
-                    onClick={() => optionSelectHandler(area)}
+                    onClick={() => optionSelectHandler(place)}
                   >
-                    {area}
+                    {place}
                   </li>
                 );
               })}
@@ -108,4 +120,6 @@ export default function SelectSearch({
       </div>
     </div>
   );
-}
+};
+
+export default SelectSearch;

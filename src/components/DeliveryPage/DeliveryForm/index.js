@@ -1,8 +1,7 @@
 import Input from "./Input";
 import { useState } from "react";
 import SwitchInput from "../../UI/SwitchInput";
-import SelectArea from "../SelectArea";
-import areas from "./areas";
+import Selects from "./Selects";
 
 function DeliveryForm() {
   const [name, setName] = useState("");
@@ -110,11 +109,8 @@ function DeliveryForm() {
         type="tel"
         isValid={phoneValid}
       />
-      <SelectArea
-        valueList={areas}
-        label="Область*"
-        placeholder="Оберіть область"
-      />
+      <Selects />
+
       <SwitchInput />
     </div>
   );

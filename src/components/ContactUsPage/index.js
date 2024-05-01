@@ -7,6 +7,7 @@ import Button from "../UI/Button";
 import Footer from "../Footer";
 import TextArea from "./TextArea";
 import ChooseTime from "./ChooseTime";
+import OrderCompleted from "../OrderCompleted";
 import $api from "../http";
 
 function ContactUsPage() {
@@ -16,6 +17,7 @@ function ContactUsPage() {
   const [time, setTime] = useState("");
   const [text, setMessage] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [isSent, setIsSent] = useState(false);
 
   // Validation function
   const validator = () => {
@@ -63,6 +65,7 @@ function ContactUsPage() {
 
       // Handle the response, e.g., log the data
       console.log("Feedback sent successfully:", response.data);
+      setIsSent(true);
       return response.data;
     } catch (error) {
       // Handle errors
@@ -71,25 +74,29 @@ function ContactUsPage() {
     }
   };
 
-  return (
+  return isSent ? (
+    <OrderCompleted orderName={"звернення"} />
+  ) : (
     <div className={classes.contact_page}>
       <Header />
       <div className={classes.container}>
         <PageCaption caption="Зв'язатися з нами" />
-        <Inputs
-          nameChanger={nameChanger}
-          phoneChanger={phoneChanger}
-          themeChanger={themeChanger}
-        />
-        <ChooseTime timeChanger={timeChanger} />
-        <TextArea messageChanger={messageChanger} />
-        <Button
-          customStyles={{ margin: "23px 0px 40px 0px" }}
-          onClick={submit}
-          disabled={!isValid}
-        >
-          Надіслати
-        </Button>
+        <div className={classes.form_container}>
+          <Inputs
+            nameChanger={nameChanger}
+            phoneChanger={phoneChanger}
+            themeChanger={themeChanger}
+          />
+          <ChooseTime timeChanger={timeChanger} />
+          <TextArea messageChanger={messageChanger} />
+          <Button
+            customStyles={{ margin: "23px 0px 40px 0px" }}
+            onClick={submit}
+            disabled={!isValid}
+          >
+            Надіслати
+          </Button>
+        </div>
       </div>
       <Footer />
     </div>
