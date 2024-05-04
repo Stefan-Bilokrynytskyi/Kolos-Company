@@ -460,6 +460,25 @@ class Products {
       console.error(e);
     }
   }
+
+  async sendOrder(orderData) {
+    try {
+      const response = await $api.post(
+        "api/order/create_order_with_quantity_update/",
+        orderData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response);
+
+      return response;
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }
 
 const store = new Products();

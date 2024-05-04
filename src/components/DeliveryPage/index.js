@@ -24,11 +24,12 @@ function DeliveryPage() {
       <div className={classes.delivery_container}>
         <PageCaption caption="Доставка" />
         <div className={classes.form_container}>
-          <DeliveryForm />
-          <PresentOffer />
-          <Total />
+          <DeliveryForm>
+            <PresentOffer />
+            <Total />
 
-          <Button customStyles={btnStyles}>До оплати</Button>
+            <Button customStyles={btnStyles}>До оплати</Button>
+          </DeliveryForm>
         </div>
       </div>
       {!isMobile && <Footer />}

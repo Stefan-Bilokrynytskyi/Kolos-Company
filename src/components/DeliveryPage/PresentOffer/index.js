@@ -4,8 +4,7 @@ import Casual from "../../../img/Rectangle.jpg";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
-function PresentOffer() {
-  const [isChecked, setIsChecked] = useState(false);
+function PresentOffer({ isPresentOffer, setPresentOffer }) {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   return (
     <div>
@@ -28,8 +27,8 @@ function PresentOffer() {
         <input
           type="checkbox"
           className={classes.checkbox}
-          checked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
+          checked={isPresentOffer}
+          onChange={() => setPresentOffer((prev) => !prev)}
         />
         <label className={classes.label}></label>
         <div className={classes.add_package}>

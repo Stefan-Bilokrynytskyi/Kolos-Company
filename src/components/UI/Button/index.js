@@ -1,15 +1,18 @@
 import React from "react";
 import classes from "./Button.module.scss";
 
-const Button = (props) => {
-  const styles = props.customStyles || {};
+const Button = ({ customStyles, className, ...props }) => {
+  const styles = customStyles || {};
 
   return (
     <button
-      className={props.disabled ? classes.button_disabled : classes.button}
+      className={`${className}
+        ${props.disabled ? classes.button_disabled : classes.button}`}
       style={styles}
       onClick={props.onClick}
       disabled={props.disabled}
+      type={props.type || "button"}
+      {...props}
     >
       {props.children}
     </button>

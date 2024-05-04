@@ -2,88 +2,182 @@ import Input from "./Input";
 import { useState } from "react";
 import SwitchInput from "../../UI/SwitchInput";
 import Selects from "./Selects";
+import PresentOffer from "../PresentOffer";
+import Total from "../Total";
+import Button from "../../UI/Button";
+import classes from "./DeliveryForm.module.scss";
+import store from "../../../store/Products";
+import { toJS } from "mobx";
+
+const basketDataToOrderData = (basket) => {
+  return basket.map((product) => ({
+    item: {
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      gender: product.gender,
+    },
+    quantityitemcolorsize: [
+      {
+        id: product.id,
+        size: product.selectedSize,
+        color: product.selectedColor,
+        quantity: product.quantity,
+      },
+    ],
+  }));
+};
 
 function DeliveryForm() {
   const [name, setName] = useState("");
-  const [nameValid, setNameValid] = useState({ value: true, length: 0 });
+  const [nameValid, setNameValid] = useState({
+    value: true,
+    length: 0,
+    message: "",
+  });
   const [surname, setSurname] = useState("");
-  const [surnameValid, setSurnameValid] = useState({ value: true, length: 0 });
+  const [surnameValid, setSurnameValid] = useState({
+    value: true,
+    length: 0,
+    message: "",
+  });
   const [phone, setPhone] = useState("");
-  const [phoneValid, setPhoneValid] = useState({ value: true, length: 0 });
+  const [phoneValid, setPhoneValid] = useState({
+    value: true,
+    length: 0,
+    message: "",
+  });
+  const [formData, setFormData] = useState({
+    area: "",
+    city: "",
+    department: "",
+  });
+  const [isPhoneBack, setIsPhoneBack] = useState(false);
+  const [isPresentOffer, setIsPresentOffer] = useState(false);
 
-  const nameChangeHandler = (e) => {
+  const nameOnChange = (e) => setName(e.target.value);
+
+  const nameOnBlur = (e) => {
     const userName = e.target.value;
-    setName(userName);
+
     const regex = /^[a-zA-Zа-яА-ЯІіЇїЄє-]+$/;
 
-    if (regex.test(userName)) {
-      if (userName.length >= 2)
+    if (userName.length >= 2) {
+      if (regex.test(userName)) {
         setNameValid((nameValid) => ({
-          ...nameValid,
           value: true,
           length: userName.length,
         }));
-      else
+      } else {
         setNameValid((nameValid) => ({
-          ...nameValid,
           value: false,
           length: userName.length,
+          message: "Введений недоступний символ",
         }));
-    } else {
+      }
+    } else
       setNameValid((nameValid) => ({
-        ...nameValid,
         value: false,
         length: userName.length,
+        message: "Довжина повинна бути більше 1 символа",
       }));
-    }
   };
 
-  const surnameChangeHandler = (e) => {
+  const nameOnFocus = () => {
+    setNameValid((nameValid) => ({ ...nameValid, value: true }));
+  };
+
+  const surnameOnChange = (e) => setSurname(e.target.value);
+
+  const surnameOnBlur = (e) => {
     const userSurname = e.target.value;
-    setSurname(userSurname);
+
     const regex = /^[a-zA-Zа-яА-ЯІіЇїЄє-]+$/;
     if (regex.test(userSurname)) {
       if (userSurname.length >= 2)
         setSurnameValid((surnameValid) => ({
-          ...surnameValid,
           value: true,
           length: userSurname.length,
         }));
       else
         setSurnameValid((surnameValid) => ({
-          ...surnameValid,
           value: false,
           length: userSurname.length,
+          message: "Довжина повинна бути більше 1 символа",
         }));
     } else {
       setSurnameValid((surnameValid) => ({
-        ...surnameValid,
         value: false,
         length: userSurname.length,
+        message: "Введений недоступний символ",
       }));
     }
   };
-  const phoneChangeHandler = (e) => {
+
+  const surnameOnFocus = () => {
+    setSurnameValid((surnameValid) => ({ ...surnameValid, value: true }));
+  };
+
+  const phoneOnChange = (e) => {
     const userPhone = e.target.value;
-    if (!/^[+0-9]{0,15}$/.test(userPhone)) return;
-    const regex = /^\+?\d{1,15}$/;
-    setPhone(userPhone);
+    if (/^[+0-9]*$/.test(userPhone)) {
+      setPhone(userPhone);
+    }
+  };
+
+  const phoneOnBlur = (e) => {
+    const userPhone = e.target.value;
+
+    const regex = /^\+?\d{7,15}$/;
 
     if (regex.test(userPhone)) {
-      console.log("correct");
       setPhoneValid((phoneValid) => ({
-        ...phoneValid,
         value: true,
         length: userPhone.length,
       }));
     } else {
-      console.log(";lol");
       setPhoneValid((phoneValid) => ({
-        ...phoneValid,
         value: false,
         length: userPhone.length,
+        message: "Неправильний формат вводу номеру телефону",
       }));
     }
+  };
+  const phoneOnFocus = () => {
+    setPhoneValid((phoneValid) => ({ ...phoneValid, value: true }));
+  };
+
+  const submitHandler = (e) => {
+    const isInputsValid =
+      nameValid.value && surnameValid.value && phoneValid.value;
+    const isFormDataSelected =
+      formData.area && formData.city && formData.department;
+    if (isInputsValid && isFormDataSelected) {
+      onSubmit(e);
+    }
+  };
+  const onSubmit = (e) => {
+    console.log("submit");
+
+    e.preventDefault();
+
+    const basketData = basketDataToOrderData(toJS(store.basket));
+
+    const orderData = {
+      order_data: {
+        first_name: name,
+        last_name: surname,
+        phone: phone,
+        area: formData.area,
+        city: formData.city,
+        post_office: formData.department,
+        payment_method: "cash",
+        call_back: isPhoneBack,
+        gift_package: isPresentOffer,
+        basket_history: basketData,
+      },
+    };
+    store.sendOrder(orderData);
   };
 
   return (
@@ -91,27 +185,46 @@ function DeliveryForm() {
       <Input
         title="Ім'я*"
         value={name}
-        onChange={nameChangeHandler}
         type="text"
         isValid={nameValid}
+        onChange={nameOnChange}
+        onBlur={nameOnBlur}
+        onFocus={nameOnFocus}
       />
       <Input
         title="Прізвище*"
         value={surname}
-        onChange={surnameChangeHandler}
         type="text"
         isValid={surnameValid}
+        onChange={surnameOnChange}
+        onBlur={surnameOnBlur}
+        onFocus={surnameOnFocus}
       />
       <Input
         title="Телефон*"
         value={phone}
-        onChange={phoneChangeHandler}
         type="tel"
         isValid={phoneValid}
+        onChange={phoneOnChange}
+        onBlur={phoneOnBlur}
+        onFocus={phoneOnFocus}
       />
-      <Selects />
+      <Selects formData={formData} setFormData={setFormData} />
 
-      <SwitchInput />
+      <SwitchInput setInput={setIsPhoneBack} />
+      <PresentOffer
+        isPresentOffer={isPresentOffer}
+        setPresentOffer={setIsPresentOffer}
+      />
+      <Total />
+
+      <Button
+        type="submit"
+        onClick={submitHandler}
+        className={classes.delivery_button}
+      >
+        До оплати
+      </Button>
     </div>
   );
 }

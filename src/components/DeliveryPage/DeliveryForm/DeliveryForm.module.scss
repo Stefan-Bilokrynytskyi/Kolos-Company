@@ -1,3 +1,13 @@
 .form_container {
   margin: 0 18.125rem;
 }
+.delivery_button {
+  margin-top: 1.25rem;
+  height: 3.25rem;
+  font-size: 1.875rem;
+}
+@media only screen and (max-width: 767.98px) {
+  .delivery_button {
+    margin-top: 1.25rem;
+  }
+}

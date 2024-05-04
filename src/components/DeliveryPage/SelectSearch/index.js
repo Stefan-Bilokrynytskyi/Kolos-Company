@@ -26,7 +26,7 @@ const SelectSearch = ({
 
   useEffect(() => {
     if (refHeight.current && toggle) {
-      let height = 36 * places.length;
+      let height = 60 * places.length;
       if (height > 150) height = 150;
       setHeightEl(`${height}px`);
     } else {
