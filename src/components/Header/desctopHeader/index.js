@@ -40,7 +40,7 @@ const DesctopHeader = observer((props) => {
           <img src={Logo} alt="Logo"></img>
         </Link>
         <nav className={classes.navigation_container}>
-          <Link to="/about">
+          <Link to="/contact-us">
             <div className={classes.header_link}>Підтримка</div>
           </Link>
           <Link to="/about">

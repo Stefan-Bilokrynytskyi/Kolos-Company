@@ -2,11 +2,17 @@ import React from "react";
 import classes from "./About.module.scss";
 import Rectangle from "../../../img/Rectangle.jpg";
 import Stripe from "../../../components/UI/Stripe";
+import logoDesktop from "../../../icons/logo-black.svg";
+import logoMobile from "../../../icons/logo-2.svg";
+import { useMediaQuery } from "react-responsive";
 
 function About() {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const logo = isMobile ? logoMobile : logoDesktop;
   return (
-    <div>
+    <>
       <div className={classes.picture}>
+        <img className={classes.logo} src={logo} alt="Logo"></img>
         <p className={classes.caption}>Про нас</p>
       </div>
 
@@ -24,7 +30,7 @@ function About() {
             }}
           />
         </div>
-        <p>
+        <p className={classes.info}>
           Історія компанії Колос почалася у 2023 році. Засновники — енергійні та
           креативні хлопці, брати з невеликого міста в західній частині України,
           — вирішили спрямувати свою діяльність на розвиток української
@@ -37,9 +43,27 @@ function About() {
 
       <div className={classes.pictures_grid}>
         <div className={classes.pictures_grid_container}>
-          <img src={Rectangle} className={classes.first_image} />
-          <img src={Rectangle} className={classes.second_image} />
-          <img src={Rectangle} className={classes.third_image} />
+          <div className={classes.first_image}>
+            <img
+              src={Rectangle}
+              alt="Rectangle"
+              className={classes.image}
+            ></img>
+          </div>
+          <div className={classes.second_image}>
+            <img
+              src={Rectangle}
+              alt="Rectangle"
+              className={classes.image}
+            ></img>
+          </div>
+          <div className={classes.third_image}>
+            <img
+              src={Rectangle}
+              alt="Rectangle"
+              className={classes.image}
+            ></img>
+          </div>
         </div>
       </div>
 
@@ -57,7 +81,7 @@ function About() {
             }}
           />
         </div>
-        <p>
+        <p className={classes.info}>
           Історія компанії Колос почалася у 2023 році. Засновники — енергійні та
           креативні хлопці, брати з невеликого міста в західній частині України,
           — вирішили спрямувати свою діяльність на розвиток української
@@ -67,7 +91,7 @@ function About() {
           підтримали молодіжний бренд і вітали появу новинок.
         </p>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,39 +1,30 @@
 @import "../../../styles/_global.scss";
 .container {
-  width: 90%;
-  margin: 30px auto;
-}
-
-.conditions_section {
-}
-
-.title_block {
-  // display: flex;
+  margin: 30px 52px;
 }
 
 .flexContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  h2 {
-    color: #000;
-    font-size: 30px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-
-    .flexGrow {
-      height: 2px;
-      width: 100%;
-      background-color: #000;
-      flex-grow: 1;
-      margin-left: 10px;
+  .title_conditions {
+    .title_desktop {
+      color: #000;
+      font-size: 2.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      .title {
+        width: fit-content;
+        font-family: "Cochin";
+      }
+      .flexGrow {
+        height: 2px;
+        background-color: #000;
+        margin-left: 25px;
+        flex-grow: 1;
+      }
     }
-  }
-
-  .title {
-    width: 70px;
   }
 }
 
@@ -43,43 +34,49 @@
 
 .return_rules {
   margin-top: 20px;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    li {
+      margin-bottom: 25px;
+      color: #000;
+      font-weight: 500;
+      font-size: 1.5rem;
+      font-family: "Commissioner", sans-serif;
+    }
+  }
 }
 
-.return_rules ul {
-  list-style-type: none;
-  padding: 0;
+.digit {
+  font-family: "Cochin";
 }
-
-.return_rules li {
-  margin-bottom: 25px;
-  color: #000;
-}
-
 .return_benefits {
   margin-top: 30px;
 
-  .line {
-    position: absolute;
-    width: 75%;
-    height: 2px;
-    top: -3px;
-    background-color: #000;
-  }
+  .benefits_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  h3 {
-    position: relative;
-    color: #000;
-    font-size: 19px;
-    font-weight: 700;
-    text-transform: uppercase;
-
-    width: 320px;
-    margin-bottom: 12px;
+    .title {
+      color: #000;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: "Cochin";
+    }
+    .flexGrow {
+      height: 2px;
+      background-color: #000;
+      margin-left: 25px;
+      flex-grow: 1;
+    }
   }
 
   ul {
     list-style-type: none;
     padding: 0;
+    margin-top: 20px;
 
     li {
       display: flex;
@@ -87,8 +84,8 @@
       margin-bottom: 8px;
 
       color: #000;
-      font-size: 20px;
-      font-weight: 400;
+      font-size: 1.5rem;
+      font-weight: 500;
     }
   }
 }
@@ -99,4 +96,75 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .container {
+    margin: 30px 16px;
+  }
+  .flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title_conditions {
+      .title_mobile {
+        color: #000;
+        font-size: 1.875rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        p {
+          font-family: "Cochin";
+        }
+        .flexGrow {
+          height: 2px;
+          width: 100%;
+          background-color: #000;
+          flex-grow: 1;
+          margin-left: 10px;
+        }
+      }
+      .title {
+        width: 70px;
+        font-size: 1.875rem;
+        font-family: "Cochin";
+      }
+    }
+  }
+  .return_rules {
+    ul {
+      li {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .return_benefits {
+    margin-top: 30px;
+
+    h3 {
+      position: relative;
+      color: #000;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: "Cochin";
+      width: 100%;
+      margin-bottom: 12px;
+      .line {
+        position: absolute;
+        width: 75%;
+        height: 2px;
+        top: -3px;
+        background-color: #000;
+      }
+    }
+    ul {
+      margin-top: 0px;
+
+      li {
+        font-size: 1.25rem;
+      }
+    }
+  }
 }

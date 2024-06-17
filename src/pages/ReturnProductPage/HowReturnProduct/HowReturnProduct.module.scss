@@ -1,44 +1,98 @@
-
+@import "../../../styles/_global.scss";
 .container {
-  width: 90%;
-  margin: 30px auto;
+  margin: 30px 52px;
 }
 
 .help_return {
-
   .title_container {
-
-    h2 {
+    .title_desktop {
       color: #000;
-      font-size: 30px;
+      font-size: 1.875rem;
       font-weight: 700;
       display: flex;
       align-items: center;
-  
+      h2 {
+        width: fit-content;
+        font-family: "Cochin";
+      }
       .flexGrow {
-        height: 2px; 
-        // width: 100%;
-        background-color: #000; 
+        height: 2px;
+        background-color: #000;
         flex-grow: 1;
         margin-left: 10px;
       }
-
-  }
-
-  .second_title{
-    margin-bottom: 20px;
-  }
-
+    }
   }
   ul {
+    margin-top: 25px;
     list-style-type: none;
 
     li {
       margin-bottom: 25px;
-
       color: #000;
-      font-size: 20px;
+      font-size: 1.5rem;
       font-weight: 500;
+      font-family: "Commissioner", sans-serif;
+      .link {
+        color: #e80101;
+        text-decoration: underline;
+      }
+      .digit {
+        font-family: "Cochin";
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .container {
+    margin: 30px 15px;
+  }
+  .help_return {
+    .title_container {
+      .first_title {
+        color: #000;
+        font-size: 1.875rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        font-family: "Cochin";
+
+        .flexGrow {
+          height: 2px;
+          // width: 100%;
+          background-color: #000;
+          flex-grow: 1;
+          margin-left: 10px;
+        }
+        p {
+          font-family: "Cochin";
+        }
+      }
+
+      .second_title {
+        margin-bottom: 20px;
+        font-family: "Cochin";
+        font-size: 1.875rem;
+      }
+    }
+    ul {
+      list-style-type: none;
+
+      li {
+        margin-bottom: 25px;
+        color: #000;
+        font-size: 1.25rem;
+        font-weight: 500;
+        font-family: "Commissioner", sans-serif;
+        .link {
+          color: #e80101;
+          text-decoration: underline;
+        }
+        .digit {
+          font-family: "Cochin";
+        }
+      }
     }
   }
 }

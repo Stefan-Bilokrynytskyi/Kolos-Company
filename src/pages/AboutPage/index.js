@@ -5,11 +5,11 @@ import About from "./About";
 
 function AboutPage() {
   return (
-    <div>
+    <>
       <Header />
       <About />
       <Footer />
-    </div>
+    </>
   );
 }
 

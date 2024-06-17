@@ -38,7 +38,13 @@ export default function ChooseTime({ timeChanger }) {
   return (
     <div className={classes.container}>
       <label className={classes.label}>Коли вам зателефонувати?</label>
-      <div className={classes.accordion}>
+      <div
+        className={
+          toggle
+            ? `${classes.accordion} ${classes.focused}`
+            : `${classes.accordion}`
+        }
+      >
         <button onClick={toggleState} className={classes.accordion_visible}>
           <span
             className={classes.name_category}
@@ -72,7 +78,7 @@ export default function ChooseTime({ timeChanger }) {
                       ? classes.selectedValue
                       : classes.option
                   }
-                  onClick={() => optionSelectHandler(time)} // Исправлено здесь
+                  onClick={() => optionSelectHandler(time)}
                 >
                   {time}
                 </li>

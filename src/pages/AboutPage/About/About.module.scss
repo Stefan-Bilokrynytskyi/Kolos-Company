@@ -9,11 +9,134 @@ h1 {
   margin: 0;
 }
 
-@media only screen and (max-width: 1024px) {
+.picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 619px;
+  background: #d9d9d9;
+
+  margin-bottom: 35px;
+  .logo {
+    width: 400px;
+    height: 98px;
+  }
+  img {
+    margin-bottom: 7px;
+  }
+
+  .caption {
+    font-family: Cochin;
+    font-size: 55px;
+    font-style: normal;
+
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.history_block {
+  margin: 0 45px;
+  margin-bottom: 34px;
+  .subtitle_container {
+    position: relative;
+    margin-top: 32px;
+    height: fit-content;
+    .subtitle {
+      padding-right: 5px;
+      color: #000;
+      font-family: "Cochin";
+      font-size: 3.75rem;
+      font-style: normal;
+      font-weight: 500;
+      height: fit-content;
+      background-color: rgb(255, 255, 255);
+      width: fit-content;
+    }
+  }
+  .info {
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    font-size: 1.875rem;
+  }
+}
+
+.pictures_grid {
+  margin: 0 45px;
+
+  width: calc(100% - 90px);
+}
+
+.pictures_grid_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.5fr 1fr;
+  grid-gap: 29px;
+  height: 90vh;
+  margin-bottom: 60px;
+
+  .first_image,
+  .second_image,
+  .third_image {
+    position: relative;
+    .image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .first_image {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .second_image {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .third_image {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+}
+.ourforced_block {
+  display: block;
+  margin: 0 45px;
+  margin-bottom: 100px;
+
+  .subtitle_container {
+    position: relative;
+    margin-top: 32px;
+    height: fit-content;
+    .subtitle {
+      padding-right: 5px;
+      color: #000;
+      font-family: "Cochin";
+      font-size: 3.75rem;
+      font-style: normal;
+      font-weight: 500;
+      height: fit-content;
+      background-color: rgb(255, 255, 255);
+      width: fit-content;
+    }
+  }
+  .info {
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    font-size: 1.875rem;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
   .picture {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100%;
     height: 442px;
@@ -21,12 +144,17 @@ h1 {
 
     margin-bottom: 35px;
 
-    img {
-      margin-bottom: 7px;
+    .logo {
+      position: absolute;
+      top: 0;
+      width: 114px;
+      height: 220px;
     }
 
     .caption {
-      font-family: "Cochin";
+      position: absolute;
+      left: 42px;
+      font-family: Cochin;
       font-size: 55px;
       font-style: normal;
 
@@ -58,98 +186,74 @@ h1 {
       font-weight: 400;
       line-height: normal;
     }
+
+    .subtitle_container {
+      position: relative;
+      margin-top: 32px;
+
+      // width: 347px;
+      .subtitle {
+        padding-right: 5px;
+        color: #000;
+
+        font-family: "Cochin";
+        font-size: 1.875rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        background-color: rgb(255, 255, 255);
+        width: fit-content;
+        height: 39px;
+        z-index: 3;
+      }
+    }
+    .info {
+      font-family: "Commissioner", sans-serif;
+      font-weight: 300;
+      font-size: 1.5rem;
+    }
   }
 
   .pictures_grid {
-    display: grid;
-    place-items: center;
+    margin: 0 14px;
+
+    width: calc(100% - 28px);
   }
 
   .pictures_grid_container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 1fr;
     grid-gap: 10px;
-    margin: 0 17px;
-    margin-bottom: 55px;
-    height: 32vh;
-    width: 370px;
-    align-items: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .first_image {
-      width: 184px;
-      height: 258px;
-      flex-shrink: 0;
-
-      grid-column: 1 / 2; /* Занимает первую колонку */
-      grid-row: 1 / 3; /* Занимает обе строки */
-    }
-
-    .second_image {
-      width: 149px;
-      height: 159px;
-      flex-shrink: 0;
-
-      grid-column: 2 / 3; /* Занимает вторую колонку */
-      grid-row: 1 / 2; /* Занимает только верхнюю строку */
-    }
-
-    .third_image {
-      width: 149px;
-      height: 88px;
-      flex-shrink: 0;
-
-      grid-column: 2 / 3; /* Занимает вторую колонку */
-      grid-row: 2 / 3; /* Занимает только нижнюю строку */
-    }
+    height: 258px;
+    margin-bottom: 32px;
   }
 
   .ourforced_block {
     margin: 0 14px;
     margin-bottom: 34px;
 
-    h1 {
-      color: #000;
-      font-family: "Cochin";
-      font-size: 30px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
+    .subtitle_container {
+      position: relative;
+      margin-top: 32px;
 
-      margin-bottom: 7px;
+      // width: 347px;
+      .subtitle {
+        padding-right: 5px;
+        color: #000;
+
+        font-family: "Cochin";
+        font-size: 1.875rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        background-color: rgb(255, 255, 255);
+        width: fit-content;
+        height: 39px;
+        z-index: 3;
+      }
     }
-
-    p {
-      color: #000;
-      font-size: 20px;
-      font-weight: 400;
-    }
-  }
-
-  .subtitle_container {
-    position: relative;
-    margin-top: 32px;
-
-    // width: 347px;
-    .subtitle {
-      padding-right: 5px;
-      color: #000;
-
-      font-family: "Cochin";
-      font-size: 30px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      background-color: rgb(255, 255, 255);
-      width: fit-content;
-      height: 39px;
-      z-index: 3;
+    .info {
+      font-family: "Commissioner", sans-serif;
+      font-weight: 300;
+      font-size: 1.5rem;
     }
   }
 }
